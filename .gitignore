@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media/
+/staticfiles/
+
+# Segredos — nunca versionar
+.env
+*.pem
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

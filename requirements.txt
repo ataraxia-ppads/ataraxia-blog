@@ -1,0 +1,8 @@
+Django==6.1
+python-dotenv==1.2.3
+
+# Produção
+gunicorn==26.2.0
+psycopg[binary]==3.3.4
+dj-database-url==3.1.2
+whitenoise==6.12.0
