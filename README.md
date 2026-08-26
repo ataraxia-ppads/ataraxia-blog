@@ -96,8 +96,8 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 
 ## Próximos passos
 
-1. Revisar esta documentação e comentar no Pull Request aberto.
+1. Revisar a documentação e propor correções por Pull Request.
 2. Confirmar o integrante restante.
-3. Desenhar o diagrama de casos de uso.
-4. Criar as quatro aplicações e os modelos.
+3. Definir o modelo de dados de cada aplicação.
+4. Criar as quatro aplicações.
 5. Escrever o documento da primeira entrega.
