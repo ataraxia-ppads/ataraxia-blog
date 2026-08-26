@@ -10,9 +10,9 @@ O projeto será publicado em **blog.ataraxia.dev**.
 | Nome | Status |
 | ---- | ------ |
 | Alan Araujo Paiva | a confirmar |
-| Gabriel Vieira Ferreira | a confirmar |
+| Gabriel Vieira Ferreira | confirmado |
 | Pedro Emmanuel Esteves | confirmado |
-| Rafaela Rarume Alves Perpetuo | a confirmar |
+| Rafaela Rarume Alves Perpetuo | confirmado |
 | Renan Urtado Challó de Oliveira Jordão | confirmado |
 
 ## O que vamos construir
@@ -20,22 +20,26 @@ O projeto será publicado em **blog.ataraxia.dev**.
 Uma plataforma de blog onde qualquer pessoa lê os textos publicados, usuários
 cadastrados escrevem e publicam os seus, e moderadores cuidam do que sai do ar.
 
-Essa é a ideia de partida, não um escopo fechado. O recorte definitivo —
-interessados, objetivos funcionais e não-funcionais, casos de uso e arquitetura
-de solução — sai do levantamento de requisitos, que ainda será feito.
+O recorte completo está em [`docs/visao-geral.md`](docs/visao-geral.md).
 
 ## Estado atual
 
-O repositório tem o projeto Django e a configuração de ambiente, e nada além
-disso. As aplicações serão criadas quando a arquitetura de solução estiver
-definida, porque a divisão em aplicações é resultado desse desenho.
+O repositório tem o projeto Django, a configuração de ambiente e a documentação
+de análise: interessados, objetivos, casos de uso e arquitetura.
+
+As quatro aplicações — `accounts`, `posts`, `comments` e `taxonomy` — ainda não
+foram criadas. Cada uma tem um dono, e a criação começa depois que o desenho
+fechar.
 
 A hospedagem é tratada fora deste repositório e não interfere no
-desenvolvimento: para rodar na sua máquina, basta o passo a passo acima.
+desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 
 ## Como rodar
 
 ```bash
+git clone https://github.com/ataraxia-ppads/ataraxia-blog.git
+cd ataraxia-blog
+
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -49,6 +53,21 @@ crie um usuário com `python manage.py createsuperuser`.
 Nenhuma configuração é obrigatória em desenvolvimento. Se precisar mudar algo,
 copie `.env.example` para `.env` e edite.
 
+Para contribuir sem instalar nada, editando texto pelo navegador, veja o
+[`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+## Documentação
+
+| Arquivo | Conteúdo |
+| ------- | -------- |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Fluxo de trabalho, revisão de PR e convenção de idioma |
+| [`docs/visao-geral.md`](docs/visao-geral.md) | O sistema, os interessados e o que está fora do escopo |
+| [`docs/objetivos.md`](docs/objetivos.md) | Objetivos funcionais e não-funcionais |
+| [`docs/casos-de-uso/`](docs/casos-de-uso/) | Atores, os 13 casos de uso e as descrições detalhadas |
+| [`docs/arquitetura.md`](docs/arquitetura.md) | Decomposição em aplicações, dependências e stack |
+| [`docs/design.md`](docs/design.md) | Decisões técnicas, custo de mudar cada uma e pendências |
+| [`docs/roteiro-de-testes.md`](docs/roteiro-de-testes.md) | Verificação manual de cada caso de uso |
+
 ## Stack
 
 | Item | Escolha |
@@ -56,22 +75,25 @@ copie `.env.example` para `.env` e edite.
 | Linguagem | Python 3 |
 | Framework | Django 6.1 |
 | Banco | SQLite em desenvolvimento |
-| Front-end | Templates do Django |
 | Banco (produção) | PostgreSQL |
+| Front-end | Templates do Django |
 | Versionamento | Git e GitHub |
 | Publicação | `blog.ataraxia.dev` |
 
-## Documentação
+## Divisão do trabalho
 
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — como preparar o ambiente e a
-  convenção de idioma do código.
-- [`docs/design.md`](docs/design.md) — decisões técnicas tomadas, com o custo de
-  mudar cada uma, e o que ainda está em aberto.
+| Pessoa | Aplicação | Fora do código | Caso de uso |
+| ------ | --------- | -------------- | ----------- |
+| Pedro | `posts` | Configuração, template base, documento | UC08 |
+| Renan | `accounts` | Arquitetura e diagrama de casos de uso | UC05 |
+| Gabriel | `comments` | — | UC10 |
+| Alan | `taxonomy` | — | UC04 |
+| Rafaela | — | Quadro, roteiro de testes, conteúdo de demonstração | UC02 |
 
 ## Próximos passos
 
-1. Confirmar os três integrantes restantes.
-2. Definir o fluxo de trabalho do grupo na primeira reunião.
-3. Fazer o levantamento de requisitos e o desenho da arquitetura.
-4. Criar as aplicações e distribuir o trabalho.
+1. Revisar esta documentação e comentar no Pull Request aberto.
+2. Confirmar o integrante restante.
+3. Desenhar o diagrama de casos de uso.
+4. Criar as quatro aplicações e os modelos.
 5. Escrever o documento da primeira entrega.

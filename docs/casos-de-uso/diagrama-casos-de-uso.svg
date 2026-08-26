@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="930" viewBox="0 0 940 930">
+  <defs>
+    <marker id="gen" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M1,1 L13,7 L1,13 z" fill="#fff" stroke="#333" stroke-width="1.5"/>
+    </marker>
+    <marker id="ext" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1,1 L11,6 L1,11" fill="none" stroke="#333" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="940" height="930" fill="#fff"/>
+  <rect x="380" y="45" width="470" height="845" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="615" y="73" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#222">Ataraxia</text>
+  <line x1="172" y1="223" x2="457" y2="115" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="223" x2="457" y2="176" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="223" x2="457" y2="237" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="223" x2="457" y2="298" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="223" x2="457" y2="359" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="528" x2="457" y2="420" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="528" x2="457" y2="481" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="528" x2="457" y2="542" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="528" x2="457" y2="603" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="528" x2="457" y2="664" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="772" x2="457" y2="725" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="772" x2="457" y2="786" stroke="#555" stroke-width="1.5"/>
+  <line x1="172" y1="772" x2="457" y2="847" stroke="#555" stroke-width="1.5"/>
+  <ellipse cx="615" cy="115" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="113" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC01</text>
+  <text x="615" y="129" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Listar posts publicados</text>
+  <ellipse cx="615" cy="176" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="174" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC02</text>
+  <text x="615" y="190" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Ler post</text>
+  <ellipse cx="615" cy="237" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="235" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC03</text>
+  <text x="615" y="251" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Buscar post</text>
+  <ellipse cx="615" cy="298" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="296" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC04</text>
+  <text x="615" y="312" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Filtrar por categoria ou tag</text>
+  <ellipse cx="615" cy="359" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="357" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC05</text>
+  <text x="615" y="373" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Cadastrar-se</text>
+  <ellipse cx="615" cy="420" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="418" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC06</text>
+  <text x="615" y="434" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Autenticar-se</text>
+  <ellipse cx="615" cy="481" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="479" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC07</text>
+  <text x="615" y="495" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Manter perfil</text>
+  <ellipse cx="615" cy="542" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="540" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC08</text>
+  <text x="615" y="556" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Manter post</text>
+  <ellipse cx="615" cy="603" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="601" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC09</text>
+  <text x="615" y="617" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Publicar post</text>
+  <ellipse cx="615" cy="664" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="662" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC10</text>
+  <text x="615" y="678" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Comentar post</text>
+  <ellipse cx="615" cy="725" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="723" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC11</text>
+  <text x="615" y="739" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Moderar comentário</text>
+  <ellipse cx="615" cy="786" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="784" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC12</text>
+  <text x="615" y="800" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Manter taxonomia</text>
+  <ellipse cx="615" cy="847" rx="158" ry="25" fill="#fafafa" stroke="#333" stroke-width="1.8"/>
+  <text x="615" y="845" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#222">UC13</text>
+  <text x="615" y="861" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222">Gerenciar usuários</text>
+
+  <g stroke="#333" stroke-width="2" fill="none">
+    <circle cx="150" cy="195" r="13" fill="#fff"/>
+    <line x1="150" y1="208" x2="150" y2="241"/>
+    <line x1="131" y1="219" x2="169" y2="219"/>
+    <line x1="150" y1="241" x2="135" y2="264"/>
+    <line x1="150" y1="241" x2="165" y2="264"/>
+  </g>
+  <text x="150" y="283" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="15" font-weight="bold" fill="#222">Visitante</text>
+
+  <g stroke="#333" stroke-width="2" fill="none">
+    <circle cx="150" cy="500" r="13" fill="#fff"/>
+    <line x1="150" y1="513" x2="150" y2="546"/>
+    <line x1="131" y1="524" x2="169" y2="524"/>
+    <line x1="150" y1="546" x2="135" y2="569"/>
+    <line x1="150" y1="546" x2="165" y2="569"/>
+  </g>
+  <text x="150" y="588" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="15" font-weight="bold" fill="#222">Autor</text>
+
+  <g stroke="#333" stroke-width="2" fill="none">
+    <circle cx="150" cy="744" r="13" fill="#fff"/>
+    <line x1="150" y1="757" x2="150" y2="790"/>
+    <line x1="131" y1="768" x2="169" y2="768"/>
+    <line x1="150" y1="790" x2="135" y2="813"/>
+    <line x1="150" y1="790" x2="165" y2="813"/>
+  </g>
+  <text x="150" y="832" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="15" font-weight="bold" fill="#222">Moderador</text>
+  <line x1="150" y1="485" x2="150" y2="291" stroke="#333" stroke-width="1.8" marker-end="url(#gen)"/>
+  <line x1="150" y1="729" x2="150" y2="596" stroke="#333" stroke-width="1.8" marker-end="url(#gen)"/>
+  <path d="M 773 237 H 795 V 115 H 773" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ext)"/>
+  <path d="M 773 298 H 819 V 115 H 773" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ext)"/>
+  <text x="843" y="149" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" fill="#333">&#171;extend&#187;</text>
+</svg>
