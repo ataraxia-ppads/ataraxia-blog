@@ -59,7 +59,7 @@ fechar, cada dono criar a sua e os modelos entrarem em seguida.
 | Interessados | [`visao-geral.md`](visao-geral.md) |
 | Objetivos funcionais | [`objetivos.md`](objetivos.md) |
 | Objetivos não-funcionais | [`objetivos.md`](objetivos.md) |
-| Diagrama de casos de uso | A desenhar, a partir de [`casos-de-uso/`](casos-de-uso/) |
+| Diagrama de casos de uso | [`casos-de-uso/`](casos-de-uso/) |
 | Descrição detalhada dos casos de uso principais | [`casos-de-uso/`](casos-de-uso/) |
 
 ## Como comentar

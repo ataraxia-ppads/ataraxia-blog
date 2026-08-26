@@ -23,12 +23,8 @@ Visitante  ◁──  Autor  ◁──  Moderador
 
 **Figura 1 — Diagrama de casos de uso**
 
-Versão provisória, feita para não segurar a primeira entrega. O diagrama é
-tarefa do Renan: o que estiver errado aqui se corrige com ele, e esta versão
-é substituída.
-
-Os arquivos `diagrama-casos-de-uso.svg` e `.png` estão nesta pasta. O SVG é a
-fonte, editável em qualquer editor vetorial.
+A fonte é `diagrama-casos-de-uso.svg`, nesta pasta, editável em qualquer
+editor vetorial. O `.png` ao lado é a exportação usada no documento.
 
 ## Lista de casos de uso
 
@@ -82,7 +78,7 @@ Descritos em detalhe, um arquivo cada:
 | Arquivo | Caso de uso | Responsável |
 | ------- | ----------- | ----------- |
 | [`UC02.md`](UC02.md) | Ler post | Rafaela |
-| [`UC04.md`](UC04.md) | Filtrar por categoria ou tag | Renan, até a confirmação do Alan |
+| [`UC04.md`](UC04.md) | Filtrar por categoria ou tag | Alan |
 | [`UC05.md`](UC05.md) | Cadastrar-se | Renan |
 | [`UC08.md`](UC08.md) | Manter post | Pedro |
 | [`UC10.md`](UC10.md) | Comentar post | Gabriel |

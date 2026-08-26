@@ -90,9 +90,6 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | Alan | `taxonomy` | — | UC04 |
 | Rafaela | — | Quadro, roteiro de testes, conteúdo de demonstração | UC02 |
 
-Enquanto a participação do Alan não for confirmada, `taxonomy` e UC04 ficam com
-o Renan.
-
 ## Próximos passos
 
 1. Revisar esta documentação e comentar no Pull Request aberto.
