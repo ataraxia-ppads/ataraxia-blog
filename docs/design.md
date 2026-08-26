@@ -55,7 +55,7 @@ fechar, cada dono criar a sua e os modelos entrarem em seguida.
 | Título do projeto | Ataraxia |
 | Nomes dos integrantes | Quatro confirmados de cinco |
 | URL do repositório de código-fonte | `github.com/ataraxia-ppads/ataraxia-blog` |
-| URL do quadro de acompanhamento | A criar |
+| URL do quadro de acompanhamento | [`orgs/ataraxia-ppads/projects/1`](https://github.com/orgs/ataraxia-ppads/projects/1) |
 | Interessados | [`visao-geral.md`](visao-geral.md) |
 | Objetivos funcionais | [`objetivos.md`](objetivos.md) |
 | Objetivos não-funcionais | [`objetivos.md`](objetivos.md) |
