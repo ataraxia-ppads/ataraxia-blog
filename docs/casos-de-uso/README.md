@@ -23,9 +23,6 @@ Visitante  ◁──  Autor  ◁──  Moderador
 
 **Figura 1 — Diagrama de casos de uso**
 
-A fonte é `diagrama-casos-de-uso.svg`, nesta pasta, editável em qualquer
-editor vetorial. O `.png` ao lado é a exportação usada no documento.
-
 ## Lista de casos de uso
 
 **Tabela 6 — Casos de uso**
@@ -73,17 +70,16 @@ site parecesse vivo.
 
 ## Casos de uso principais
 
-Descritos em detalhe, um arquivo cada:
+Cinco casos de uso são descritos em detalhe a seguir. Juntos cobrem a jornada
+completa do usuário: ler, navegar, cadastrar-se, escrever e comentar. Cada um
+pertence a uma aplicação diferente, e é descrito por quem vai construí-la.
 
-| Arquivo | Caso de uso | Responsável |
-| ------- | ----------- | ----------- |
-| [`UC02.md`](UC02.md) | Ler post | Rafaela |
-| [`UC04.md`](UC04.md) | Filtrar por categoria ou tag | Pedro *(placeholder)* |
-| [`UC05.md`](UC05.md) | Cadastrar-se | Renan |
-| [`UC08.md`](UC08.md) | Manter post | Pedro |
-| [`UC10.md`](UC10.md) | Comentar post | Gabriel |
+**Tabela 7 — Responsáveis pela descrição detalhada**
 
-Os cinco cobrem a jornada completa: ler, navegar, cadastrar-se, escrever e
-comentar. Cada um pertence à aplicação que o próprio responsável vai construir.
-
-Para escrever um caso de uso novo, copie [`MODELO.md`](MODELO.md).
+| Caso de uso | Aplicação | Responsável |
+| ----------- | --------- | ----------- |
+| UC02 — Ler post | `posts` | Rafaela |
+| UC04 — Filtrar por categoria ou tag | `taxonomy` | Pedro |
+| UC05 — Cadastrar-se | `accounts` | Renan |
+| UC08 — Manter post | `posts` | Pedro |
+| UC10 — Comentar post | `comments` | Gabriel |
