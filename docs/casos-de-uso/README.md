@@ -78,7 +78,7 @@ Descritos em detalhe, um arquivo cada:
 | Arquivo | Caso de uso | Responsável |
 | ------- | ----------- | ----------- |
 | [`UC02.md`](UC02.md) | Ler post | Rafaela |
-| [`UC04.md`](UC04.md) | Filtrar por categoria ou tag | Alan |
+| [`UC04.md`](UC04.md) | Filtrar por categoria ou tag | Pedro *(placeholder)* |
 | [`UC05.md`](UC05.md) | Cadastrar-se | Renan |
 | [`UC08.md`](UC08.md) | Manter post | Pedro |
 | [`UC10.md`](UC10.md) | Comentar post | Gabriel |

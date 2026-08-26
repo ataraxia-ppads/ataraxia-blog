@@ -5,6 +5,8 @@ Universidade Presbiteriana Mackenzie
 
 O projeto será publicado em **blog.ataraxia.dev**.
 
+As tarefas são acompanhadas no [quadro do projeto](https://github.com/orgs/ataraxia-ppads/projects/1).
+
 ## Integrantes
 
 | Nome | Status |
@@ -87,8 +89,10 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | Pedro | `posts` | Configuração, template base, documento | UC08 |
 | Renan | `accounts` | Arquitetura e diagrama de casos de uso | UC05 |
 | Gabriel | `comments` | — | UC10 |
-| Alan | `taxonomy` | — | UC04 |
 | Rafaela | — | Quadro, roteiro de testes, conteúdo de demonstração | UC02 |
+| Pedro *(placeholder)* | `taxonomy` | — | UC04 |
+
+`taxonomy` e UC04 passam para o Alan assim que ele confirmar participação.
 
 ## Próximos passos
 
