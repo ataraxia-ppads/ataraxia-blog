@@ -65,5 +65,9 @@ fechar, cada dono criar a sua e os modelos entrarem em seguida.
 ## Como comentar
 
 Discordância é bem-vinda, principalmente nas linhas de custo baixo da tabela
-acima. Comente no Pull Request, na linha exata do trecho, e não em conversa
-paralela — comentário preso ao texto fica registrado e não se perde.
+acima.
+
+Para propor uma mudança, abra um Pull Request alterando o trecho. Para discutir
+antes de alterar, comente na linha exata dentro de um Pull Request que toque
+nela. Nos dois casos a conversa fica presa ao texto e registrada com nome e
+data, o que não acontece em conversa paralela.
