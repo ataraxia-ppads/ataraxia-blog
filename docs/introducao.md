@@ -43,3 +43,11 @@ o desenvolvimento revelar o que não foi previsto.
 - **Repositório de código-fonte:** `github.com/ataraxia-ppads/ataraxia-blog`
 - **Quadro de acompanhamento:** `github.com/orgs/ataraxia-ppads/projects/1`
 - **Publicação prevista:** `blog.ataraxia.dev`
+
+## Integrantes do grupo
+
+- Alan Araujo Paiva
+- Gabriel Vieira Ferreira
+- Pedro Emmanuel Esteves
+- Rafaela Rarume Alves Perpetuo
+- Renan Urtado Challó de Oliveira Jordão
