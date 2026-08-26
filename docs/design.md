@@ -1,47 +1,29 @@
-# Ataraxia — ponto de partida técnico
+# Decisões técnicas e pendências
 
 Prática Profissional em Análise e Desenvolvimento de Sistemas
 Universidade Presbiteriana Mackenzie
 
-> Documento de partida, aberto a revisão. Foi escrito antes de o grupo se
-> formar, para que houvesse algo concreto de onde discutir. O que está
-> implementado é pouco e barato de refazer — se alguma decisão aqui atrapalhar
-> o desenho da solução, ela muda.
-
-## O projeto
-
-Uma plataforma de blog: qualquer pessoa lê os textos publicados sem precisar de
-conta, usuários cadastrados escrevem e publicam os seus, e moderadores cuidam
-do que permanece no ar. Publicação em **blog.ataraxia.dev**, domínio que já
-pertence à equipe.
-
-Isso é a ideia de partida, não um escopo fechado. O recorte definitivo sai do
-levantamento de requisitos.
-
-## O que já existe no repositório
-
-Um projeto Django em `config/` e a configuração de ambiente. Nada além disso.
-
-Não há aplicações, modelos, telas nem rotas fora do admin. As pastas `static/`
-e `templates/` estão vazias, apenas registradas na configuração.
-
-A ausência de aplicações é deliberada: a decomposição do sistema em aplicações
-é resultado do desenho de arquitetura, e desenhar isso é a próxima etapa.
+Registro do que já foi decidido, com o custo de voltar atrás em cada ponto, e do
+que continua em aberto. A análise do sistema está nos documentos vizinhos:
+[`visao-geral.md`](visao-geral.md), [`objetivos.md`](objetivos.md),
+[`casos-de-uso/`](casos-de-uso/) e [`arquitetura.md`](arquitetura.md).
 
 ## Decisões tomadas
 
-A coluna da direita indica o custo de voltar atrás, para saber onde a discussão
-vale o tempo.
+A coluna da direita indica onde a discussão ainda vale o tempo.
 
 | Decisão | Motivo | Custo de mudar |
 | ------- | ------ | -------------- |
 | Python com Django 6.1 | Domínio de blog é onde o framework tem mais material pronto e documentação em português | Alto — é a base de tudo |
 | Templates do Django, sem front-end separado | Evita que o grupo precise aprender um segundo framework | Médio, enquanto não houver telas |
-| SQLite em desenvolvimento | Acompanha o Django, dispensa instalação | Baixo |
+| Quatro aplicações: `accounts`, `posts`, `comments`, `taxonomy` | Cada integrante é dono de uma; conflito de merge fica raro por construção | Médio |
+| Referência entre aplicações por string | Permite escrever as quatro em paralelo, sem ordem imposta | Baixo |
+| Moderação pelo admin do Django | Três casos de uso atendidos sem escrever tela | Baixo — os modelos já existem |
+| SQLite em desenvolvimento, PostgreSQL em produção | Cada integrante roda sem instalar banco | Baixo — é uma variável de ambiente |
 | Configuração por variáveis de ambiente | Permite publicar sem alterar código versionado | Baixo |
 | Identificadores em inglês, prosa em português | Consistência; o código estava misturando os dois | Baixo, enquanto o código é pequeno |
 | Publicar em `blog.ataraxia.dev` | Domínio já pertence à equipe, sem custo adicional | Baixo — é um subdomínio |
-| PostgreSQL em produção, SQLite em desenvolvimento | Cada integrante roda sem instalar banco; a produção não fica presa aos limites do SQLite | Baixo — é uma variável de ambiente |
+| `main` protegida, alteração só por Pull Request | Registra revisão e participação de cada integrante | Baixo |
 
 Python 3.14 exige Django 6.x; as séries 5.x não o suportam. A versão está
 fixada no `requirements.txt`.
@@ -51,39 +33,37 @@ confiáveis vêm do ambiente, com valores de desenvolvimento como padrão. Sem
 `DEBUG`, a `SECRET_KEY` passa a ser obrigatória e o projeto se recusa a subir
 sem ela. Locale em `pt-br`, fuso `America/Sao_Paulo`.
 
+## O que já existe no repositório
+
+O projeto Django em `config/`, a configuração de ambiente e a documentação de
+análise.
+
+As quatro aplicações ainda não foram criadas. A ordem prevista é o desenho
+fechar, cada dono criar a sua e os modelos entrarem em seguida.
+
 ## O que não foi decidido
 
-Nada abaixo tem resposta ainda, e nenhuma delas está pré-julgada por este
-documento:
-
-- Interessados
-- Objetivos funcionais e não-funcionais
-- Casos de uso e o diagrama correspondente
-- Decomposição do sistema em aplicações
-- Modelo de dados
-- Fluxo de trabalho do grupo: tarefas, branches, revisão e merge
+- Modelo de dados detalhado: campos, tipos e restrições de cada modelo.
+- Aparência: layout, paleta, tipografia.
+- Estratégia de testes automatizados.
+- Como e quando o sistema vai ao ar.
 
 ## O que a primeira entrega exige
 
-Para referência de quem for produzir a documentação:
-
 | Item | Situação |
 | ---- | -------- |
-| Título do projeto | Definido: Ataraxia |
-| Nomes dos integrantes | Dois confirmados de cinco |
-| URL do repositório de código-fonte | A publicar |
+| Título do projeto | Ataraxia |
+| Nomes dos integrantes | Quatro confirmados de cinco |
+| URL do repositório de código-fonte | `github.com/ataraxia-ppads/ataraxia-blog` |
 | URL do quadro de acompanhamento | A criar |
-| Interessados | Em aberto |
-| Objetivos funcionais | Em aberto |
-| Objetivos não-funcionais | Em aberto |
-| Diagrama de casos de uso | Em aberto |
-| Descrição detalhada dos casos de uso principais | Em aberto |
-
-O documento também precisa de capa, sumário, lista de figuras, lista de tabelas
-e introdução, organizado em capítulos.
+| Interessados | [`visao-geral.md`](visao-geral.md) |
+| Objetivos funcionais | [`objetivos.md`](objetivos.md) |
+| Objetivos não-funcionais | [`objetivos.md`](objetivos.md) |
+| Diagrama de casos de uso | A desenhar, a partir de [`casos-de-uso/`](casos-de-uso/) |
+| Descrição detalhada dos casos de uso principais | [`casos-de-uso/`](casos-de-uso/) |
 
 ## Como comentar
 
-Discordância sobre qualquer ponto deste documento é bem-vinda, principalmente
-nas linhas de custo baixo da tabela de decisões. O que estiver errado se muda
-agora, enquanto custa pouco.
+Discordância é bem-vinda, principalmente nas linhas de custo baixo da tabela
+acima. Comente no Pull Request, na linha exata do trecho, e não em conversa
+paralela — comentário preso ao texto fica registrado e não se perde.
