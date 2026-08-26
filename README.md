@@ -88,9 +88,9 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | Pessoa | Aplicação | Fora do código | Caso de uso |
 | ------ | --------- | -------------- | ----------- |
 | Pedro | `posts` | Configuração, template base, documento | UC08 |
-| Renan | `accounts` | Arquitetura e diagrama de casos de uso | UC05 |
+| Renan | `accounts` | Arquitetura e conteúdo dos diagramas | UC05 |
 | Gabriel | `comments` | — | UC10 |
-| Rafaela | — | Quadro, roteiro de testes, conteúdo de demonstração | UC02 |
+| Rafaela | — | Diagramas, quadro, roteiro de testes, conteúdo de demonstração | UC02 |
 | Pedro *(placeholder)* | `taxonomy` | — | UC04 |
 
 `taxonomy` e UC04 passam para o Alan assim que ele confirmar participação.

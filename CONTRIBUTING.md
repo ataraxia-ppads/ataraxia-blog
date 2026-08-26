@@ -143,10 +143,34 @@ o documento não precise ser uniformizado à mão depois.
 
 ## Diagramas
 
-A fonte do diagrama de casos de uso é `docs/casos-de-uso/diagrama-casos-de-uso.svg`,
-editável em qualquer editor vetorial. O `.png` ao lado é a exportação, e é ele
-que aparece na documentação. Ao alterar o SVG, exporte o PNG de novo e commite
-os dois.
+Os diagramas têm dois donos, com papéis diferentes: **o Renan define o que o
+diagrama precisa dizer, a Rafaela desenha e mantém.** Quem decide o conteúdo não
+precisa mexer em ferramenta, e quem desenha aprende o sistema desenhando.
+
+Duas formas de fazer, e a escolha depende do tipo:
+
+**Mermaid, para diagrama que o GitHub desenha sozinho.** O diagrama é texto
+dentro do markdown, entre ``` ```mermaid ``` e ``` ``` ```, e o GitHub renderiza
+na hora. Serve para diagrama de classes, entidade-relacionamento, sequência e
+atividade. Vantagem grande: dá para revisar no Pull Request como se revisa
+código, porque a mudança aparece linha a linha.
+
+```mermaid
+classDiagram
+    Post --> Category
+    Post --> Tag
+```
+
+**Arquivo vetorial, quando o Mermaid não dá conta.** É o caso do diagrama de
+casos de uso: Mermaid não tem notação de ator e elipse. A fonte é
+`docs/casos-de-uso/diagrama-casos-de-uso.svg`, editável no
+[diagrams.net](https://app.diagrams.net), que roda no navegador e não precisa de
+instalação. O `.png` ao lado é a exportação, e é ele que aparece na
+documentação — ao alterar o SVG, exporte o PNG de novo e envie os dois no mesmo
+Pull Request.
+
+Para enviar arquivo pelo navegador: **Add file → Upload files**, arraste, e
+escolha criar o Pull Request. Mesmo fluxo de quem edita texto.
 
 ## Cuidados com o repositório
 
