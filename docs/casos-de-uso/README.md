@@ -17,6 +17,19 @@ faz, e o moderador tudo o que o autor faz.
 Visitante  ◁──  Autor  ◁──  Moderador
 ```
 
+## Diagrama
+
+![Diagrama de casos de uso do Ataraxia](diagrama-casos-de-uso.png)
+
+**Figura 1 — Diagrama de casos de uso**
+
+Versão provisória, feita para não segurar a primeira entrega. O diagrama é
+tarefa do Renan: o que estiver errado aqui se corrige com ele, e esta versão
+é substituída.
+
+Os arquivos `diagrama-casos-de-uso.svg` e `.png` estão nesta pasta. O SVG é a
+fonte, editável em qualquer editor vetorial.
+
 ## Lista de casos de uso
 
 **Tabela 6 — Casos de uso**
