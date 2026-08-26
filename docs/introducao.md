@@ -46,7 +46,6 @@ o desenvolvimento revelar o que não foi previsto.
 
 ## Integrantes do grupo
 
-- Alan Araujo Paiva
 - Gabriel Vieira Ferreira
 - Pedro Emmanuel Esteves
 - Rafaela Rarume Alves Perpetuo

@@ -9,13 +9,12 @@ As tarefas são acompanhadas no [quadro do projeto](https://github.com/orgs/atar
 
 ## Integrantes
 
-| Nome | Status |
-| ---- | ------ |
-| Alan Araujo Paiva | a confirmar |
-| Gabriel Vieira Ferreira | confirmado |
-| Pedro Emmanuel Esteves | confirmado |
-| Rafaela Rarume Alves Perpetuo | confirmado |
-| Renan Urtado Challó de Oliveira Jordão | confirmado |
+| Nome |
+| ---- |
+| Gabriel Vieira Ferreira |
+| Pedro Emmanuel Esteves |
+| Rafaela Rarume Alves Perpetuo |
+| Renan Urtado Challó de Oliveira Jordão |
 
 ## O que vamos construir
 
@@ -88,18 +87,15 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 
 | Pessoa | Aplicação | Fora do código | Caso de uso |
 | ------ | --------- | -------------- | ----------- |
-| Pedro | `posts` | Configuração, template base, documento | UC08 |
+| Pedro | `posts` e `taxonomy` | Configuração, template base, documento | UC08 e UC04 |
 | Renan | `accounts` | Arquitetura e conteúdo dos diagramas | UC05 |
 | Gabriel | `comments` | — | UC10 |
 | Rafaela | — | Diagramas, quadro, roteiro de testes, conteúdo de demonstração | UC02 |
-| Pedro *(placeholder)* | `taxonomy` | — | UC04 |
-
-`taxonomy` e UC04 passam para o Alan assim que ele confirmar participação.
 
 ## Próximos passos
 
 1. Revisar a documentação e propor correções por Pull Request.
-2. Confirmar o integrante restante.
-3. Definir o modelo de dados de cada aplicação.
-4. Criar as quatro aplicações.
-5. Escrever o documento da primeira entrega.
+2. Definir o modelo de dados de cada aplicação.
+3. Criar as quatro aplicações e implementar os modelos.
+4. Construir as telas do caminho de visitante e de autor.
+5. Publicar em `blog.ataraxia.dev`.
