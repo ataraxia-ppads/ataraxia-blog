@@ -135,6 +135,19 @@ Isso não é preciosismo. Com `import`, quem escreve `posts` fica parado até
 `taxonomy` existir. Com string, as quatro aplicações são escritas em paralelo,
 em qualquer ordem.
 
+## Escrever um caso de uso
+
+Copie `docs/casos-de-uso/MODELO.md` para `docs/casos-de-uso/UCxx.md` e preencha.
+O modelo fixa os campos e a ordem, para que as cinco descrições saiam iguais e
+o documento não precise ser uniformizado à mão depois.
+
+## Diagramas
+
+A fonte do diagrama de casos de uso é `docs/casos-de-uso/diagrama-casos-de-uso.svg`,
+editável em qualquer editor vetorial. O `.png` ao lado é a exportação, e é ele
+que aparece na documentação. Ao alterar o SVG, exporte o PNG de novo e commite
+os dois.
+
 ## Cuidados com o repositório
 
 - Não commitar `db.sqlite3`, `.env`, `.venv/` nem a pasta `media/`. O
