@@ -70,6 +70,7 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | [`docs/arquitetura.md`](docs/arquitetura.md) | Decomposição em aplicações, dependências e stack |
 | [`docs/design.md`](docs/design.md) | Decisões técnicas, custo de mudar cada uma e pendências |
 | [`docs/roteiro-de-testes.md`](docs/roteiro-de-testes.md) | Verificação manual de cada caso de uso |
+| [`docs/conteudo-demo.md`](docs/conteudo-demo.md) | Textos de exemplo que povoam o blog para demonstração e teste |
 
 ## Stack
 
