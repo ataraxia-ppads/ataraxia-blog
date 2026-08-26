@@ -63,6 +63,7 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | Arquivo | Conteúdo |
 | ------- | -------- |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Fluxo de trabalho, revisão de PR e convenção de idioma |
+| [`docs/introducao.md`](docs/introducao.md) | Contexto, objetivo do documento e identificação do projeto |
 | [`docs/visao-geral.md`](docs/visao-geral.md) | O sistema, os interessados e o que está fora do escopo |
 | [`docs/objetivos.md`](docs/objetivos.md) | Objetivos funcionais e não-funcionais |
 | [`docs/casos-de-uso/`](docs/casos-de-uso/) | Atores, os 13 casos de uso e as descrições detalhadas |
