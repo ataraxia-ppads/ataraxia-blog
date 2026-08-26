@@ -41,6 +41,19 @@ análise.
 As quatro aplicações ainda não foram criadas. A ordem prevista é o desenho
 fechar, cada dono criar a sua e os modelos entrarem em seguida.
 
+## Fora do escopo
+
+Fica registrado aqui, e não no documento da entrega, porque o enunciado não
+pede delimitação de escopo. Serve ao grupo: evita cobrança futura sobre o que
+nunca foi prometido.
+
+- Editor de texto rico com formatação visual. Os textos são escritos em
+  markdown.
+- Notificações por e-mail.
+- Aplicativo móvel. O acesso é pelo navegador, com layout responsivo.
+- Múltiplos blogs ou múltiplos autores por texto.
+- Métricas e painéis de audiência.
+
 ## O que não foi decidido
 
 - Modelo de dados detalhado: campos, tipos e restrições de cada modelo.

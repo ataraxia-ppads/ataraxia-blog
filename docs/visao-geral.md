@@ -30,14 +30,3 @@ equipe.
 | ----------- | --------- |
 | Equipe de desenvolvimento | Entregar dentro do prazo e exercitar o processo de análise e desenvolvimento |
 | Docente do componente | Avaliar a aplicação de análise, modelagem e prática de engenharia de software |
-
-## Fora do escopo
-
-Registrado para evitar cobrança futura sobre o que nunca foi prometido:
-
-- Editor de texto rico com formatação visual. Os textos são escritos em
-  markdown.
-- Notificações por e-mail.
-- Aplicativo móvel. O acesso é pelo navegador, com layout responsivo.
-- Múltiplos blogs ou múltiplos autores por texto.
-- Métricas e painéis de audiência.
