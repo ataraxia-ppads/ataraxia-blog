@@ -11,6 +11,7 @@ As tarefas são acompanhadas no [quadro do projeto](https://github.com/orgs/atar
 
 | Nome |
 | ---- |
+| Felipe Amorim |
 | Gabriel Vieira Ferreira |
 | Pedro Emmanuel Esteves |
 | Rafaela Rarume Alves Perpetuo |
@@ -87,10 +88,11 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 
 | Pessoa | Aplicação | Fora do código | Caso de uso |
 | ------ | --------- | -------------- | ----------- |
-| Pedro | `posts` e `taxonomy` | Configuração, template base, documento | UC08 e UC04 |
+| Pedro | `posts` | Configuração, template base, documento | UC08 |
 | Renan | `accounts` | Arquitetura e conteúdo dos diagramas | UC05 |
 | Gabriel | `comments` | — | UC10 |
 | Rafaela | — | Diagramas, quadro, roteiro de testes, conteúdo de demonstração | UC02 |
+| Felipe | `taxonomy` | — | UC04 |
 
 ## Próximos passos
 
