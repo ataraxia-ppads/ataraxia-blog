@@ -79,7 +79,7 @@ pertence a uma aplicação diferente, e é descrito por quem vai construí-la.
 | Caso de uso | Aplicação | Responsável |
 | ----------- | --------- | ----------- |
 | UC02 — Ler post | `posts` | Rafaela |
-| UC04 — Filtrar por categoria ou tag | `taxonomy` | Pedro |
+| UC04 — Filtrar por categoria ou tag | `taxonomy` | Felipe |
 | UC05 — Cadastrar-se | `accounts` | Renan |
 | UC08 — Manter post | `posts` | Pedro |
 | UC10 — Comentar post | `comments` | Gabriel |

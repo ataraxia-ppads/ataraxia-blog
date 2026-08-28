@@ -46,6 +46,7 @@ o desenvolvimento revelar o que não foi previsto.
 
 ## Integrantes do grupo
 
+- Felipe Amorim
 - Gabriel Vieira Ferreira
 - Pedro Emmanuel Esteves
 - Rafaela Rarume Alves Perpetuo
