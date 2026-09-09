@@ -19,9 +19,9 @@ flowchart LR
 
 **Figura 20 — Caminho de uma requisição**
 
-`urls.py` aparece porque é ele que escolhe a view a partir do endereço, e o
-endereço é parte do desenho: categoria e tag são resolvidas por slug, e o texto
-também.
+O roteamento não ganha raia própria nos diagramas: ele aparece no endereço da
+primeira mensagem, que é o que o `urls.py` resolve. Categoria, tag e texto são
+resolvidos por slug, e é por isso que o endereço vale como desenho.
 
 Cinco diagramas, um por caso de uso principal, na mesma ordem do capítulo de
 casos de uso.
