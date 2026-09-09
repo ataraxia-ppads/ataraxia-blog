@@ -35,7 +35,8 @@ As referências entre aplicações são feitas por string, sem `import`:
 
 ```python
 class Post(models.Model):
-    category = models.ForeignKey('taxonomy.Category', on_delete=models.PROTECT)
+    category = models.ForeignKey(
+        'taxonomy.Category', on_delete=models.PROTECT)
     tags = models.ManyToManyField('taxonomy.Tag', blank=True)
 ```
 
