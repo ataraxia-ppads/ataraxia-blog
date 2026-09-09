@@ -5,7 +5,7 @@
 O sistema é dividido em quatro aplicações Django. A fronteira de cada uma é o
 conjunto de modelos que ela é dona.
 
-**Tabela 13 — Aplicações**
+**Tabela 17 — Aplicações**
 
 | Aplicação | Modelos | Casos de uso |
 | --------- | ------- | ------------ |
@@ -73,7 +73,7 @@ uma segunda linguagem para entregar telas simples.
 
 ## Stack
 
-**Tabela 14 — Tecnologias**
+**Tabela 18 — Tecnologias**
 
 | Camada | Escolha | Motivo |
 | ------ | ------- | ------ |

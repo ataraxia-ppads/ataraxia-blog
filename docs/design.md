@@ -35,11 +35,13 @@ sem ela. Locale em `pt-br`, fuso `America/Sao_Paulo`.
 
 ## O que já existe no repositório
 
-O projeto Django em `config/`, a configuração de ambiente e a documentação de
-análise.
+O projeto Django em `config/`, a configuração de ambiente, a documentação de
+análise e a de desenho: modelo de domínio, diagramas de sequência de sistema,
+protótipos de tela, classes de projeto e diagramas de sequência de projeto.
 
-As quatro aplicações ainda não foram criadas. A ordem prevista é o desenho
-fechar, cada dono criar a sua e os modelos entrarem em seguida.
+As quatro aplicações ainda não foram criadas. O desenho fechou, e a ordem
+prevista agora é cada dono criar a sua aplicação e implementar os modelos como
+descritos em `classes-de-projeto/`.
 
 ## Fora do escopo
 
@@ -56,9 +58,10 @@ nunca foi prometido.
 
 ## O que não foi decidido
 
-- Modelo de dados detalhado: campos, tipos e restrições de cada modelo.
-- Aparência: layout, paleta, tipografia.
-- Estratégia de testes automatizados.
+- Aparência: paleta, tipografia e espaçamento. Os protótipos definem estrutura
+  de tela, não desenho visual.
+- Estratégia de testes automatizados. Hoje há apenas o roteiro manual.
+- Tamanho máximo do corpo do comentário, que RN15 exige mas ainda não fixa.
 - Como e quando o sistema vai ao ar.
 
 ## O que a primeira entrega exige
@@ -66,7 +69,7 @@ nunca foi prometido.
 | Item | Situação |
 | ---- | -------- |
 | Título do projeto | Ataraxia |
-| Nomes dos integrantes | Quatro confirmados de cinco |
+| Nomes dos integrantes | Cinco |
 | URL do repositório de código-fonte | `github.com/ataraxia-ppads/ataraxia-blog` |
 | URL do quadro de acompanhamento | [`orgs/ataraxia-ppads/projects/1`](https://github.com/orgs/ataraxia-ppads/projects/1) |
 | Interessados | [`visao-geral.md`](visao-geral.md) |
@@ -74,6 +77,22 @@ nunca foi prometido.
 | Objetivos não-funcionais | [`objetivos.md`](objetivos.md) |
 | Diagrama de casos de uso | [`casos-de-uso/`](casos-de-uso/) |
 | Descrição detalhada dos casos de uso principais | [`casos-de-uso/`](casos-de-uso/) |
+
+## O que a segunda entrega exige
+
+Além dos itens acima, já revisados:
+
+| Item | Situação |
+| ---- | -------- |
+| Protótipos de tela | [`prototipos/`](prototipos/) |
+| Modelo de domínio | [`modelo-de-dominio.md`](modelo-de-dominio.md) |
+| Diagramas de classes de projeto | [`classes-de-projeto/`](classes-de-projeto/) |
+| Diagramas de sequência de projeto | [`sequencia-de-projeto/`](sequencia-de-projeto/) |
+
+Os diagramas de sequência de sistema, em
+[`sequencia-de-sistema.md`](sequencia-de-sistema.md), não constam da lista da
+entrega escrita, e estão aqui porque são o que a atividade de modelagem pede e
+porque sem eles os diagramas de sequência de projeto não teriam de onde sair.
 
 ## Como comentar
 
