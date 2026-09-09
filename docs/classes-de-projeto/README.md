@@ -14,6 +14,10 @@ Um conceito do domínio não vira necessariamente uma classe só. `Usuário` vir
 `User` do Django mais um `Profile`, e `Post` traz junto um gerenciador de
 consulta que isola o que é publicado do que é rascunho.
 
+As três aplicações que têm tela usam as views listadas abaixo. Moderar
+comentário, manter taxonomia e gerenciar usuários passam pelo admin do Django, e
+por isso aparecem como classes de `admin` nos diagramas, sem view própria.
+
 **Tabela 19 — Classes de projeto por aplicação**
 
 | Aplicação | Classe | Camada | Papel |
@@ -33,7 +37,3 @@ consulta que isola o que é publicado do que é rascunho.
 | `comments` | `CommentCreateView` | View | Grava o comentário e volta para a página do texto |
 | `taxonomy` | `Category`, `Tag` | Model | Termos que classificam o texto |
 | `taxonomy` | `TermPostListView` | View | Listagem restrita a uma categoria ou tag |
-
-As três aplicações que têm tela usam as views acima. Moderar comentário, manter
-taxonomia e gerenciar usuários passam pelo admin do Django, e por isso aparecem
-como classes de `admin` nos diagramas, sem view própria.

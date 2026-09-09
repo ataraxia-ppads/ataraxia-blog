@@ -1,5 +1,8 @@
 ## taxonomy
 
+Manter taxonomia (UC12) é feito pelo admin, e `prepopulated_fields` monta o slug
+a partir do nome enquanto o moderador digita, o que evita slug inventado à mão.
+
 ```mermaid
 classDiagram
     class Category {
@@ -50,6 +53,3 @@ RN04.
 tag pelo slug, e devolve 404 quando o termo não existe. `get_queryset()`
 consulta os textos publicados do termo, o que mantém rascunho fora da contagem
 e da listagem, conforme RN05.
-
-Manter taxonomia (UC12) é feito pelo admin. `prepopulated_fields` monta o slug a
-partir do nome enquanto o moderador digita, o que evita slug inventado à mão.
