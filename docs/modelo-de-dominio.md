@@ -10,7 +10,7 @@ qualquer forma, mesmo que o sistema fosse construído com outra tecnologia.
 **Tabela 13 — Conceitos do domínio**
 
 | Conceito | Descrição |
-| -------- | --------- |
+| -------------- | ------------------------------------------------------- |
 | Usuário | Pessoa cadastrada na plataforma, que escreve textos e comentários |
 | Perfil | Informação pública de um usuário: nome de exibição e biografia |
 | Post | Texto publicável, com título, endereço, corpo e situação |
@@ -75,7 +75,7 @@ classDiagram
 **Tabela 14 — Associações do domínio**
 
 | Associação | Multiplicidade | Origem |
-| ---------- | -------------- | ------ |
+| ------------------------------ | ---------------- | ---------------------------------------- |
 | Usuário possui Perfil | 1 para 1 | O perfil nasce junto com a conta, no passo 7 de UC05 |
 | Usuário escreve Post | 1 para 0..* | Um post tem um único autor, registrado na criação |
 | Usuário escreve Comentário | 1 para 0..* | RN13 e RN16: comentar exige conta, e o vínculo não muda |
