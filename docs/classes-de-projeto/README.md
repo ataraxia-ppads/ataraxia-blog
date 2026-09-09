@@ -29,8 +29,7 @@ por isso aparecem como classes de `admin` nos diagramas, sem view própria.
 | `posts` | `Post` | Model | Texto, situação e datas |
 | `posts` | `PublishedManager` | Model | Consulta que devolve apenas textos publicados |
 | `posts` | `PostForm` | Form | Valida título e corpo e monta o slug |
-| `posts` | `PostListView` | View | Listagem pública, com busca |
-| `posts` | `PostDetailView` | View | Página do texto |
+| `posts` | `PostListView`, `PostDetailView` | View | Listagem pública com busca, e página do texto |
 | `posts` | `PostCreateView`, `PostUpdateView`, `PostDeleteView` | View | Manutenção do texto pelo autor |
 | `comments` | `Comment` | Model | Comentário, com a marca de aprovado |
 | `comments` | `CommentForm` | Form | Valida corpo e tamanho |
