@@ -10,7 +10,7 @@ Cinco telas cobrem o caminho de visitante e o de autor.
 **Tabela 16 — Telas e casos de uso atendidos**
 
 | Tela | Casos de uso | Quem usa |
-| ---- | ------------ | -------- |
+| -------------------------- | -------------------------- | ---------------------- |
 | Listagem de textos | UC01, UC03, UC04 | Visitante |
 | Leitura do texto | UC02, UC10 | Visitante e autor |
 | Cadastro | UC05 | Visitante |
