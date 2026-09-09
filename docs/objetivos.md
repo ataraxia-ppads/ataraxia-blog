@@ -7,7 +7,7 @@ O que o sistema precisa fazer.
 **Tabela 3 — Objetivos funcionais**
 
 | ID | Objetivo |
-| ---- | ---------------------------------------------------------------- |
+| -------- | ------------------------------------------------------------ |
 | OF01 | Permitir cadastro e autenticação de usuários |
 | OF02 | Permitir ao autor criar, editar e excluir seus próprios textos |
 | OF03 | Controlar o ciclo de publicação, distinguindo rascunho de publicado |
