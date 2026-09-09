@@ -1,0 +1,91 @@
+/* Wireframe: estrutura, não aparência. Cinza, caixa e linha bastam.
+   Cor, tipografia e espaçamento definitivos ficam para a implementação. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Liberation Sans", Arial, sans-serif;
+    background: #fff;
+    color: #222;
+    font-size: 18px;
+}
+
+.tela { width: 1000px; padding: 20px; }
+
+/* Barra superior com o nome da tela, para a figura se explicar sozinha. */
+.rotulo {
+    font-size: 13px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #777;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+}
+
+.caixa { border: 1px solid #999; padding: 12px; background: #fafafa; }
+.caixa + .caixa { margin-top: 12px; }
+.tracejada { border-style: dashed; background: #fff; }
+
+.cabecalho { display: flex; align-items: center; gap: 16px; }
+.marca { font-size: 20px; font-weight: bold; }
+.busca { flex: 1; }
+.linha { display: flex; gap: 16px; align-items: flex-start; }
+.coluna { flex: 1; }
+.lateral { width: 250px; }
+
+.campo {
+    border: 1px solid #999;
+    background: #fff;
+    padding: 8px 10px;
+    color: #777;
+}
+.campo + .campo { margin-top: 10px; }
+.rotulo-campo { display: block; font-size: 13px; margin: 12px 0 4px; color: #444; }
+
+.botao {
+    display: inline-block;
+    border: 1px solid #444;
+    background: #eee;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+.botao.secundario { font-weight: normal; color: #555; }
+
+.titulo { font-size: 22px; font-weight: bold; margin-bottom: 6px; }
+.meta { font-size: 13px; color: #666; margin-bottom: 10px; }
+.resumo { color: #555; }
+
+/* Linhas cinzas no lugar de texto de verdade. */
+.texto span {
+    display: block;
+    height: 9px;
+    background: #ddd;
+    margin-bottom: 8px;
+}
+.texto span:last-child { width: 55%; }
+
+.etiqueta {
+    display: inline-block;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-size: 12px;
+    color: #555;
+    margin-right: 6px;
+}
+
+.nota {
+    font-size: 12px;
+    color: #666;
+    border-left: 3px solid #bbb;
+    padding-left: 8px;
+    margin-top: 10px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { border: 1px solid #bbb; padding: 8px 10px; text-align: left; }
+th { background: #eee; }
+
+.paginacao { text-align: center; color: #555; margin-top: 12px; font-size: 14px; }
+.secao { font-weight: bold; margin-bottom: 8px; }
