@@ -7,12 +7,17 @@ trocam mensagem.
 
 Os participantes seguem sempre o mesmo caminho, que é o do Django:
 
+```mermaid
+flowchart LR
+    navegador --> urls[urls.py]
+    urls --> View
+    View --> Form
+    Form --> Model
+    Model --> banco[(banco)]
+    View --> Template
 ```
-navegador  ─▶  urls.py  ─▶  View  ─▶  Form  ─▶  Model  ─▶  banco
-                              │
-                              ▼
-                          Template
-```
+
+**Figura 20 — Caminho de uma requisição**
 
 `urls.py` aparece porque é ele que escolhe a view a partir do endereço, e o
 endereço é parte do desenho: categoria e tag são resolvidas por slug, e o texto
