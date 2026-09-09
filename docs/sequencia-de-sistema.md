@@ -7,22 +7,24 @@ telas, views ou modelos. Essa divisão está no capítulo de diagramas de sequê
 de projeto.
 
 As operações abaixo são a fronteira do sistema. O que existir fora dessa lista
-não é acionável pelo usuário nos casos de uso principais.
+não é acionável pelo usuário nos casos de uso principais. Quem dispara cada uma
+é o ator do caso de uso correspondente: visitante em UC02, UC04 e UC05, autor em
+UC08 e UC10.
 
 **Tabela 15 — Operações de sistema**
 
-| Operação | Caso de uso | Ator | Resposta |
-| -------- | ----------- | ---- | -------- |
-| `abrirPost(slug)` | UC02 | Visitante | Post publicado com os comentários aprovados, ou erro 404 |
-| `filtrarPorTermo(tipo, slug, página)` | UC04 | Visitante | Listagem restrita ao termo, ou erro 404 |
-| `abrirCadastro()` | UC05 | Visitante | Formulário de cadastro |
-| `cadastrar(nomeDeUsuário, email, senha)` | UC05 | Visitante | Conta criada e sessão iniciada, ou erro de validação |
-| `abrirEditor()` | UC08 | Autor | Formulário de texto |
-| `salvarPost(título, corpo, categoria, tags)` | UC08 | Autor | Rascunho gravado, ou campos pendentes |
-| `editarPost(slug, título, corpo, categoria, tags)` | UC08 | Autor | Alteração gravada, ou erro 403 |
-| `excluirPost(slug)` | UC08 | Autor | Pedido de confirmação |
-| `confirmarExclusão(slug)` | UC08 | Autor | Post e comentários excluídos |
-| `comentar(slugDoPost, corpo)` | UC10 | Autor | Comentário gravado e visível, ou aviso do problema |
+| Operação | Parâmetros | Caso de uso | Resposta |
+| ------------------------------ | -------------------------- | ------------ | -------------------------------- |
+| `abrirPost` | slug do texto | UC02 | Post publicado com os comentários aprovados, ou erro 404 |
+| `filtrarPorTermo` | tipo do termo, slug, página | UC04 | Listagem restrita ao termo, ou erro 404 |
+| `abrirCadastro` | nenhum | UC05 | Formulário de cadastro |
+| `cadastrar` | nome de usuário, email, senha | UC05 | Conta criada e sessão iniciada, ou erro de validação |
+| `abrirEditor` | nenhum | UC08 | Formulário de texto |
+| `salvarPost` | título, corpo, categoria, tags | UC08 | Rascunho gravado, ou campos pendentes |
+| `editarPost` | slug e os campos do texto | UC08 | Alteração gravada, ou erro 403 |
+| `excluirPost` | slug | UC08 | Pedido de confirmação |
+| `confirmarExclusão` | slug | UC08 | Post e comentários excluídos |
+| `comentar` | slug do post, corpo | UC10 | Comentário gravado e visível, ou aviso do problema |
 
 ## UC02 — Ler post
 
