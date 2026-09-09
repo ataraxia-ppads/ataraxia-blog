@@ -18,7 +18,7 @@ equipe.
 **Tabela 1 — Interessados do sistema**
 
 | Interessado | Interesse |
-| ----------- | --------- |
+| ---------------- | ---------------------------------------------------- |
 | Autor de conteúdo | Publicar textos e alcançar leitores sem depender de plataformas de terceiros |
 | Leitor | Encontrar e ler conteúdo organizado, sem obrigação de criar conta |
 | Moderador | Manter a comunidade saudável e remover conteúdo abusivo |
@@ -27,6 +27,6 @@ equipe.
 **Tabela 2 — Interessados do projeto**
 
 | Interessado | Interesse |
-| ----------- | --------- |
+| ---------------- | ---------------------------------------------------- |
 | Equipe de desenvolvimento | Entregar dentro do prazo e exercitar o processo de análise e desenvolvimento |
 | Docente do componente | Avaliar a aplicação de análise, modelagem e prática de engenharia de software |

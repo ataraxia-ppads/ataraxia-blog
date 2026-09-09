@@ -5,10 +5,10 @@
 O sistema é dividido em quatro aplicações Django. A fronteira de cada uma é o
 conjunto de modelos que ela é dona.
 
-**Tabela 13 — Aplicações**
+**Tabela 17 — Aplicações**
 
 | Aplicação | Modelos | Casos de uso |
-| --------- | ------- | ------------ |
+| ---------------- | -------------------- | -------------------------------- |
 | `accounts` | `Profile` | UC05, UC06, UC07, UC13 |
 | `posts` | `Post` | UC01, UC02, UC03, UC08, UC09 |
 | `comments` | `Comment` | UC10, UC11 |
@@ -25,17 +25,24 @@ escopo exige isso.
 
 ## Dependências
 
+```mermaid
+flowchart LR
+    comments --> posts
+    comments --> accounts
+    posts --> taxonomy
 ```
-comments  ──▶  posts, accounts
-posts     ──▶  taxonomy
-accounts  ──▶  (nenhuma)
-```
+
+**Figura 14 — Dependências entre aplicações**
+
+`accounts` e `taxonomy` não dependem de ninguém, e é por isso que são as duas
+que podem ser escritas primeiro.
 
 As referências entre aplicações são feitas por string, sem `import`:
 
 ```python
 class Post(models.Model):
-    category = models.ForeignKey('taxonomy.Category', on_delete=models.PROTECT)
+    category = models.ForeignKey(
+        'taxonomy.Category', on_delete=models.PROTECT)
     tags = models.ManyToManyField('taxonomy.Tag', blank=True)
 ```
 
@@ -57,15 +64,16 @@ a interface é o produto.
 
 ## Camadas
 
+```mermaid
+flowchart LR
+    navegador --> URLs
+    URLs --> Views
+    Views --> Models
+    Models --> banco[(banco de dados)]
+    Views --> Templates
 ```
-navegador
-    │
-    ▼
-URLs  ──▶  Views  ──▶  Models  ──▶  banco de dados
-             │
-             ▼
-         Templates
-```
+
+**Figura 15 — Camadas da aplicação**
 
 Sem front-end separado. As páginas são templates do Django renderizados no
 servidor. A decisão evita que a equipe precise aprender um segundo framework e
@@ -73,10 +81,10 @@ uma segunda linguagem para entregar telas simples.
 
 ## Stack
 
-**Tabela 14 — Tecnologias**
+**Tabela 18 — Tecnologias**
 
 | Camada | Escolha | Motivo |
-| ------ | ------- | ------ |
+| -------------------- | -------------------- | ------------------------------------ |
 | Linguagem | Python 3.14 | Base do Django |
 | Framework | Django 6.1 | Python 3.14 exige a série 6.x; as 5.x não o suportam |
 | Banco em desenvolvimento | SQLite | Acompanha o Django, dispensa instalação em cada máquina |

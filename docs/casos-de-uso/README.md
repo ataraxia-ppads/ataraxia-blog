@@ -5,17 +5,13 @@
 **Tabela 5 — Atores**
 
 | Ator | Descrição |
-| ---- | --------- |
+| ------------ | ------------------------------------------------------- |
 | Visitante | Qualquer pessoa que acessa o site sem estar autenticada |
 | Autor | Usuário cadastrado e autenticado, que escreve e publica textos |
 | Moderador | Usuário com permissão para moderar comentários, taxonomia e usuários |
 
-Os atores se relacionam por generalização: o autor faz tudo o que o visitante
-faz, e o moderador tudo o que o autor faz.
-
-```
-Visitante  ◁──  Autor  ◁──  Moderador
-```
+Os atores se relacionam por generalização, como aparece no diagrama a seguir: o
+autor faz tudo o que o visitante faz, e o moderador tudo o que o autor faz.
 
 ## Diagrama
 
@@ -28,7 +24,7 @@ Visitante  ◁──  Autor  ◁──  Moderador
 **Tabela 6 — Casos de uso**
 
 | ID | Caso de uso | Ator de origem | Aplicação |
-| -- | ----------- | -------------- | --------- |
+| ------ | ------------------------------ | ------------------ | -------------- |
 | UC01 | Listar posts publicados | Visitante | `posts` |
 | UC02 | Ler post | Visitante | `posts` |
 | UC03 | Buscar post | Visitante | `posts` |
@@ -58,11 +54,9 @@ poluiria o diagrama sem acrescentar informação.
 
 ## Ciclos de estado
 
-```
-Post:     DRAFT ──publicar──▶ PUBLISHED ──despublicar──▶ DRAFT
-
-Comment:  criado ──▶ approved = True ──moderador──▶ approved = False
-```
+O post alterna entre rascunho e publicado, e a transição em cada sentido é ato
+explícito de quem escreve. O comentário tem só dois valores, aprovado e não
+aprovado. Os dois ciclos estão desenhados no capítulo de modelo de domínio.
 
 Comentário nasce aprovado e é retirado do ar pela moderação, não o contrário.
 A escolha é deliberada: moderação prévia exigiria alguém de plantão para que o
@@ -77,7 +71,7 @@ pertence a uma aplicação diferente, e é descrito por quem vai construí-la.
 **Tabela 7 — Responsáveis pela descrição detalhada**
 
 | Caso de uso | Aplicação | Responsável |
-| ----------- | --------- | ----------- |
+| ---------------------------------- | ---------------- | ---------------- |
 | UC02 — Ler post | `posts` | Rafaela |
 | UC04 — Filtrar por categoria ou tag | `taxonomy` | Felipe |
 | UC05 — Cadastrar-se | `accounts` | Renan |
