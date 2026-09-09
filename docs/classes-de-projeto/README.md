@@ -10,10 +10,6 @@ Cada classe pertence a uma de três camadas, marcadas no diagrama:
 - **Form**, que valida o que chega do navegador antes de virar estado.
 - **View**, que recebe a requisição, decide o que fazer e escolhe o template.
 
-Um conceito do domínio não vira necessariamente uma classe só. `Usuário` vira o
-`User` do Django mais um `Profile`, e `Post` traz junto um gerenciador de
-consulta que isola o que é publicado do que é rascunho.
-
 As três aplicações que têm tela usam as views listadas abaixo. Moderar
 comentário, manter taxonomia e gerenciar usuários passam pelo admin do Django, e
 por isso aparecem como classes de `admin` nos diagramas, sem view própria.
@@ -36,3 +32,7 @@ por isso aparecem como classes de `admin` nos diagramas, sem view própria.
 | `comments` | `CommentCreateView` | View | Grava o comentário e volta ao texto |
 | `taxonomy` | `Category`, `Tag` | Model | Termos que classificam o texto |
 | `taxonomy` | `TermPostListView` | View | Listagem restrita a categoria ou tag |
+
+Um conceito do domínio não vira necessariamente uma classe só. `Usuário` vira o
+`User` do Django mais um `Profile`, e `Post` traz junto um gerenciador de
+consulta que isola o que é publicado do que é rascunho.
