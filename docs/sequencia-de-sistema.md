@@ -14,7 +14,7 @@ UC08 e UC10.
 **Tabela 15 — Operações de sistema**
 
 | Operação | Parâmetros | Caso de uso | Resposta |
-| ---------------------- | ---------------------- | ------------- | -------------------------------------------- |
+| ---------------------------- | ---------------------- | ------------- | ---------------------------------------- |
 | `abrirPost` | slug do texto | UC02 | Post publicado com os comentários aprovados, ou erro 404 |
 | `filtrarPorTermo` | tipo do termo, slug, página | UC04 | Listagem restrita ao termo, ou erro 404 |
 | `abrirCadastro` | nenhum | UC05 | Formulário de cadastro |
