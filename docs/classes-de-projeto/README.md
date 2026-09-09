@@ -22,17 +22,17 @@ por isso aparecem como classes de `admin` nos diagramas, sem view própria.
 
 | Aplicação | Classe | Camada | Papel |
 | --------------- | ---------------------------- | ---------- | ------------------------------------------- |
-| `accounts` | `Profile` | Model | Dados públicos do usuário, ligados um a um ao `User` |
-| `accounts` | `SignUpForm` | Form | Valida nome de usuário, email e senha no cadastro |
-| `accounts` | `SignUpView` | View | Cria conta e perfil e inicia a sessão |
+| `accounts` | `Profile` | Model | Dados públicos do usuário, ligados ao `User` |
+| `accounts` | `SignUpForm` | Form | Valida nome de usuário, email e senha |
+| `accounts` | `SignUpView` | View | Cria a conta e o perfil e inicia a sessão |
 | `accounts` | `ProfileUpdateView` | View | Edição do próprio perfil |
 | `posts` | `Post` | Model | Texto, situação e datas |
-| `posts` | `PublishedManager` | Model | Consulta que devolve apenas textos publicados |
-| `posts` | `PostForm` | Form | Valida título e corpo e monta o slug |
-| `posts` | `PostListView`, `PostDetailView` | View | Listagem pública com busca, e página do texto |
+| `posts` | `PublishedManager` | Model | Devolve apenas os textos publicados |
+| `posts` | `PostForm` | Form | Valida título e corpo, e monta o slug |
+| `posts` | `PostListView`, `PostDetailView` | View | Listagem pública, busca e página do texto |
 | `posts` | `PostCreateView`, `PostUpdateView`, `PostDeleteView` | View | Manutenção do texto pelo autor |
 | `comments` | `Comment` | Model | Comentário, com a marca de aprovado |
 | `comments` | `CommentForm` | Form | Valida corpo e tamanho |
-| `comments` | `CommentCreateView` | View | Grava o comentário e volta para a página do texto |
+| `comments` | `CommentCreateView` | View | Grava o comentário e volta ao texto |
 | `taxonomy` | `Category`, `Tag` | Model | Termos que classificam o texto |
-| `taxonomy` | `TermPostListView` | View | Listagem restrita a uma categoria ou tag |
+| `taxonomy` | `TermPostListView` | View | Listagem restrita a categoria ou tag |
