@@ -40,7 +40,7 @@ classDiagram
     CommentAdmin --> Comment : modera
 ```
 
-**Figura 16 — Classes de projeto de comments**
+**Figura 18 — Classes de projeto de comments**
 
 `approved` nasce verdadeiro, conforme RN14, e a moderação é o ato de torná-lo
 falso. `ApprovedManager` é o que a página do texto consulta, de modo que

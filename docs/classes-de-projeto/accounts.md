@@ -47,7 +47,7 @@ classDiagram
     ProfileUpdateView --> Profile : edita
 ```
 
-**Figura 14 — Classes de projeto de accounts**
+**Figura 16 — Classes de projeto de accounts**
 
 O usuário é o `User` do próprio Django, e não um modelo novo. A informação que o
 projeto acrescenta fica no `Profile`, ligado a ele um para um. Trocar o modelo

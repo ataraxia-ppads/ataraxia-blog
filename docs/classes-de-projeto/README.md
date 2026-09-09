@@ -17,7 +17,7 @@ consulta que isola o que é publicado do que é rascunho.
 **Tabela 19 — Classes de projeto por aplicação**
 
 | Aplicação | Classe | Camada | Papel |
-| --------- | ------------------ | --------- | ---------------------------- |
+| ------------ | ---------------------- | ---------- | -------------------------------------------------- |
 | `accounts` | `Profile` | Model | Dados públicos do usuário, ligados um a um ao `User` |
 | `accounts` | `SignUpForm` | Form | Valida nome de usuário, email e senha no cadastro |
 | `accounts` | `SignUpView` | View | Cria conta e perfil e inicia a sessão |

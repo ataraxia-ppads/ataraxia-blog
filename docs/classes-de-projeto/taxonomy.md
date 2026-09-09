@@ -39,7 +39,7 @@ classDiagram
     TagAdmin --> Tag : mantém
 ```
 
-**Figura 17 — Classes de projeto de taxonomy**
+**Figura 19 — Classes de projeto de taxonomy**
 
 Categoria e tag são modelos separados porque as regras diferem: a categoria é
 obrigatória e única por texto, a tag é livre e acumulável, o que está em RN03.

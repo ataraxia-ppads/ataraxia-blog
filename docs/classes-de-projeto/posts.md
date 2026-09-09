@@ -63,7 +63,7 @@ classDiagram
     PostDeleteView --> Post : exclui
 ```
 
-**Figura 15 — Classes de projeto de posts**
+**Figura 17 — Classes de projeto de posts**
 
 `PublishedManager` existe para que nenhuma view precise lembrar de filtrar
 rascunho. A listagem, a busca e a página do texto consultam por ele, e um
