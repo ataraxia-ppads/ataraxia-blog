@@ -26,8 +26,10 @@ O recorte completo está em [`docs/visao-geral.md`](docs/visao-geral.md).
 
 ## Estado atual
 
-O repositório tem o projeto Django, a configuração de ambiente e a documentação
-de análise: interessados, objetivos, casos de uso e arquitetura.
+O repositório tem o projeto Django, a configuração de ambiente, a documentação
+de análise (interessados, objetivos, casos de uso e arquitetura) e a de desenho
+(modelo de domínio, sequência de sistema, protótipos de tela, classes de projeto
+e sequência de projeto).
 
 As quatro aplicações — `accounts`, `posts`, `comments` e `taxonomy` — ainda não
 foram criadas. Cada uma tem um dono, e a criação começa depois que o desenho
@@ -67,7 +69,12 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | [`docs/visao-geral.md`](docs/visao-geral.md) | O sistema, os interessados e o que está fora do escopo |
 | [`docs/objetivos.md`](docs/objetivos.md) | Objetivos funcionais e não-funcionais |
 | [`docs/casos-de-uso/`](docs/casos-de-uso/) | Atores, os 13 casos de uso e as descrições detalhadas |
+| [`docs/modelo-de-dominio.md`](docs/modelo-de-dominio.md) | Conceitos do negócio, associações e ciclo de vida do texto |
+| [`docs/sequencia-de-sistema.md`](docs/sequencia-de-sistema.md) | Operações de sistema de cada caso de uso principal |
+| [`docs/prototipos/`](docs/prototipos/) | Wireframes das cinco telas, com a fonte em HTML |
 | [`docs/arquitetura.md`](docs/arquitetura.md) | Decomposição em aplicações, dependências e stack |
+| [`docs/classes-de-projeto/`](docs/classes-de-projeto/) | As classes de cada aplicação, por camada |
+| [`docs/sequencia-de-projeto/`](docs/sequencia-de-projeto/) | Os mesmos fluxos, com as classes que os executam |
 | [`docs/design.md`](docs/design.md) | Decisões técnicas, custo de mudar cada uma e pendências |
 | [`docs/roteiro-de-testes.md`](docs/roteiro-de-testes.md) | Verificação manual de cada caso de uso |
 | [`docs/conteudo-demo.md`](docs/conteudo-demo.md) | Textos de exemplo que povoam o blog para demonstração e teste |
@@ -97,7 +104,8 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 ## Próximos passos
 
 1. Revisar a documentação e propor correções por Pull Request.
-2. Definir o modelo de dados de cada aplicação.
-3. Criar as quatro aplicações e implementar os modelos.
-4. Construir as telas do caminho de visitante e de autor.
+2. Criar as quatro aplicações e implementar os modelos descritos em
+   [`docs/classes-de-projeto/`](docs/classes-de-projeto/).
+3. Construir as telas seguindo os [protótipos](docs/prototipos/).
+4. Carregar o conteúdo de demonstração e executar o roteiro de testes.
 5. Publicar em `blog.ataraxia.dev`.
