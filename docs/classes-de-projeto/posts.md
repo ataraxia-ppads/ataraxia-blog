@@ -9,8 +9,6 @@ classDiagram
         +TextField body
         +CharField status
         +ForeignKey author
-        +ForeignKey category
-        +ManyToManyField tags
         +DateTimeField created_at
         +DateTimeField published_at
         +BooleanField allow_comments

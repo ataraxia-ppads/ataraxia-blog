@@ -126,14 +126,13 @@ class Post(models.Model):
 Um modelo de uma aplicação aponta para o de outra **por string**, sem `import`:
 
 ```python
-class Post(models.Model):
-    category = models.ForeignKey('taxonomy.Category', on_delete=models.PROTECT)
-    tags = models.ManyToManyField('taxonomy.Tag', blank=True)
+class Comment(models.Model):
+    post = models.ForeignKey('posts.Post', on_delete=models.CASCADE)
 ```
 
-Isso não é preciosismo. Com `import`, quem escreve `posts` fica parado até
-`taxonomy` existir. Com string, as quatro aplicações são escritas em paralelo,
-em qualquer ordem.
+Isso não é preciosismo. Com `import`, quem escreve `comments` fica parado até
+`posts` existir. Com string, as três aplicações são escritas em paralelo, em
+qualquer ordem.
 
 ## Escrever um caso de uso
 
@@ -157,8 +156,8 @@ código, porque a mudança aparece linha a linha.
 
 ```mermaid
 classDiagram
-    Post --> Category
-    Post --> Tag
+    Comment --> Post
+    Comment --> User
 ```
 
 **Arquivo vetorial, quando o Mermaid não dá conta.** É o caso do diagrama de

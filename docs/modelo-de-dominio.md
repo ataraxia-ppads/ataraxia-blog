@@ -15,8 +15,6 @@ qualquer forma, mesmo que o sistema fosse construído com outra tecnologia.
 | Perfil | Informação pública de um usuário: nome de exibição e biografia |
 | Post | Texto publicável, com título, endereço, corpo e situação |
 | Comentário | Manifestação de um usuário sobre um post |
-| Categoria | Assunto ao qual o post pertence, e ao qual pertence exatamente um |
-| Tag | Marcador livre aplicado ao post, em qualquer quantidade |
 
 Visitante não aparece como conceito porque não é registro: é a pessoa que lê
 sem estar autenticada, e passa a existir no sistema quando se cadastra (UC05).
@@ -51,22 +49,11 @@ classDiagram
       +booleano aprovado
       +dataHora criadoEm
     }
-    class Categoria {
-      +texto nome
-      +texto slug
-      +texto descrição
-    }
-    class Tag {
-      +texto nome
-      +texto slug
-    }
 
     Usuário "1" -- "1" Perfil : possui
     Usuário "1" -- "0..*" Post : escreve
     Usuário "1" -- "0..*" Comentário : escreve
-    Categoria "1" -- "0..*" Post : classifica
     Post "1" -- "0..*" Comentário : recebe
-    Post "0..*" -- "0..*" Tag : é marcado por
 ```
 
 **Figura 2 — Modelo de domínio**
@@ -80,13 +67,7 @@ classDiagram
 | Usuário possui Perfil | 1 para 1 | O perfil nasce junto com a conta, no passo 7 de UC05 |
 | Usuário escreve Post | 1 para 0..* | Um post tem um único autor, registrado na criação |
 | Usuário escreve Comentário | 1 para 0..* | RN13 e RN16: comentar exige conta, e o vínculo não muda |
-| Categoria classifica Post | 1 para 0..* | RN03: o post pertence a exatamente uma categoria |
 | Post recebe Comentário | 1 para 0..* | RN11: excluir o post exclui os comentários |
-| Post é marcado por Tag | 0..* para 0..* | RN03: zero ou mais tags por post, e a tag serve a vários posts |
-
-Categoria e tag existem pelo mesmo motivo, organizar o conteúdo, mas não são o
-mesmo conceito. A categoria é obrigatória e única, define a seção do blog. A tag
-é livre e acumulável, atravessa seções.
 
 ## Ciclo de vida do post
 

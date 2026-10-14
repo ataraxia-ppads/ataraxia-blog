@@ -16,9 +16,9 @@ A coluna da direita indica onde a discussão ainda vale o tempo.
 | ------- | ------ | -------------- |
 | Python com Django 6.1 | Domínio de blog é onde o framework tem mais material pronto e documentação em português | Alto — é a base de tudo |
 | Templates do Django, sem front-end separado | Evita que o grupo precise aprender um segundo framework | Médio, enquanto não houver telas |
-| Quatro aplicações: `accounts`, `posts`, `comments`, `taxonomy` | Cada integrante é dono de uma; conflito de merge fica raro por construção | Médio |
-| Referência entre aplicações por string | Permite escrever as quatro em paralelo, sem ordem imposta | Baixo |
-| Moderação pelo admin do Django | Três casos de uso atendidos sem escrever tela | Baixo — os modelos já existem |
+| Três aplicações: `accounts`, `posts`, `comments` | Cada aplicação tem dono; conflito de merge fica raro por construção | Médio |
+| Referência entre aplicações por string | Permite escrever as três em paralelo, sem ordem imposta | Baixo |
+| Moderação pelo admin do Django | Dois casos de uso atendidos sem escrever tela | Baixo — os modelos já existem |
 | SQLite em desenvolvimento, PostgreSQL em produção | Cada integrante roda sem instalar banco | Baixo — é uma variável de ambiente |
 | Configuração por variáveis de ambiente | Permite publicar sem alterar código versionado | Baixo |
 | Identificadores em inglês, prosa em português | Consistência; o código estava misturando os dois | Baixo, enquanto o código é pequeno |
@@ -39,7 +39,7 @@ O projeto Django em `config/`, a configuração de ambiente, a documentação de
 análise e a de desenho: modelo de domínio, diagramas de sequência de sistema,
 protótipos de tela, classes de projeto e diagramas de sequência de projeto.
 
-As quatro aplicações ainda não foram criadas. O desenho fechou, e a ordem
+As três aplicações ainda não foram criadas. O desenho fechou, e a ordem
 prevista agora é cada dono criar a sua aplicação e implementar os modelos como
 descritos em `classes-de-projeto/`.
 
@@ -54,6 +54,9 @@ nunca foi prometido.
 - Notificações por e-mail.
 - Aplicativo móvel. O acesso é pelo navegador, com layout responsivo.
 - Múltiplos blogs ou múltiplos autores por texto.
+- Categorias e tags. A busca por termo no título e no corpo cobre a navegação,
+  e classificar o conteúdo exigiria um cadastro a manter e a moderar que nenhum
+  caso de uso aproveitaria.
 - Métricas e painéis de audiência.
 
 ## O que não foi decidido
@@ -61,7 +64,6 @@ nunca foi prometido.
 - Aparência: paleta, tipografia e espaçamento. Os protótipos definem estrutura
   de tela, não desenho visual.
 - Estratégia de testes automatizados. Hoje há apenas o roteiro manual.
-- Tamanho máximo do corpo do comentário, que RN15 exige mas ainda não fixa.
 - Como e quando o sistema vai ao ar.
 
 ## O que a primeira entrega exige

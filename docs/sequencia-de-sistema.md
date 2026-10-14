@@ -8,7 +8,7 @@ de projeto.
 
 As operações abaixo são a fronteira do sistema. O que existir fora dessa lista
 não é acionável pelo usuário nos casos de uso principais. Quem dispara cada uma
-é o ator do caso de uso correspondente: visitante em UC02, UC04 e UC05, autor em
+é o ator do caso de uso correspondente: visitante em UC02, UC03 e UC05, autor em
 UC08 e UC10.
 
 **Tabela 15 — Operações de sistema**
@@ -16,11 +16,11 @@ UC08 e UC10.
 | Operação | Parâmetros | Caso de uso | Resposta |
 | ---------------------------- | -------------------- | ------------------ | -------------------------------------- |
 | `abrirPost` | slug do texto | UC02 | Post publicado com os comentários aprovados, ou erro 404 |
-| `filtrarPorTermo` | tipo do termo, slug, página | UC04 | Listagem restrita ao termo, ou erro 404 |
+| `buscar` | termo, página | UC03 | Listagem com os textos que contêm o termo, ou aviso de nada encontrado |
 | `abrirCadastro` | nenhum | UC05 | Formulário de cadastro |
 | `cadastrar` | nome de usuário, email, senha | UC05 | Conta criada e sessão iniciada, ou erro de validação |
 | `abrirEditor` | nenhum | UC08 | Formulário de texto |
-| `salvarPost` | título, corpo, categoria, tags | UC08 | Rascunho gravado, ou campos pendentes |
+| `salvarPost` | título, corpo, aceita comentários | UC08 | Rascunho gravado, ou campos pendentes |
 | `editarPost` | slug e os campos do texto | UC08 | Alteração gravada, ou erro 403 |
 | `excluirPost` | slug | UC08 | Pedido de confirmação |
 | `confirmarExclusão` | slug | UC08 | Post e comentários excluídos |
@@ -34,7 +34,7 @@ sequenceDiagram
     participant S as :Sistema
     V->>S: abrirPost(slug)
     alt post publicado
-        S-->>V: título, autor, data, categoria, tags e corpo
+        S-->>V: título, autor, data e corpo
         S-->>V: comentários aprovados, do mais antigo ao mais recente
         opt visitante autenticado
             S-->>V: formulário de comentário
@@ -49,27 +49,27 @@ sequenceDiagram
 O rascunho e o endereço inexistente produzem a mesma resposta, e é o que RN01
 exige: um 403 confirmaria que o texto existe.
 
-## UC04 — Filtrar por categoria ou tag
+## UC03 — Buscar post
 
 ```mermaid
 sequenceDiagram
     actor V as Visitante
     participant S as :Sistema
-    V->>S: filtrarPorTermo(tipo, slug, página)
-    alt termo com posts publicados
-        S-->>V: posts do termo, do mais recente ao mais antigo
-        S-->>V: filtro aplicado e opção de removê-lo
-    else termo sem posts publicados
-        S-->>V: aviso de listagem vazia e opção de voltar
-    else termo inexistente
-        S-->>V: erro 404
+    V->>S: buscar(termo, página)
+    alt termo vazio
+        S-->>V: listagem completa, como em UC01
+    else textos encontrados
+        S-->>V: posts publicados com o termo, do mais recente ao mais antigo
+        S-->>V: quantidade encontrada, termo mantido e opção de limpar
+    else nenhum texto encontrado
+        S-->>V: aviso de nada encontrado e opção de voltar
     end
 ```
 
-**Figura 5 — Sequência de sistema do UC04**
+**Figura 5 — Sequência de sistema do UC03**
 
-O parâmetro `tipo` distingue categoria de tag. A operação é a mesma porque o
-comportamento é o mesmo: restringir a listagem a um termo e permitir desfazer.
+A busca é a listagem com um parâmetro a mais, e por isso o termo vazio devolve
+a listagem completa, e não um erro.
 
 ## UC05 — Cadastrar-se
 
@@ -99,14 +99,14 @@ sequenceDiagram
     actor A as Autor
     participant S as :Sistema
     A->>S: abrirEditor()
-    S-->>A: formulário com título, corpo, categoria e tags
-    A->>S: salvarPost(título, corpo, categoria, tags)
+    S-->>A: formulário com título, corpo e opção de aceitar comentários
+    A->>S: salvarPost(título, corpo, aceitaComentários)
     alt título e corpo preenchidos
         S-->>A: rascunho gravado, com slug e autoria
     else campo obrigatório vazio
         S-->>A: campos pendentes, formulário preservado
     end
-    A->>S: editarPost(slug, título, corpo, categoria, tags)
+    A->>S: editarPost(slug, título, corpo, aceitaComentários)
     alt post do próprio autor
         S-->>A: alteração gravada, com data de modificação
     else post de outro autor
@@ -133,8 +133,10 @@ sequenceDiagram
     U->>S: comentar(slugDoPost, corpo)
     alt comentário aceito
         S-->>U: comentário gravado, aprovado e visível na página
-    else corpo vazio ou acima do tamanho máximo
+    else corpo vazio ou acima de 2.000 caracteres
         S-->>U: aviso do problema, texto digitado preservado
+    else comentários encerrados pelo autor
+        S-->>U: gravação recusada, texto fechado a comentários
     else post despublicado durante a escrita
         S-->>U: gravação recusada, texto indisponível
     end

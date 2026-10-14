@@ -12,11 +12,10 @@ O que o sistema precisa fazer.
 | OF02 | Permitir ao autor criar, editar e excluir seus próprios textos |
 | OF03 | Controlar o ciclo de publicação, distinguindo rascunho de publicado |
 | OF04 | Disponibilizar leitura pública, sem exigir cadastro |
-| OF05 | Organizar o conteúdo por categorias e tags |
-| OF06 | Permitir busca de textos por termo |
-| OF07 | Permitir que usuários autenticados comentem |
-| OF08 | Prover moderação de comentários e gestão de usuários |
-| OF09 | Manter perfil público do autor |
+| OF05 | Permitir busca de textos por termo |
+| OF06 | Permitir que usuários autenticados comentem |
+| OF07 | Prover moderação de comentários e gestão de usuários |
+| OF08 | Manter perfil público do autor |
 
 ## Objetivos não-funcionais
 

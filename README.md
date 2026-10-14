@@ -31,8 +31,7 @@ de análise (interessados, objetivos, casos de uso e arquitetura) e a de desenho
 (modelo de domínio, sequência de sistema, protótipos de tela, classes de projeto
 e sequência de projeto).
 
-As quatro aplicações — `accounts`, `posts`, `comments` e `taxonomy` — ainda não
-foram criadas. Cada uma tem um dono, e a criação começa depois que o desenho
+As três aplicações, `accounts`, `posts` e `comments`, ainda não foram criadas. Cada uma tem um dono, e a criação começa depois que o desenho
 fechar.
 
 A hospedagem é tratada fora deste repositório e não interfere no
@@ -68,7 +67,7 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | [`docs/introducao.md`](docs/introducao.md) | Contexto, objetivo do documento e identificação do projeto |
 | [`docs/visao-geral.md`](docs/visao-geral.md) | O sistema, os interessados e o que está fora do escopo |
 | [`docs/objetivos.md`](docs/objetivos.md) | Objetivos funcionais e não-funcionais |
-| [`docs/casos-de-uso/`](docs/casos-de-uso/) | Atores, os 13 casos de uso e as descrições detalhadas |
+| [`docs/casos-de-uso/`](docs/casos-de-uso/) | Atores, os 11 casos de uso e as descrições detalhadas |
 | [`docs/modelo-de-dominio.md`](docs/modelo-de-dominio.md) | Conceitos do negócio, associações e ciclo de vida do texto |
 | [`docs/sequencia-de-sistema.md`](docs/sequencia-de-sistema.md) | Operações de sistema de cada caso de uso principal |
 | [`docs/prototipos/`](docs/prototipos/) | Wireframes das cinco telas, com a fonte em HTML |
@@ -99,12 +98,12 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | Renan | `accounts` | Arquitetura e conteúdo dos diagramas | UC05 |
 | Gabriel | `comments` | — | UC10 |
 | Rafaela | — | Diagramas, quadro, roteiro de testes, conteúdo de demonstração | UC02 |
-| Felipe | `taxonomy` | — | UC04 |
+| Felipe | `posts` | Busca | UC03 |
 
 ## Próximos passos
 
 1. Revisar a documentação e propor correções por Pull Request.
-2. Criar as quatro aplicações e implementar os modelos descritos em
+2. Criar as três aplicações e implementar os modelos descritos em
    [`docs/classes-de-projeto/`](docs/classes-de-projeto/).
 3. Construir as telas seguindo os [protótipos](docs/prototipos/).
 4. Carregar o conteúdo de demonstração e executar o roteiro de testes.

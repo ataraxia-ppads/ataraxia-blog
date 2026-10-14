@@ -11,15 +11,15 @@ Cinco telas cobrem o caminho de visitante e o de autor.
 
 | Tela | Casos de uso | Quem usa |
 | -------------------------- | -------------------------- | ---------------------- |
-| Listagem de textos | UC01, UC03, UC04 | Visitante |
+| Listagem de textos | UC01, UC03 | Visitante |
 | Leitura do texto | UC02, UC10 | Visitante e autor |
 | Cadastro | UC05 | Visitante |
 | Editor de texto | UC08, UC09 | Autor |
 | Meus textos | UC08, UC09 | Autor |
 
-Moderar comentário, manter taxonomia e gerenciar usuários (UC11, UC12 e UC13)
-não têm protótipo porque são atendidos pelo admin do Django, decisão registrada
-no capítulo de arquitetura. Desenhar tela para eles seria desenhar tela que não
+Moderar comentário e gerenciar usuários (UC11 e UC13) não têm protótipo porque
+são atendidos pelo admin do Django, decisão registrada no capítulo de
+arquitetura. Desenhar tela para eles seria desenhar tela que não
 vai ser construída.
 
 A fonte de cada protótipo é o arquivo `.html` ao lado, e o `.png` é a exportação
@@ -33,9 +33,10 @@ que entra neste documento. Para alterar uma tela, edite o `.html` e rode
 **Figura 9 — Protótipo da listagem de textos**
 
 É a porta de entrada do site e a única tela que um visitante precisa ver para
-usar o blog. Busca, categorias e tags ficam à vista, porque são os três modos de
-chegar a um texto. A lateral repete o que a URL faz, e serve a quem navega sem
-saber o endereço.
+usar o blog. A busca fica no cabeçalho, à vista em todas as telas, porque é o
+modo de chegar a um texto sem rolar a listagem. A lateral mostra os dois
+estados alternativos da mesma tela: o resultado de uma busca, com a opção de
+limpá-la, e a busca sem resultado.
 
 ## Leitura do texto
 
@@ -65,9 +66,9 @@ em conflito destacado e o formulário devolvido preenchido, sem a senha.
 **Figura 12 — Protótipo do editor de texto**
 
 Título e corpo ocupam a maior parte da tela, e o que é decisão de publicação
-fica na coluna da direita, separado da escrita. Salvar rascunho e publicar são
-botões distintos porque são atos distintos: todo texto nasce rascunho, e a
-publicação é explícita.
+fica na coluna da direita, separado da escrita, junto com a opção de aceitar
+comentários. Salvar rascunho e publicar são botões distintos porque são atos
+distintos: todo texto nasce rascunho, e a publicação é explícita.
 
 ## Meus textos
 
