@@ -15,6 +15,7 @@ A coluna da direita indica onde a discussão ainda vale o tempo.
 | Decisão | Motivo | Custo de mudar |
 | ------- | ------ | -------------- |
 | Python com Django 6.1 | Domínio de blog é onde o framework tem mais material pronto e documentação em português | Alto — é a base de tudo |
+| Corpo do texto em markdown, higienizado com `nh3` | O autor formata sem editor visual, e nenhuma marcação fora de uma lista fechada chega à página | Baixo |
 | Templates do Django, sem front-end separado | Evita que o grupo precise aprender um segundo framework | Médio, enquanto não houver telas |
 | Três aplicações: `accounts`, `posts`, `comments` | Cada aplicação tem dono; conflito de merge fica raro por construção | Médio |
 | Referência entre aplicações por string | Permite escrever as três em paralelo, sem ordem imposta | Baixo |
@@ -35,13 +36,10 @@ sem ela. Locale em `pt-br`, fuso `America/Sao_Paulo`.
 
 ## O que já existe no repositório
 
-O projeto Django em `config/`, a configuração de ambiente, a documentação de
-análise e a de desenho: modelo de domínio, diagramas de sequência de sistema,
-protótipos de tela, classes de projeto e diagramas de sequência de projeto.
-
-As três aplicações ainda não foram criadas. O desenho fechou, e a ordem
-prevista agora é cada dono criar a sua aplicação e implementar os modelos como
-descritos em `classes-de-projeto/`.
+O projeto Django em `config/`, a configuração de ambiente, as três aplicações
+implementadas, com testes automatizados, e a documentação de análise e de
+desenho: modelo de domínio, diagramas de sequência de sistema, protótipos de
+tela, classes de projeto e diagramas de sequência de projeto.
 
 ## Fora do escopo
 
@@ -63,7 +61,6 @@ nunca foi prometido.
 
 - Aparência: paleta, tipografia e espaçamento. Os protótipos definem estrutura
   de tela, não desenho visual.
-- Estratégia de testes automatizados. Hoje há apenas o roteiro manual.
 - Como e quando o sistema vai ao ar.
 
 ## O que a primeira entrega exige

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Cadastrar-se · Ataraxia{% endblock %}
+{% block content %}
+<div class="caixa formulario-estreito">
+  <h1>Criar conta</h1>
+  <p class="nota">A senha precisa ter pelo menos 8 caracteres, não pode ser só números, nem muito comum, nem parecida com o nome de usuário ou o e-mail.</p>
+  <form method="post" class="formulario">
+    {% csrf_token %}
+    {% include 'includes/erros-gerais.html' %}
+    {% for field in form %}{% include 'includes/campo.html' %}{% endfor %}
+    <button type="submit" class="botao">Cadastrar</button>
+  </form>
+  <p>Já tem conta? <a href="{% url 'accounts:login' %}">Entre</a>.</p>
+</div>
+{% endblock %}

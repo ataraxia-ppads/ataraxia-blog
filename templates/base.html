@@ -1,0 +1,49 @@
+{% load static %}<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Ataraxia{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/ataraxia.css' %}">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="topo-interno">
+      <a class="marca" href="{% url 'posts:list' %}">Ataraxia</a>
+      <form class="busca" action="{% url 'posts:list' %}" method="get" role="search">
+        <label for="busca-termo" class="visualmente-oculto">Buscar textos</label>
+        <input id="busca-termo" type="search" name="q" value="{{ term|default:'' }}" placeholder="Buscar por termo">
+        <button type="submit">Buscar</button>
+      </form>
+      <nav class="navegacao" aria-label="Conta">
+        {% if user.is_authenticated %}
+          <a class="botao" href="{% url 'posts:create' %}">Escrever</a>
+          <a href="{% url 'posts:mine' %}">Meus textos</a>
+          <a href="{{ user.profile.get_absolute_url }}">{{ user.profile }}</a>
+          {% if user.is_staff %}<a href="{% url 'admin:index' %}">Moderação</a>{% endif %}
+          <form action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}<button type="submit" class="link">Sair</button>
+          </form>
+        {% else %}
+          <a href="{% url 'accounts:login' %}?next={{ request.path|urlencode }}">Entrar</a>
+          <a class="botao" href="{% url 'accounts:signup' %}">Cadastrar-se</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="pagina">
+    {% if messages %}
+      <ul class="mensagens">
+        {% for message in messages %}<li class="mensagem {{ message.tags }}" role="status">{{ message }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="rodape">
+    <p>Ataraxia, plataforma de blog colaborativo. Projeto de Prática Profissional em ADS, Universidade Presbiteriana Mackenzie.</p>
+  </footer>
+</body>
+</html>
