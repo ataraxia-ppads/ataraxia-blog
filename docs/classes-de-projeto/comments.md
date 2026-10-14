@@ -46,8 +46,9 @@ classDiagram
 falso. `ApprovedManager` é o que a página do texto consulta, de modo que
 comentário reprovado some da leitura sem que a view precise saber da regra.
 
-`clean_body()` recusa corpo vazio ou acima do tamanho máximo. A exibição trata o
-corpo como texto puro, nunca como HTML, que é RN15.
+`clean_body()` recusa corpo vazio, só com espaços ou acima de 2.000
+caracteres. A exibição trata o corpo como texto puro, nunca como HTML, que é
+RN15.
 
 `CommentAdmin` cobre UC11 sem tela própria: listagem, filtro por situação e as
 duas ações em lote. É a decisão de arquitetura de usar o admin para moderação,

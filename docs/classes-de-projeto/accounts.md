@@ -40,11 +40,18 @@ classDiagram
         +get_object()
     }
 
+    class UserAdmin {
+        <<Admin>>
+        +get_fieldsets()
+        +has_change_permission()
+    }
+
     User "1" -- "1" Profile : perfil
     SignUpView --> SignUpForm : valida com
     SignUpForm --> User : cria
     SignUpForm --> Profile : cria
     ProfileUpdateView --> Profile : edita
+    UserAdmin --> User : gerencia
 ```
 
 **Figura 16 — Classes de projeto de accounts**
@@ -59,3 +66,15 @@ cria conta e perfil na mesma operação, para que não exista usuário sem perfi
 
 `ProfileUpdateView` devolve sempre o perfil de quem está autenticado, e é assim
 que o autor não edita o perfil de outro.
+
+`UserAdmin` substitui o cadastro de usuários padrão do admin para atender UC13
+com segurança. No admin padrão, quem pode alterar usuários enxerga também o
+campo de superusuário e as permissões avulsas, e poderia conceder a si mesmo
+acesso total. Para quem não é superusuário, `get_fieldsets()` mostra apenas
+situação da conta, acesso ao admin e grupos, e `has_change_permission()` recusa
+alterar a conta de um superusuário.
+
+A restrição fica registrada como regra de negócio de UC13:
+
+- **RN18 —** O moderador gerencia as contas de autores, mas não vê nem concede
+  o papel de superusuário, e não altera a conta de quem o tem.

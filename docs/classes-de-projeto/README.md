@@ -22,6 +22,7 @@ por isso aparecem como classes de `admin` nos diagramas, sem view própria.
 | `accounts` | `SignUpForm` | Form | Valida nome de usuário, email e senha |
 | `accounts` | `SignUpView` | View | Cria a conta e o perfil e inicia a sessão |
 | `accounts` | `ProfileUpdateView` | View | Edição do próprio perfil |
+| `accounts` | `UserAdmin` | Admin | Gestão de contas pelo moderador, sem acesso a superusuário |
 | `posts` | `Post` | Model | Texto, situação e datas |
 | `posts` | `PublishedManager` | Model | Devolve apenas os textos publicados |
 | `posts` | `PostForm` | Form | Valida título e corpo, e monta o slug |

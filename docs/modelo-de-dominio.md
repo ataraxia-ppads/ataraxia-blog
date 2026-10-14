@@ -42,6 +42,7 @@ classDiagram
       +texto slug
       +texto corpo
       +situação situação
+      +booleano aceitaComentários
       +dataHora criadoEm
       +dataHora publicadoEm
     }
