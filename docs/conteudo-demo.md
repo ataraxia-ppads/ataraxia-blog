@@ -4,8 +4,9 @@ Os textos de exemplo que povoam o blog. Sem eles a tela inicial aparece vazia:
 listagem sem posts e busca sem resultado, e não há como demonstrar o sistema nem
 executar o [roteiro de testes](roteiro-de-testes.md).
 
-Este arquivo é a fonte. Depois de preenchido, vira uma *fixture* do Django, que
-carrega tudo na base com um comando.
+Os textos estão no comando `python manage.py carregar_demo`, que pode ser rodado
+mais de uma vez sem duplicar nada. Os autores de demonstração não têm senha
+utilizável: servem para assinar os textos e ninguém entra com eles.
 
 ## O que é preciso
 
@@ -28,54 +29,18 @@ Não são detalhe de estilo. Sem elas, alguns testes não têm como rodar:
 
 ## Posts
 
-Um bloco por post, no formato abaixo. O corpo tem de três a cinco parágrafos —
-o suficiente para a tela de leitura não parecer um bilhete, sem virar trabalho
-de redação.
+| Título | Autor | Situação | Publicado em |
+| ------ | ----- | -------- | ------------ |
+| Por que aprendi Python antes de qualquer outra linguagem | Helena Prado | publicado | 14/03/2026 |
+| O que o ornitorrinco ensina sobre classificar as coisas | Marcos Tavares | publicado | 02/04/2026 |
+| Três livros que mudaram meu jeito de ler dados | Júlia Nogueira | publicado | 20/04/2026 |
+| Testes automatizados não são burocracia | Helena Prado | publicado | 09/05/2026 |
+| Aprender a programar depois dos quarenta | Marcos Tavares | publicado | 27/05/2026 |
+| Gráfico de pizza quase nunca é a melhor escolha | Júlia Nogueira | publicado | 15/06/2026 |
+| Como escrevo mensagens de commit | Helena Prado | publicado | 03/07/2026 |
+| Matemática para quem programa | Marcos Tavares | publicado | 12/08/2026 |
+| Dados abertos e o que fazer com eles | Júlia Nogueira | publicado | 01/09/2026 |
+| Rascunho: notas sobre revisão de código | Helena Prado | rascunho | |
 
----
-
-### Post 1
-
-| Campo | Conteúdo |
-| ----- | -------- |
-| Título | Por que aprendi Python antes de qualquer outra linguagem |
-| Autor | pedro |
-| Situação | publicado |
-| Data | 2026-03-14 |
-
-Quando decidi mudar de área, a primeira pergunta foi por onde começar. Havia
-listas com dez linguagens, e cada uma prometia ser a definitiva.
-
-Escolhi Python por um motivo pouco romântico: era a que tinha mais material em
-português. Aprender programação já é difícil o bastante sem somar a barreira do
-idioma a cada dúvida.
-
-Dois anos depois a escolha se provou certa por outro motivo. A comunidade é
-grande, então toda dúvida que tive alguém já teve antes, e escreveu a resposta.
-
----
-
-### Post 2
-
-| Campo | Conteúdo |
-| ----- | -------- |
-| Título | |
-| Autor | |
-| Situação | publicado |
-| Data | |
-
----
-
-### Post 3
-
-| Campo | Conteúdo |
-| ----- | -------- |
-| Título | |
-| Autor | |
-| Situação | rascunho |
-| Data | |
-
-<!--
-Repita o bloco até dez. O campo Situação aceita "publicado" ou "rascunho";
-rascunho não tem data de publicação.
--->
+O termo incomum do título é **ornitorrinco**, e o do corpo é **quimera**, no
+texto "Matemática para quem programa".
