@@ -2,7 +2,7 @@
 
 ## Decomposição em aplicações
 
-O sistema é dividido em quatro aplicações Django. A fronteira de cada uma é o
+O sistema é dividido em três aplicações Django. A fronteira de cada uma é o
 conjunto de modelos que ela é dona.
 
 **Tabela 17 — Aplicações**
@@ -12,7 +12,6 @@ conjunto de modelos que ela é dona.
 | `accounts` | `Profile` | UC05, UC06, UC07, UC13 |
 | `posts` | `Post` | UC01, UC02, UC03, UC08, UC09 |
 | `comments` | `Comment` | UC10, UC11 |
-| `taxonomy` | `Category`, `Tag` | UC04, UC12 |
 
 Não há uma aplicação separada para leitura. Ler um texto publicado é a face
 pública de `posts`, e uma aplicação sem modelo próprio seria apenas uma pasta de
@@ -29,35 +28,32 @@ escopo exige isso.
 flowchart LR
     comments --> posts
     comments --> accounts
-    posts --> taxonomy
 ```
 
 **Figura 14 — Dependências entre aplicações**
 
-`accounts` e `taxonomy` não dependem de ninguém, e é por isso que são as duas
-que podem ser escritas primeiro.
+`accounts` e `posts` não dependem de ninguém, e é por isso que são as duas que
+podem ser escritas primeiro.
 
 As referências entre aplicações são feitas por string, sem `import`:
 
 ```python
-class Post(models.Model):
-    category = models.ForeignKey(
-        'taxonomy.Category', on_delete=models.PROTECT)
-    tags = models.ManyToManyField('taxonomy.Tag', blank=True)
+class Comment(models.Model):
+    post = models.ForeignKey('posts.Post', on_delete=models.CASCADE)
 ```
 
 Com `import`, a ordem do grafo viraria ordem de trabalho e as pessoas ficariam
-em fila. Com string, as quatro aplicações são escritas em paralelo.
+em fila. Com string, as três aplicações são escritas em paralelo.
 
 ## Interface de moderação
 
-UC11, UC12 e UC13 — moderar comentário, manter taxonomia e gerenciar usuários —
-usam o **admin do Django**, sem telas próprias.
+UC11 e UC13, moderar comentário e gerenciar usuários, usam o **admin do
+Django**, sem telas próprias.
 
 É registrado aqui porque é uma decisão, não uma omissão. O admin já entrega
 listagem, busca, filtros, permissões por grupo e registro de alterações para
 qualquer modelo cadastrado. Escrever telas equivalentes consumiria a maior parte
-do esforço do semestre para atender três casos de uso que só moderadores veem.
+do esforço do semestre para atender dois casos de uso que só moderadores veem.
 
 As telas próprias ficam concentradas no caminho de visitante e autor, que é onde
 a interface é o produto.

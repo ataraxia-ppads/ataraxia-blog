@@ -26,7 +26,7 @@ que aconteceu na coluna de observação e abra a pendência no quadro.
 | # | Passo | Esperado | Resultado | Observação |
 | - | ----- | -------- | --------- | ---------- |
 | 1 | Clicar em um texto da listagem | O texto abre completo | | |
-| 2 | Conferir título, autor, data, categoria e tags | Todos presentes | | |
+| 2 | Conferir título, autor, data e corpo | Todos presentes | | |
 | 3 | Acessar o endereço de um rascunho, deslogado | Erro 404 | | |
 
 ## UC03 — Buscar post
@@ -34,15 +34,9 @@ que aconteceu na coluna de observação e abra a pendência no quadro.
 | # | Passo | Esperado | Resultado | Observação |
 | - | ----- | -------- | --------- | ---------- |
 | 1 | Buscar por um termo que existe em um título | O texto aparece | | |
-| 2 | Buscar por um termo inexistente | Mensagem de nada encontrado | | |
-
-## UC04 — Filtrar por categoria ou tag
-
-| # | Passo | Esperado | Resultado | Observação |
-| - | ----- | -------- | --------- | ---------- |
-| 1 | Clicar em uma categoria | Só textos daquela categoria | | |
-| 2 | Clicar em uma tag | Só textos com aquela tag | | |
-| 3 | Remover o filtro | A listagem completa volta | | |
+| 2 | Buscar por um termo que só aparece no corpo de um texto | O texto aparece | | |
+| 3 | Buscar por um termo inexistente | Mensagem de nada encontrado | | |
+| 4 | Buscar por um termo que só existe no rascunho | Nada encontrado | | |
 
 ## UC05 — Cadastrar-se
 
@@ -84,6 +78,7 @@ que aconteceu na coluna de observação e abra a pendência no quadro.
 | 1 | Comentar autenticado | Comentário aparece | | |
 | 2 | Ver o formulário deslogado | Convite para entrar, sem formulário | | |
 | 3 | Enviar comentário vazio | Recusa | | |
+| 4 | Comentar em texto com comentários encerrados | Aviso no lugar do formulário | | |
 
 ## UC11 — Moderar comentário
 

@@ -8,7 +8,7 @@
 | ------------ | ------------------------------------------------------- |
 | Visitante | Qualquer pessoa que acessa o site sem estar autenticada |
 | Autor | Usuário cadastrado e autenticado, que escreve e publica textos |
-| Moderador | Usuário com permissão para moderar comentários, taxonomia e usuários |
+| Moderador | Usuário com permissão para moderar comentários e gerenciar usuários |
 
 Os atores se relacionam por generalização, como aparece no diagrama a seguir: o
 autor faz tudo o que o visitante faz, e o moderador tudo o que o autor faz.
@@ -28,7 +28,6 @@ autor faz tudo o que o visitante faz, e o moderador tudo o que o autor faz.
 | UC01 | Listar posts publicados | Visitante | `posts` |
 | UC02 | Ler post | Visitante | `posts` |
 | UC03 | Buscar post | Visitante | `posts` |
-| UC04 | Filtrar por categoria ou tag | Visitante | `taxonomy` |
 | UC05 | Cadastrar-se | Visitante | `accounts` |
 | UC06 | Autenticar-se | Autor | `accounts` |
 | UC07 | Manter perfil | Autor | `accounts` |
@@ -36,15 +35,13 @@ autor faz tudo o que o visitante faz, e o moderador tudo o que o autor faz.
 | UC09 | Publicar post | Autor | `posts` |
 | UC10 | Comentar post | Autor | `comments` |
 | UC11 | Moderar comentário | Moderador | `comments` |
-| UC12 | Manter taxonomia | Moderador | `taxonomy` |
 | UC13 | Gerenciar usuários | Moderador | `accounts` |
 
 O verbo **manter** designa criar, ler, atualizar e excluir.
 
 ## Relacionamentos
 
-UC03 e UC04 estendem UC01: são formas de restringir a listagem, e a listagem
-funciona sem elas.
+UC03 estende UC01: a busca restringe a listagem, e a listagem funciona sem ela.
 
 As demais são associações diretas entre ator e caso de uso.
 
@@ -65,15 +62,15 @@ site parecesse vivo.
 ## Casos de uso principais
 
 Cinco casos de uso são descritos em detalhe a seguir. Juntos cobrem a jornada
-completa do usuário: ler, navegar, cadastrar-se, escrever e comentar. Cada um
-pertence a uma aplicação diferente, e é descrito por quem vai construí-la.
+completa do usuário: ler, buscar, cadastrar-se, escrever e comentar. Cada um é
+descrito por quem vai construí-lo.
 
 **Tabela 7 — Responsáveis pela descrição detalhada**
 
 | Caso de uso | Aplicação | Responsável |
 | ---------------------------------- | ---------------- | ---------------- |
 | UC02 — Ler post | `posts` | Rafaela |
-| UC04 — Filtrar por categoria ou tag | `taxonomy` | Felipe |
+| UC03 — Buscar post | `posts` | Felipe |
 | UC05 — Cadastrar-se | `accounts` | Renan |
 | UC08 — Manter post | `posts` | Pedro |
 | UC10 — Comentar post | `comments` | Gabriel |

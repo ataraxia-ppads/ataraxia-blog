@@ -6,8 +6,8 @@ Ataraxia é uma plataforma de blog. Qualquer pessoa lê os textos publicados sem
 precisar de conta. Usuários cadastrados escrevem, editam e publicam os seus.
 Moderadores cuidam do que permanece no ar.
 
-O conteúdo é organizado por categorias e tags, e pode ser localizado por busca
-textual. Leitores autenticados comentam nos textos, e os comentários passam por
+O conteúdo pode ser localizado por busca textual, no título e no corpo dos
+textos. Leitores autenticados comentam nos textos, e os comentários passam por
 moderação.
 
 A publicação será feita em **blog.ataraxia.dev**, domínio que já pertence à

@@ -17,11 +17,11 @@ flowchart LR
     View --> Template
 ```
 
-**Figura 20 — Caminho de uma requisição**
+**Figura 19 — Caminho de uma requisição**
 
 O roteamento não ganha raia própria nos diagramas: ele aparece no endereço da
-primeira mensagem, que é o que o `urls.py` resolve. Categoria, tag e texto são
-resolvidos por slug, e é por isso que o endereço vale como desenho.
+primeira mensagem, que é o que o `urls.py` resolve. O texto é resolvido por
+slug, e é por isso que o endereço vale como desenho.
 
 Cinco diagramas, um por caso de uso principal, na mesma ordem do capítulo de
 casos de uso.

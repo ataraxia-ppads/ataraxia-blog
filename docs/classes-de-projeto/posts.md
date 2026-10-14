@@ -9,10 +9,9 @@ classDiagram
         +TextField body
         +CharField status
         +ForeignKey author
-        +ForeignKey category
-        +ManyToManyField tags
         +DateTimeField created_at
         +DateTimeField published_at
+        +BooleanField allow_comments
         +publish()
         +unpublish()
         +is_visible()
@@ -27,6 +26,7 @@ classDiagram
         <<Form>>
         +CharField title
         +TextField body
+        +BooleanField allow_comments
         +clean_title()
         +save()
     }
@@ -69,6 +69,14 @@ classDiagram
 rascunho. A listagem, a busca e a página do texto consultam por ele, e um
 rascunho só aparece por engano se alguém consultar o gerenciador padrão de
 propósito.
+
+`search()` procura o termo no título e no corpo, sem diferenciar maiúsculas de
+minúsculas, e parte do mesmo conjunto de publicados. Rascunho, portanto, nunca
+aparece em resultado de busca.
+
+`allow_comments` nasce verdadeiro. O autor desmarca a opção no editor para
+encerrar a discussão de um texto, que é o fluxo A2 de UC10 e a regra RN17. Os
+comentários já feitos continuam visíveis.
 
 `is_visible()` é a regra RN01 escrita uma vez, no modelo. `publish()` e
 `unpublish()` guardam a transição de situação junto com a data de publicação,

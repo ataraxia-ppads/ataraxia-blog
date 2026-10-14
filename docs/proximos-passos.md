@@ -3,7 +3,7 @@
 O que este documento registra fecha a etapa de análise e desenho. As etapas
 seguintes do projeto, na ordem prevista:
 
-1. Criar as quatro aplicações e implementar os modelos descritos no capítulo de
+1. Criar as três aplicações e implementar os modelos descritos no capítulo de
    classes de projeto, com as migrações correspondentes.
 2. Construir as telas do caminho de visitante e de autor, seguindo os
    protótipos.
