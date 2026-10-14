@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}{% if object %}Editar texto{% else %}Escrever texto{% endif %} · Ataraxia{% endblock %}
+{% block content %}
+<h1 class="titulo-pagina">{% if object %}Editar texto{% else %}Escrever texto{% endif %}</h1>
+<div class="editor">
+  <form method="post" class="formulario editor-principal" id="form-texto">
+    {% csrf_token %}
+    {% include 'includes/erros-gerais.html' %}
+    {% include 'includes/campo.html' with field=form.title %}
+    {% include 'includes/campo.html' with field=form.body %}
+  </form>
+  <aside class="editor-lateral caixa">
+    <h2>Publicação</h2>
+    <p>Situação: <strong>{% if object %}{{ object.get_status_display }}{% else %}Rascunho{% endif %}</strong></p>
+    {% include 'includes/campo.html' with field=form.allow_comments %}
+    <button type="submit" form="form-texto" class="botao">{% if object and object.is_visible %}Salvar alterações{% else %}Salvar rascunho{% endif %}</button>
+    {% if object %}
+      {% if object.is_visible %}
+        <form method="post" action="{% url 'posts:unpublish' object.slug %}">{% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" class="botao secundario">Despublicar</button>
+        </form>
+        <a href="{{ object.get_absolute_url }}">Ver texto publicado</a>
+      {% else %}
+        <form method="post" action="{% url 'posts:publish' object.slug %}">{% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" class="botao secundario">Publicar</button>
+        </form>
+        <a href="{{ object.get_absolute_url }}">Pré-visualizar</a>
+      {% endif %}
+      <a class="perigo" href="{% url 'posts:delete' object.slug %}">Excluir texto</a>
+    {% else %}
+      <p class="nota">Todo texto nasce rascunho. Depois de salvo, você pode publicá-lo.</p>
+    {% endif %}
+    <p class="nota">O endereço sai do título e não muda depois da primeira publicação, para não quebrar link já divulgado.</p>
+  </aside>
+</div>
+{% endblock %}

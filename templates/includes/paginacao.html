@@ -1,0 +1,7 @@
+{% if page_obj.has_other_pages %}
+  <nav class="paginacao" aria-label="Páginas">
+    {% if page_obj.has_previous %}<a href="?{% if term %}q={{ term|urlencode }}&amp;{% endif %}page={{ page_obj.previous_page_number }}">anterior</a>{% endif %}
+    <span>página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a href="?{% if term %}q={{ term|urlencode }}&amp;{% endif %}page={{ page_obj.next_page_number }}">próxima</a>{% endif %}
+  </nav>
+{% endif %}

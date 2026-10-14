@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Excluir texto · Ataraxia{% endblock %}
+{% block content %}
+<div class="caixa confirmacao">
+  <h1>Excluir texto</h1>
+  <p>Excluir <strong>{{ object.title }}</strong>?
+  {% with n=object.comments.count %}{% if n %}Os {{ n }} comentário{{ n|pluralize }} vinculado{{ n|pluralize }} a ele também {{ n|pluralize:"será,serão" }} excluído{{ n|pluralize }}.{% endif %}{% endwith %}
+  A ação não tem volta.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="botao perigo">Excluir</button>
+    <a class="botao secundario" href="{% url 'posts:edit' object.slug %}">Cancelar</a>
+  </form>
+</div>
+{% endblock %}
