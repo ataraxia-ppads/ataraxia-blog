@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 import os
+import warnings
 from pathlib import Path
 
 import dj_database_url
@@ -78,7 +79,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # As aplicações do projeto entram aqui conforme forem criadas.
+    'accounts',
+    'posts',
+    'comments',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +147,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -168,12 +172,21 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 MEDIA_URL = 'media/'
 MEDIA_ROOT = Path(os.environ.get('DJANGO_MEDIA_ROOT', BASE_DIR / 'media'))
 
+# A pasta de estáticos coletados só existe depois do collectstatic, que é passo
+# da publicação. Sem ela, o WhiteNoise avisa a cada execução dos testes.
+warnings.filterwarnings('ignore', message='No directory at', module='whitenoise.base')
+
 STORAGES = {
     'default': {
         'BACKEND': 'django.core.files.storage.FileSystemStorage',
     },
+    # O manifesto só existe depois do collectstatic, que é passo da publicação.
+    # Em desenvolvimento e nos testes os arquivos são servidos como estão.
     'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        'BACKEND': (
+            'django.contrib.staticfiles.storage.StaticFilesStorage' if DEBUG
+            else 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+        ),
     },
 }
 

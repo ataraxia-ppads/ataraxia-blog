@@ -1,0 +1,25 @@
+# Roda os testes automatizados e a verificação de estilo a cada Pull Request,
+# antes da revisão, como prevê o plano de testes.
+name: testes
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+      - run: pip install -r requirements.txt pycodestyle
+      - name: Estilo (PEP 8)
+        run: python -m pycodestyle accounts posts comments config
+      - name: Migrações em dia
+        run: python manage.py makemigrations --check --dry-run
+      - name: Testes
+        run: python manage.py test
