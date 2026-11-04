@@ -26,13 +26,13 @@ O recorte completo está em [`docs/visao-geral.md`](docs/visao-geral.md).
 
 ## Estado atual
 
-O repositório tem o projeto Django, a configuração de ambiente, a documentação
-de análise (interessados, objetivos, casos de uso e arquitetura) e a de desenho
-(modelo de domínio, sequência de sistema, protótipos de tela, classes de projeto
-e sequência de projeto).
+Primeira iteração da construção. As três aplicações, `accounts`, `posts` e
+`comments`, estão implementadas: cadastro e autenticação, perfil, escrita,
+publicação, leitura, busca e comentários, com a moderação e a gestão de usuários
+pelo admin do Django.
 
-As três aplicações, `accounts`, `posts` e `comments`, ainda não foram criadas. Cada uma tem um dono, e a criação começa depois que o desenho
-fechar.
+Os testes automatizados rodam a cada Pull Request, e a documentação de análise e
+de desenho está em [`docs/`](docs/).
 
 A hospedagem é tratada fora deste repositório e não interfere no
 desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
@@ -47,11 +47,19 @@ python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
+python manage.py carregar_demo   # textos de exemplo, opcional
 python manage.py runserver
 ```
 
+O site abre em `http://127.0.0.1:8000/`. Para rodar os testes:
+
+```bash
+python manage.py test
+```
+
 O painel de administração fica em `http://127.0.0.1:8000/admin/`. Para entrar,
-crie um usuário com `python manage.py createsuperuser`.
+crie um usuário com `python manage.py createsuperuser`. Para dar a alguém o papel
+de moderador, marque nele o acesso ao admin e inclua-o no grupo `Moderadores`.
 
 Nenhuma configuração é obrigatória em desenvolvimento. Se precisar mudar algo,
 copie `.env.example` para `.env` e edite.
@@ -102,9 +110,6 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 
 ## Próximos passos
 
-1. Revisar a documentação e propor correções por Pull Request.
-2. Criar as três aplicações e implementar os modelos descritos em
-   [`docs/classes-de-projeto/`](docs/classes-de-projeto/).
-3. Construir as telas seguindo os [protótipos](docs/prototipos/).
-4. Carregar o conteúdo de demonstração e executar o roteiro de testes.
-5. Publicar em `blog.ataraxia.dev`.
+1. Executar o roteiro de testes manuais sobre a versão publicada.
+2. Publicar em `blog.ataraxia.dev`.
+3. Revisar o código por Pull Request e propor correções.

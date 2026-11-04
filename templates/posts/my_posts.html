@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Meus textos · Ataraxia{% endblock %}
+{% block content %}
+<div class="cabecalho-pagina">
+  <h1 class="titulo-pagina">Meus textos</h1>
+  <a class="botao" href="{% url 'posts:create' %}">Escrever texto</a>
+</div>
+{% if posts %}
+<div class="tabela-rolavel">
+  <table class="tabela">
+    <thead><tr><th scope="col">Título</th><th scope="col">Situação</th><th scope="col">Atualizado em</th><th scope="col">Ações</th></tr></thead>
+    <tbody>
+    {% for post in posts %}
+      <tr>
+        <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></td>
+        <td><span class="situacao {{ post.status|lower }}">{{ post.get_status_display }}</span></td>
+        <td>{{ post.updated_at|date:'d/m/Y H:i' }}</td>
+        <td class="acoes">
+          <a href="{% url 'posts:edit' post.slug %}">editar</a>
+          {% if post.is_visible %}
+            <form method="post" action="{% url 'posts:unpublish' post.slug %}">{% csrf_token %}<button type="submit" class="link">despublicar</button></form>
+          {% else %}
+            <form method="post" action="{% url 'posts:publish' post.slug %}">{% csrf_token %}<button type="submit" class="link">publicar</button></form>
+          {% endif %}
+          <a class="perigo" href="{% url 'posts:delete' post.slug %}">excluir</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% include 'includes/paginacao.html' %}
+{% else %}
+  <p class="vazio">Você ainda não escreveu nenhum texto.</p>
+{% endif %}
+{% endblock %}

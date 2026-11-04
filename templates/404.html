@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Página não encontrada · Ataraxia{% endblock %}
+{% block content %}
+<div class="caixa erro-pagina">
+  <h1>Página não encontrada</h1>
+  <p>O endereço não existe, ou o texto não está disponível.</p>
+  <a class="botao" href="{% url 'posts:list' %}">Ir para a página inicial</a>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Editar perfil · Ataraxia{% endblock %}
+{% block content %}
+<div class="caixa formulario-estreito">
+  <h1>Editar perfil</h1>
+  <form method="post" class="formulario">
+    {% csrf_token %}
+    {% for field in form %}{% include 'includes/campo.html' %}{% endfor %}
+    <button type="submit" class="botao">Salvar</button>
+    <a class="botao secundario" href="{{ object.get_absolute_url }}">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

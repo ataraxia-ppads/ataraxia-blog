@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load blog %}
+{% block title %}{{ post.title }} · Ataraxia{% endblock %}
+{% block content %}
+<article class="texto">
+  <header>
+    {% if not post.is_visible %}<p class="selo">Rascunho, visível só para você</p>{% endif %}
+    <h1>{{ post.title }}</h1>
+    <p class="meta">por <a href="{{ post.author.profile.get_absolute_url }}">{{ post.author.profile }}</a>{% if post.published_at %}, <time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:'j \d\e F \d\e Y'|lower }}</time>{% endif %}</p>
+    {% if user == post.author %}<p><a class="botao secundario" href="{% url 'posts:edit' post.slug %}">Editar</a></p>{% endif %}
+  </header>
+  <div class="corpo">{{ post.body|markdown }}</div>
+</article>
+
+<section class="comentarios" aria-labelledby="titulo-comentarios">
+  <h2 id="titulo-comentarios">Comentários</h2>
+  {% for comment in comments %}
+    <article class="comentario" id="comentario-{{ comment.pk }}">
+      <p class="meta"><a href="{{ comment.author.profile.get_absolute_url }}">{{ comment.author.profile }}</a>, <time datetime="{{ comment.created_at|date:'c' }}">{{ comment.created_at|date:'j \d\e F \d\e Y, H:i'|lower }}</time></p>
+      <p>{{ comment.body|linebreaksbr }}</p>
+    </article>
+  {% empty %}
+    <p class="vazio">Ainda não há comentários.</p>
+  {% endfor %}
+
+  {% if post.is_visible %}
+    {% if not post.allow_comments %}
+      <p class="aviso">Este texto não aceita novos comentários.</p>
+    {% elif user.is_authenticated %}
+      <form method="post" action="{% url 'comments:create' post.slug %}" class="formulario">
+        {% csrf_token %}
+        {% include 'includes/campo.html' with field=comment_form.body %}
+        <button type="submit" class="botao">Comentar</button>
+      </form>
+    {% else %}
+      <p class="aviso">Para comentar, <a href="{% url 'accounts:login' %}?next={{ request.path|urlencode }}">entre</a> ou <a href="{% url 'accounts:signup' %}">cadastre-se</a>.</p>
+    {% endif %}
+  {% endif %}
+</section>
+{% endblock %}

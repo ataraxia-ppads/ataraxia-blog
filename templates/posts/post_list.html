@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load blog %}
+{% block title %}{% if term %}Busca: {{ term }} · {% endif %}Ataraxia{% endblock %}
+{% block content %}
+{% if term %}
+  <div class="aviso busca-estado">
+    {% if paginator.count %}
+      <p><strong>{{ paginator.count }}</strong> texto{{ paginator.count|pluralize }} encontrado{{ paginator.count|pluralize }} para <strong>{{ term }}</strong>, no título ou no corpo.</p>
+      <a class="botao secundario" href="{% url 'posts:list' %}">Limpar busca</a>
+    {% else %}
+      <p>Nenhum texto encontrado para <strong>{{ term }}</strong>.</p>
+      <a class="botao secundario" href="{% url 'posts:list' %}">Ver todos os textos</a>
+    {% endif %}
+  </div>
+{% else %}
+  <h1 class="titulo-pagina">Textos publicados</h1>
+{% endif %}
+
+{% for post in posts %}
+  <article class="cartao">
+    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+    <p class="meta">por <a href="{{ post.author.profile.get_absolute_url }}">{{ post.author.profile }}</a>, <time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:'j \d\e F \d\e Y'|lower }}</time></p>
+    <p>{{ post.body|excerpt }}</p>
+  </article>
+{% empty %}
+  {% if not term %}<p class="vazio">Ainda não há textos publicados.</p>{% endif %}
+{% endfor %}
+
+{% include 'includes/paginacao.html' %}
+{% endblock %}

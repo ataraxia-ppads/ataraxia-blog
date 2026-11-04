@@ -1,0 +1,10 @@
+<div class="campo{% if field.errors %} com-erro{% endif %}{% if field.field.widget.input_type == 'checkbox' %} campo-marcacao{% endif %}">
+  {% if field.field.widget.input_type == 'checkbox' %}
+    {{ field }} <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+  {% else %}
+    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {{ field }}
+  {% endif %}
+  {% if field.help_text %}<div class="ajuda" id="{{ field.auto_id }}_helptext">{{ field.help_text|safe }}</div>{% endif %}
+  {% for error in field.errors %}<p class="erro" role="alert">{{ error }}</p>{% endfor %}
+</div>

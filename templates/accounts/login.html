@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Entrar · Ataraxia{% endblock %}
+{% block content %}
+<div class="caixa formulario-estreito">
+  <h1>Entrar</h1>
+  <form method="post" class="formulario">
+    {% csrf_token %}
+    {% include 'includes/erros-gerais.html' %}
+    {% for field in form %}{% include 'includes/campo.html' %}{% endfor %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="botao">Entrar</button>
+  </form>
+  <p>Ainda não tem conta? <a href="{% url 'accounts:signup' %}">Cadastre-se</a>.</p>
+</div>
+{% endblock %}

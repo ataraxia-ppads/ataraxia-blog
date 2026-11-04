@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ profile }} · Ataraxia{% endblock %}
+{% block content %}
+<section class="perfil caixa">
+  <h1>{{ profile }}</h1>
+  <p class="meta">@{{ profile.user.username }}</p>
+  {% if profile.bio %}<p>{{ profile.bio|linebreaksbr }}</p>{% endif %}
+  {% if user == profile.user %}<a class="botao secundario" href="{% url 'accounts:profile_edit' %}">Editar perfil</a>{% endif %}
+</section>
+<h2>Textos publicados</h2>
+{% for post in posts %}
+  <article class="cartao">
+    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+    <p class="meta"><time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:'j \d\e F \d\e Y'|lower }}</time></p>
+  </article>
+{% empty %}
+  <p class="vazio">Nenhum texto publicado ainda.</p>
+{% endfor %}
+{% endblock %}
