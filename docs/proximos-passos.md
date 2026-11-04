@@ -12,3 +12,10 @@ seguintes do projeto, na ordem prevista:
 
 O acompanhamento das tarefas é feito no quadro do projeto, cujo endereço consta
 no capítulo 1.
+
+## Iteração 2
+
+A Iteração 1 está marcada na tag `v1`. A Iteração 2 é desenvolvida no branch
+`iteracao2` e começa pela execução do plano de testes do caso de uso UC08
+(Manter post), com os casos CT08.06 e CT08.07 de autorização como prioridade.
+
