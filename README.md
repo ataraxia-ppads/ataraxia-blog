@@ -44,6 +44,14 @@ de desenho está em [`docs/`](docs/).
 A hospedagem é tratada fora deste repositório e não interfere no
 desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 
+## Versões e iterações
+
+- Tag `v1`: código-fonte conforme a entrega da Iteração 1 da construção.
+- Tag `v2`: código-fonte conforme a entrega da Iteração 2 da construção.
+- Branch `iteracao2`: modificação de exercício em dois arquivos, integrada ao
+  `main` pelo Pull Request #18 (a branch é mantida para conferência).
+- Branch `iteracao2-codigo`: código da Iteração 2, que a tag `v2` marca.
+
 ## Como rodar
 
 Passo a passo para rodar o sistema no seu computador. Não é preciso instalar
