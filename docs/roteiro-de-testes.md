@@ -90,4 +90,4 @@ que aconteceu na coluna de observação e abra a pendência no quadro.
 
 | Data | Quem executou | Versão testada | Falhas encontradas |
 | ---- | ------------- | -------------- | ------------------ |
-| | | | |
+| 04/11/2026 | Renan, com apoio do Claude Code (execução automatizada, sem navegador) | v2 | Nenhuma. Detalhes e pendências em [`plano-de-testes.md`](plano-de-testes.md), capítulo 6 |
