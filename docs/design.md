@@ -59,8 +59,6 @@ nunca foi prometido.
 
 ## O que não foi decidido
 
-- Aparência: paleta, tipografia e espaçamento. Os protótipos definem estrutura
-  de tela, não desenho visual.
 - Como e quando o sistema vai ao ar.
 
 ## O que a primeira entrega exige

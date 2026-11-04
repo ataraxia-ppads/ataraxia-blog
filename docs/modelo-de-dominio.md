@@ -42,6 +42,7 @@ classDiagram
       +situação situação
       +booleano aceitaComentários
       +dataHora criadoEm
+      +dataHora atualizadoEm
       +dataHora publicadoEm
     }
     class Comentário {
@@ -82,8 +83,7 @@ stateDiagram-v2
 
 **Figura 3 — Ciclo de vida do post**
 
-Todo post nasce rascunho (RN12), e só o autor o enxerga nesse estado (RN01). A
-publicação é ato explícito, descrito em UC09, e é reversível.
+Todo post nasce rascunho (RN12), e só o autor o enxerga nesse estado (RN01). A publicação é ato explícito, descrito em UC09, e é reversível. Quem despublica e publica de novo mantém o endereço e a data da primeira publicação.
 
 O comentário tem ciclo mais simples, com dois valores de `aprovado`. Nasce
 aprovado e visível, e a moderação o retira do ar (RN14). Não há estado
