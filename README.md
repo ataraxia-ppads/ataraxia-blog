@@ -50,8 +50,7 @@ desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 - Tag `v2`: código-fonte conforme a entrega da Iteração 2 da construção.
 - Branch `iteracao2`: modificação de exercício em dois arquivos, integrada ao
   `main` pelo Pull Request #18 (a branch é mantida para conferência).
-- Branch `iteracao2-codigo`: código da Iteração 2, integrado ao `main` por
-  Pull Request.
+- Pull Request #19: código da Iteração 2, integrado ao `main`.
 
 ## Como rodar
 
@@ -179,6 +178,7 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | [`docs/arquitetura.md`](docs/arquitetura.md) | Decomposição em aplicações, dependências e stack |
 | [`docs/classes-de-projeto/`](docs/classes-de-projeto/) | As classes de cada aplicação, por camada |
 | [`docs/sequencia-de-projeto/`](docs/sequencia-de-projeto/) | Os mesmos fluxos, com as classes que os executam |
+| [`docs/construcao.md`](docs/construcao.md) | As duas iterações, as alterações desde a segunda versão e a verificação |
 | [`docs/design.md`](docs/design.md) | Decisões técnicas, custo de mudar cada uma e pendências |
 | [`docs/plano-de-testes.md`](docs/plano-de-testes.md) | Plano de testes revisado: casos, rastreabilidade e resultado da execução |
 | [`docs/roteiro-de-testes.md`](docs/roteiro-de-testes.md) | Verificação manual de cada caso de uso |

@@ -26,24 +26,23 @@ escopo exige isso.
 
 ```mermaid
 flowchart LR
-    comments --> posts
-    comments --> accounts
+    comments -->|modelo e view| posts
+    posts -->|view da leitura| comments
+    accounts -->|view do perfil| posts
 ```
 
 **Figura 14 — Dependências entre aplicações**
 
-`accounts` e `posts` não dependem de ninguém, e é por isso que são as duas que
-podem ser escritas primeiro.
-
-As referências entre aplicações são feitas por string, sem `import`:
+Nos modelos, a única dependência entre aplicações é a de `Comment` para `Post`. O autor de `Post` e de `Comment` aponta para o `User` do Django, e não para `accounts`. A referência é feita por string, sem `import`:
 
 ```python
 class Comment(models.Model):
     post = models.ForeignKey('posts.Post', on_delete=models.CASCADE)
 ```
 
-Com `import`, a ordem do grafo viraria ordem de trabalho e as pessoas ficariam
-em fila. Com string, as três aplicações são escritas em paralelo.
+Com `import`, a ordem do grafo viraria ordem de trabalho e as pessoas ficariam em fila. Com string, as três aplicações são escritas em paralelo.
+
+Nas views, as aplicações se conhecem mais. A página do texto, em `posts`, exibe os comentários e o formulário de `comments`. A gravação do comentário confere o `Post`. O perfil público, em `accounts`, lista os textos do autor. As duas setas entre `posts` e `comments` não formam ciclo de importação, porque nenhum módulo de modelos importa outra aplicação.
 
 ## Interface de moderação
 
@@ -86,6 +85,7 @@ uma segunda linguagem para entregar telas simples.
 | Banco em desenvolvimento | SQLite | Acompanha o Django, dispensa instalação em cada máquina |
 | Banco em produção | PostgreSQL | Não fica preso aos limites do SQLite em escrita concorrente |
 | Interface | Templates do Django | Sem segundo framework |
+| Corpo do texto | `markdown` e `nh3` | Formatação sem editor visual, com o HTML gerado higienizado |
 | Arquivos estáticos | WhiteNoise | Serve estáticos sem depender de servidor web separado |
 | Versionamento | Git e GitHub | |
 

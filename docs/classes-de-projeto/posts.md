@@ -10,11 +10,14 @@ classDiagram
         +CharField status
         +ForeignKey author
         +DateTimeField created_at
+        +DateTimeField updated_at
         +DateTimeField published_at
         +BooleanField allow_comments
         +publish()
         +unpublish()
         +is_visible()
+        +is_visible_to()
+        +save()
         +get_absolute_url()
     }
     class PublishedManager {
@@ -27,8 +30,7 @@ classDiagram
         +CharField title
         +TextField body
         +BooleanField allow_comments
-        +clean_title()
-        +save()
+        +clean_body()
     }
     class PostListView {
         <<View>>
@@ -39,6 +41,16 @@ classDiagram
         <<View>>
         +get_object()
     }
+    class MyPostsView {
+        <<View>>
+        +paginate_by
+        +get_queryset()
+    }
+    class AuthorRequiredMixin {
+        <<View>>
+        +get_object()
+        +test_func()
+    }
     class PostCreateView {
         <<View>>
         +form_class
@@ -46,29 +58,35 @@ classDiagram
     }
     class PostUpdateView {
         <<View>>
-        +test_func()
+        +form_class
         +form_valid()
     }
     class PostDeleteView {
         <<View>>
-        +test_func()
-        +delete()
+        +form_valid()
+    }
+    class PostStatusView {
+        <<View>>
+        +publish
+        +post()
     }
 
     Post --> PublishedManager : published
-    PostListView --> Post : lista
+    PostListView --> PublishedManager : consulta
     PostDetailView --> Post : recupera
+    MyPostsView --> Post : lista
     PostCreateView --> PostForm : usa
     PostUpdateView --> PostForm : usa
+    AuthorRequiredMixin <|-- PostUpdateView
+    AuthorRequiredMixin <|-- PostDeleteView
+    AuthorRequiredMixin <|-- PostStatusView
     PostDeleteView --> Post : exclui
+    PostStatusView --> Post : publica
 ```
 
 **Figura 17 — Classes de projeto de posts**
 
-`PublishedManager` existe para que nenhuma view precise lembrar de filtrar
-rascunho. A listagem, a busca e a página do texto consultam por ele, e um
-rascunho só aparece por engano se alguém consultar o gerenciador padrão de
-propósito.
+`PublishedManager` existe para que nenhuma view precise lembrar de filtrar rascunho. A listagem, a busca, o perfil público e a gravação de comentário consultam por ele. A página do texto é a exceção: parte de `Post.objects` e confere `is_visible_to()`, porque o autor precisa abrir o próprio rascunho.
 
 `search()` procura o termo no título e no corpo, sem diferenciar maiúsculas de
 minúsculas, e parte do mesmo conjunto de publicados. Rascunho, portanto, nunca
@@ -78,10 +96,6 @@ aparece em resultado de busca.
 encerrar a discussão de um texto, que é o fluxo A2 de UC10 e a regra RN17. Os
 comentários já feitos continuam visíveis.
 
-`is_visible()` é a regra RN01 escrita uma vez, no modelo. `publish()` e
-`unpublish()` guardam a transição de situação junto com a data de publicação,
-para que os dois nunca se contradigam.
+`is_visible_to()` é a regra RN01 escrita uma vez, no modelo. `publish()` e `unpublish()` guardam a transição de situação, e a data registrada é a da primeira publicação. `save()` gera o slug, com sufixo numérico quando já existe outro igual, e deixa de alterá-lo depois da primeira publicação, conforme RN10.
 
-`test_func()` em `PostUpdateView` e `PostDeleteView` é a verificação de autoria
-exigida por RN09, feita no servidor. Esconder o botão na tela não substitui
-isso.
+`test_func()`, em `AuthorRequiredMixin`, é a verificação de autoria exigida por RN09, feita no servidor. `PostUpdateView`, `PostDeleteView` e `PostStatusView` a herdam, e esconder o botão na tela não substitui isso.

@@ -1,9 +1,6 @@
 # Protótipos de tela
 
-Os protótipos definem o que aparece em cada tela e onde, não a aparência final.
-São wireframes: caixa, linha e rótulo, sem cor, sem logotipo e sem tipografia
-definida. Layout, paleta e tipografia continuam em aberto, como registrado nas
-decisões técnicas do projeto.
+Os protótipos definem o que aparece em cada tela e onde, não a aparência final. São wireframes: caixa, linha e rótulo, sem cor, sem logotipo e sem tipografia definida. A aparência foi definida na construção, nos estilos em `static/css/ataraxia.css`.
 
 Cinco telas cobrem o caminho de visitante e o de autor.
 
@@ -17,10 +14,9 @@ Cinco telas cobrem o caminho de visitante e o de autor.
 | Editor de texto | UC08, UC09 | Autor |
 | Meus textos | UC08, UC09 | Autor |
 
-Moderar comentário e gerenciar usuários (UC11 e UC13) não têm protótipo porque
-são atendidos pelo admin do Django, decisão registrada no capítulo de
-arquitetura. Desenhar tela para eles seria desenhar tela que não
-vai ser construída.
+Moderar comentário e gerenciar usuários (UC11 e UC13) não têm protótipo porque são atendidos pelo admin do Django, decisão registrada no capítulo de arquitetura.
+
+A construção acrescentou telas simples, que seguem o mesmo layout e não têm protótipo: entrada, perfil público, edição de perfil, confirmação de exclusão e as páginas de erro 403 e 404.
 
 A fonte de cada protótipo é o arquivo `.html` ao lado, e o `.png` é a exportação
 que entra neste documento. Para alterar uma tela, edite o `.html` e rode
@@ -68,7 +64,9 @@ em conflito destacado e o formulário devolvido preenchido, sem a senha.
 Título e corpo ocupam a maior parte da tela, e o que é decisão de publicação
 fica na coluna da direita, separado da escrita, junto com a opção de aceitar
 comentários. Salvar rascunho e publicar são botões distintos porque são atos
-distintos: todo texto nasce rascunho, e a publicação é explícita.
+distintos: todo texto nasce rascunho, e a publicação é explícita. Na tela
+construída, publicar aparece depois do primeiro salvamento, porque antes disso
+ainda não há texto para publicar.
 
 ## Meus textos
 

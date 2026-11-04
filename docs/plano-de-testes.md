@@ -80,7 +80,7 @@ Os testes manuais são feitos nas versões atuais do Chrome e do Firefox, em tel
 
 ### 2.5 Dados de teste
 
-A base de teste é o conteúdo de demonstração do repositório, carregado por fixture: 10 textos, um deles em rascunho, com datas de publicação diferentes entre si, uma palavra incomum no título de um único texto e outra no corpo de um texto diferente. A esses dados somam-se quatro usuários fixos. Os testes automatizados criam os próprios dados em cada teste e não dependem da fixture, para que a ordem de execução não altere o resultado.
+A base de teste é o conteúdo de demonstração do repositório, carregado pelo comando `carregar_demo`: 10 textos, um deles em rascunho, com datas de publicação diferentes entre si, uma palavra incomum no título de um único texto e outra no corpo de um texto diferente. A esses dados somam-se quatro usuários fixos. Os testes automatizados criam os próprios dados em cada teste e não dependem da fixture, para que a ordem de execução não altere o resultado.
 
 | Usuário | Papel | Uso nos testes |
 | --- | --- | --- |
@@ -91,7 +91,7 @@ A base de teste é o conteúdo de demonstração do repositório, carregado por 
 
 ### 2.6 Critérios
 
-• Entrada. A aplicação a testar está integrada ao main, as migrações aplicam sem erro e a fixture carrega.
+• Entrada. A aplicação a testar está integrada ao main, as migrações aplicam sem erro e o comando `carregar_demo` roda.
 
 • Suspensão. Se a listagem (UC01) ou a autenticação (UC06) falha, a execução manual é suspensa, porque quase todos os outros casos dependem delas.
 
@@ -336,7 +336,7 @@ Medição com 509 textos publicados (500 acrescentados aos 9 da demonstração),
 | Caso | Assunto | Situação |
 | --- | --- | --- |
 | CTN01 | Usabilidade em 360 px | Exige o navegador com a tela emulada. Pendente para o percurso de Rafaela. |
-| CTN07 | Portabilidade | Windows executado. Linux será coberto pela verificação contínua quando o Pull Request da iteração for aberto; macOS e Firefox não foram executados. |
+| CTN07 | Portabilidade | Windows executado. Linux coberto pela verificação contínua, em Ubuntu com Python 3.14, e por execução local; macOS e Firefox não foram executados. |
 | CTN11 | Contraste e teclado | Exige o verificador de acessibilidade do navegador. Pendente. |
 | Percurso de fumaça | Seção 2.8 | Percurso no navegador sobre a versão publicada. Pendente: o sistema ainda não foi publicado em blog.ataraxia.dev. |
 

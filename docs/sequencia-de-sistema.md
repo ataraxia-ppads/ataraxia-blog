@@ -46,8 +46,7 @@ sequenceDiagram
 
 **Figura 4 — Sequência de sistema do UC02**
 
-O rascunho e o endereço inexistente produzem a mesma resposta, e é o que RN01
-exige: um 403 confirmaria que o texto existe.
+Para quem não é o autor, o rascunho e o endereço inexistente produzem a mesma resposta, e é o que RN01 exige: um 403 confirmaria que o texto existe.
 
 ## UC03 — Buscar post
 

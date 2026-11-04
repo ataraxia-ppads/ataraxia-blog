@@ -2,8 +2,8 @@
 
 Os diagramas de sequência de sistema mostram o que o usuário pede e o que o
 sistema responde, com o sistema fechado numa caixa só. Aqui a caixa é aberta: os
-mesmos fluxos aparecem com as classes que vão executá-los, na ordem em que
-trocam mensagem.
+mesmos fluxos aparecem com as classes que os executam, na ordem em que trocam
+mensagem.
 
 Os participantes seguem sempre o mesmo caminho, que é o do Django:
 
