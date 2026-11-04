@@ -37,6 +37,11 @@ de desenho está em [`docs/`](docs/).
 A hospedagem é tratada fora deste repositório e não interfere no
 desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 
+## Versões e iterações
+
+- Tag `v1`: código-fonte conforme a entrega da Iteração 1 da construção.
+- Branch `iteracao2`: trabalho da Iteração 2, integrado ao `main` por merge.
+
 ## Como rodar
 
 ```bash
