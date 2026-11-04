@@ -50,7 +50,8 @@ desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 - Tag `v2`: código-fonte conforme a entrega da Iteração 2 da construção.
 - Branch `iteracao2`: modificação de exercício em dois arquivos, integrada ao
   `main` pelo Pull Request #18 (a branch é mantida para conferência).
-- Branch `iteracao2-codigo`: código da Iteração 2, que a tag `v2` marca.
+- Branch `iteracao2-codigo`: código da Iteração 2, integrado ao `main` por
+  Pull Request.
 
 ## Como rodar
 
