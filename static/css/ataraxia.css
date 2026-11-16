@@ -114,19 +114,32 @@ h1, h2, h3 { font-family: var(--titulo); line-height: 1.2; letter-spacing: -0.02
 .marca-icone circle { fill: var(--texto); }
 .marca-icone path { fill: none; stroke: var(--fundo); stroke-width: 2.2; stroke-linecap: round; }
 
+/* A busca começa como a lupa. Clicar nela leva o foco ao campo, e com o foco
+   o campo se estende para a esquerda. Com um termo buscado, fica aberta. */
 .busca {
-  flex: 0 1 auto; width: 240px; display: flex; align-items: center; gap: 10px;
-  background: var(--campo); border-radius: 999px; padding: 0 16px; min-height: 44px;
-  color: var(--suave); transition: width .28s ease;
+  flex: 0 1 auto; width: 44px; display: flex; align-items: center;
+  border-radius: 999px; min-height: 44px; color: var(--suave);
+  transition: width .28s ease, background-color .28s ease;
 }
-/* Ao receber o foco, o campo cresce para a esquerda, sobre o espaço vazio. */
-.busca:focus-within { width: min(440px, 100%); }
-@media (prefers-reduced-motion: reduce) { .busca { transition: none; } }
-.busca:focus-within { outline: 3px solid var(--texto); outline-offset: 2px; }
+.busca-lupa {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+}
+.busca-lupa .icone { width: 20px; height: 20px; }
+.busca-lupa:hover { color: var(--texto); background: var(--campo); }
 .busca input[type=search] {
-  flex: 1; min-width: 0; border: 0; background: transparent; padding: 0;
-  min-height: 40px; font-size: .95rem; color: var(--texto); outline: none;
+  flex: 1; width: 0; min-width: 0; border: 0; background: transparent; padding: 0;
+  min-height: 40px; font-size: .95rem; color: var(--texto); outline: none; opacity: 0;
 }
+.busca:focus-within, .busca:has(input:not(:placeholder-shown)) {
+  width: min(440px, 100%); background: var(--campo);
+}
+.busca:focus-within input[type=search], .busca:has(input:not(:placeholder-shown)) input[type=search] {
+  padding-right: 16px; opacity: 1;
+}
+.busca:focus-within .busca-lupa:hover, .busca:has(input:not(:placeholder-shown)) .busca-lupa:hover { background: none; }
+.busca:focus-within { outline: 3px solid var(--texto); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .busca { transition: none; } }
 .busca input::placeholder { color: var(--suave); opacity: 1; }
 
 .navegacao { display: flex; align-items: center; gap: 8px; }
@@ -173,8 +186,9 @@ h1, h2, h3 { font-family: var(--titulo); line-height: 1.2; letter-spacing: -0.02
 .menu-lista a:hover, .menu-lista button:hover { background: var(--campo); color: var(--texto); }
 .menu-lista button { color: var(--suave); }
 
+/* Em tela estreita a busca aberta ocupa uma linha própria, abaixo do topo. */
 @media (max-width: 640px) {
-  .busca, .busca:focus-within { order: 3; flex: 1 1 100%; width: auto; }
+  .busca:focus-within, .busca:has(input:not(:placeholder-shown)) { order: 3; flex: 1 1 100%; width: auto; }
 }
 
 /* Avatar ---------------------------------------------------------------- */
