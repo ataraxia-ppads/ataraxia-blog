@@ -11,6 +11,7 @@ from django.urls import reverse
 from comments.models import Comment
 
 from .models import Post
+from .templatetags.blog import initials, reading_time
 
 User = get_user_model()
 
@@ -236,3 +237,15 @@ class LocalizationTests(PostTestCase):
         post.save()
         response = self.client.get(post.get_absolute_url())
         self.assertContains(response, '14 de março de 2026')
+
+
+class TemplateFilterTests(TestCase):
+    """Filtros de apresentação: tempo de leitura e iniciais do avatar."""
+
+    def test_tempo_de_leitura_nunca_menor_que_um_minuto(self):
+        self.assertEqual(reading_time('Curto.'), 1)
+        self.assertEqual(reading_time('palavra ' * 600), 3)
+
+    def test_iniciais_do_nome_e_do_usuario(self):
+        self.assertEqual(initials('Ana Souza Lima'), 'AS')
+        self.assertEqual(initials('bruno'), 'BR')

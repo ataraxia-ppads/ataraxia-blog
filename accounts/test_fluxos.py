@@ -20,13 +20,15 @@ class FlowTests(TestCase):
         response = self.client.get(reverse('accounts:signup'))
         self.assertContains(response, f'href="{reverse("accounts:login")}"')
 
-    def test_ct06_01_entrar_mostra_o_nome_da_autora(self):
+    def test_ct06_01_entrar_mostra_o_perfil_da_autora(self):
         response = self.client.post(reverse('accounts:login'),
                                     {'username': 'ana', 'password': 'Senha#forte1'},
                                     follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Sair')
-        self.assertContains(response, '>ana</a>')
+        # O topo traz o vínculo do perfil, com as iniciais no avatar.
+        self.assertContains(response, 'aria-label="Perfil de ana"')
+        self.assertContains(response, '>AN</span>')
 
     def test_ct06_05_depois_de_entrar_volta_ao_editor(self):
         editor = reverse('posts:create')

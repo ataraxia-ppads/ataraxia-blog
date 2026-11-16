@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
@@ -30,6 +31,14 @@ class PostListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['term'] = self.term
+        if not self.term and context['page_obj'].number == 1:
+            # Faixa "Quem escreve" da primeira página: uma consulta só,
+            # qualquer que seja a quantidade de textos.
+            context['authors'] = (
+                get_user_model().objects
+                .filter(pk__in=Post.published.values('author'))
+                .select_related('profile').order_by('username')
+            )
         return context
 
 

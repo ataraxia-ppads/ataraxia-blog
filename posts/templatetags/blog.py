@@ -25,3 +25,22 @@ def excerpt(text, words=40):
     """Resumo da listagem: o texto já renderizado, sem marcação, cortado."""
     plain = nh3.clean(md.markdown(text), tags=set())
     return Truncator(plain).words(words, truncate=' …')
+
+
+WORDS_PER_MINUTE = 200
+
+
+@register.filter
+def reading_time(text):
+    """Minutos de leitura, a 200 palavras por minuto e nunca menos que um."""
+    return max(1, round(len(text.split()) / WORDS_PER_MINUTE))
+
+
+@register.filter
+def initials(profile):
+    """Iniciais do avatar: as duas primeiras palavras do nome, ou as duas
+    primeiras letras quando o nome tem uma palavra só."""
+    words = str(profile).split()
+    if len(words) >= 2:
+        return (words[0][0] + words[1][0]).upper()
+    return str(profile)[:2].upper()

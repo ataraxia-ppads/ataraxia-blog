@@ -41,9 +41,10 @@ class PerformanceTests(PostTestCase):
         self.assertLessEqual(max(tempos), self.LIMIT_SECONDS, tempos)
 
     def test_ctn02_consultas_nao_crescem_com_a_quantidade_de_textos(self):
-        # Uma consulta para a contagem e uma para a página, com autor e perfil
-        # trazidos por junção: nada de consulta por texto listado.
-        with self.assertNumQueries(2):
+        # Uma consulta para a contagem, uma para a página, com autor e perfil
+        # trazidos por junção, e uma para a faixa de autores: nada de consulta
+        # por texto listado.
+        with self.assertNumQueries(3):
             self.client.get(reverse('posts:list'))
 
     def test_ctn02_busca_com_500_textos(self):

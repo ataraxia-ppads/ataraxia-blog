@@ -3,8 +3,8 @@
     python manage.py carregar_demo
 
 Pode ser rodado mais de uma vez: o que já existe é mantido. Os autores de
-demonstração não têm senha utilizável, então ninguém entra com eles em
-produção; servem só para assinar os textos.
+demonstração são os integrantes do grupo e não têm senha utilizável, então
+ninguém entra com eles em produção; servem só para assinar os textos.
 """
 
 from datetime import datetime
@@ -20,97 +20,96 @@ from posts.models import Post
 TZ = ZoneInfo('America/Sao_Paulo')
 
 AUTHORS = {
-    'helena': ('Helena Prado', 'Desenvolvedora backend. Escreve sobre Python e carreira.'),
-    'marcos': ('Marcos Tavares', 'Professor de matemática que aprendeu a programar aos 40.'),
-    'julia': ('Júlia Nogueira', 'Analista de dados e leitora compulsiva.'),
+    'pedro': ('Pedro Emmanuel Esteves', 'Cuida de posts, da configuração e da publicação.'),
+    'renan': ('Renan Jordão', 'Cuida de contas e da arquitetura do Ataraxia.'),
+    'rafaela': ('Rafaela Rarume', 'Cuida dos diagramas, do quadro e do roteiro de testes.'),
+    'felipe': ('Felipe Amorim', 'Cuida da busca do Ataraxia.'),
+    'gabriel': ('Gabriel Vieira Ferreira', 'Cuida dos comentários do Ataraxia.'),
 }
 
 # Exigências do roteiro de testes: um rascunho, uma palavra incomum no título
 # de um único texto (ornitorrinco), outra no corpo de outro (quimera), e datas
 # de publicação diferentes entre si.
 POSTS = [
-    ('helena', 'Por que aprendi Python antes de qualquer outra linguagem', (2026, 3, 14), [
-        'Quando decidi mudar de área, a primeira pergunta foi por onde começar. Havia '
-        'listas com dez linguagens, e cada uma prometia ser a definitiva.',
-        'Escolhi Python por um motivo pouco romântico: era a que tinha mais material em '
-        'português. Aprender programação já é difícil o bastante sem somar a barreira do '
-        'idioma a cada dúvida.',
-        'Dois anos depois a escolha se provou certa por outro motivo. A comunidade é '
-        'grande, então toda dúvida que tive alguém já teve antes, e escreveu a resposta.',
+    ('pedro', 'O que é o Ataraxia e por que um blog', (2026, 8, 24), [
+        'O Ataraxia é uma plataforma de blog: qualquer pessoa lê, quem se cadastra '
+        'escreve e moderadores cuidam do que sai do ar.',
+        'Um blog é um bom objeto de estudo porque todo mundo sabe o que ele faz. Sobra '
+        'atenção para a análise, o desenho, a construção e o teste.',
+        'O nome vem do grego e quer dizer tranquilidade.',
     ]),
-    ('marcos', 'O que o ornitorrinco ensina sobre classificar as coisas', (2026, 4, 2), [
-        'Quando o primeiro ornitorrinco empalhado chegou à Europa, os naturalistas acharam '
-        'que era fraude: bico de pato costurado num corpo de castor.',
-        'O bicho não cabia em nenhuma gaveta. Põe ovos como réptil, amamenta como '
-        'mamífero, tem veneno como poucos animais têm.',
-        'Toda classificação é uma aposta sobre o que importa. Quando aparece um caso que '
-        'não cabe, o problema raramente é o caso.',
+    ('renan', 'Por que Django para um blog pequeno', (2026, 9, 2), [
+        'Um blog precisa de cadastro, autenticação e uma área de moderação. Nada disso '
+        'precisa ser escrito do zero.',
+        'O admin do Django resolve a moderação, e os validadores de senha resolvem a '
+        'regra de robustez. Sobra tempo para o que é próprio do sistema: escrever, '
+        'publicar, buscar e comentar.',
+        'Três aplicações bastam: uma para contas, uma para textos e uma para '
+        'comentários.',
     ]),
-    ('julia', 'Três livros que mudaram meu jeito de ler dados', (2026, 4, 20), [
-        'Não são livros técnicos. Nenhum ensina uma ferramenta, e talvez por isso tenham '
-        'durado mais do que qualquer curso que fiz.',
-        'O primeiro me ensinou a desconfiar de média. O segundo, a desenhar antes de '
-        'calcular. O terceiro, a perguntar quem coletou o dado e por quê.',
-        'Se tivesse que escolher um só, ficaria com o terceiro. Todo número tem autor.',
+    ('rafaela', 'O ornitorrinco dos casos de uso', (2026, 9, 12), [
+        'Todo levantamento tem um caso de uso que não se parece com os outros. Aqui é '
+        'Gerenciar usuários: não tem tela própria, mora no admin e mesmo assim tem regra '
+        'de negócio.',
+        'Como o bicho que põe ovo e amamenta, ele não cabe em nenhuma gaveta. A saída é '
+        'descrevê-lo pelo que o moderador pode e não pode fazer, e não pelas telas.',
+        'O que não encaixa na classificação costuma ser o que mais precisa de descrição.',
     ]),
-    ('helena', 'Testes automatizados não são burocracia', (2026, 5, 9), [
-        'Durante muito tempo achei que escrever teste era trabalho dobrado: o código e '
-        'depois a prova de que o código funciona.',
-        'Mudei de ideia no dia em que uma alteração pequena quebrou o cadastro, e só '
-        'descobri porque um teste antigo, que eu nem lembrava de ter escrito, falhou.',
-        'Teste bom não prova que o sistema funciona. Ele avisa, cedo, quando deixou de '
-        'funcionar.',
+    ('rafaela', 'Protótipos em HTML antes de qualquer linha de Python', (2026, 9, 21), [
+        'As telas principais podem ser desenhadas como wireframe em HTML e CSS, dentro '
+        'do próprio repositório.',
+        'Protótipo versionado é revisado como código: quem tem uma sugestão comenta na '
+        'linha em que o botão aparece.',
+        'Quando a construção começa, já se sabe onde fica cada coisa.',
     ]),
-    ('marcos', 'Aprender a programar depois dos quarenta', (2026, 5, 27), [
-        'A pergunta que mais ouço é se não é tarde. Não é, mas também não é igual a '
-        'aprender aos vinte.',
-        'Tenho menos tempo e menos paciência para tutorial longo. Em compensação, sei '
-        'reconhecer quando não entendi algo, e isso economiza semanas.',
-        'O conselho que dou é o mesmo que daria a qualquer idade: escreva um programa '
-        'pequeno que resolva um problema seu.',
+    ('pedro', 'O que a revisão por Pull Request ensina', (2026, 10, 1), [
+        'Toda mudança passa por um par de olhos antes de entrar. Vale para código e vale '
+        'para documentação.',
+        'Manter os textos de análise em markdown, no mesmo lugar do código, permite '
+        'contribuir pelo navegador, sem instalar nada.',
+        'O histórico passa a contar a história do projeto: o que mudou, quando e por quê.',
     ]),
-    ('julia', 'Gráfico de pizza quase nunca é a melhor escolha', (2026, 6, 15), [
-        'O olho humano compara comprimentos muito melhor do que ângulos. Por isso duas '
-        'fatias parecidas numa pizza viram um palpite.',
-        'Uma barra horizontal ordenada resolve a maioria dos casos, e ainda deixa espaço '
-        'para escrever o nome de cada categoria por extenso.',
-        'A pizza tem um uso honesto: mostrar que uma parte é quase o todo. Fora disso, '
-        'prefira barras.',
+    ('felipe', 'Do caso de uso ao teste: como a busca foi construída', (2026, 10, 14), [
+        'O caso de uso pede busca no título e no corpo, sem diferenciar maiúsculas, e '
+        'com o termo preservado na troca de página.',
+        'Cada frase dessas vira um caso de teste antes de virar código. São onze, '
+        'contando o termo vazio e a página que não existe.',
+        'Rascunho não entra no resultado nem na contagem.',
     ]),
-    ('helena', 'Como escrevo mensagens de commit', (2026, 7, 3), [
-        'A mensagem de commit é a única documentação que acompanha cada mudança para '
-        'sempre. Vale os trinta segundos que custa.',
-        'Escrevo a primeira linha dizendo o que muda, no presente, e deixo o corpo para o '
-        'porquê. O como já está no próprio diff.',
-        'Quando não consigo resumir a mudança numa linha, quase sempre é sinal de que '
-        'ela deveria ser dois commits.',
+    ('gabriel', 'Comentário é texto puro, e isso é uma decisão de segurança', (2026, 10, 23), [
+        'Toda marcação enviada num comentário aparece na página como foi digitada. Quem '
+        'manda uma tag de script vê a tag, e nada é executado.',
+        'O vínculo do comentário com o autor vem da sessão e não do formulário. Mandar '
+        'outro nome no envio não muda quem assinou.',
+        'O autor do texto pode encerrar a discussão, e os comentários já feitos '
+        'continuam visíveis.',
     ]),
-    ('marcos', 'Matemática para quem programa', (2026, 8, 12), [
-        'Não é preciso cálculo para fazer um site. Mas algumas ideias aparecem o tempo '
-        'todo, e vale conhecê-las pelo nome.',
-        'Conjuntos explicam boa parte do que um banco de dados faz. Lógica explica os '
-        'ifs. Contagem explica por que um algoritmo fica lento.',
-        'Para o resto, há a velha quimera do programador que sabe tudo antes de começar. '
-        'Ninguém sabe. Aprende-se no caminho.',
+    ('pedro', 'Esconder o botão não é autorização', (2026, 11, 4), [
+        'Um autor só altera o que é seu. A tela não mostra o botão de editar no texto '
+        'dos outros, mas isso não prova nada.',
+        'Os testes de autorização enviam a requisição direto ao servidor. A resposta '
+        'esperada é 403, e o texto continua onde estava.',
+        'Tratar a interface como segurança é a velha quimera de todo sistema web. Quem '
+        'decide é o servidor.',
     ]),
-    ('julia', 'Dados abertos e o que fazer com eles', (2026, 9, 1), [
-        'O portal de dados abertos da sua cidade provavelmente tem mais coisa do que '
-        'você imagina: horários de ônibus, licitações, atendimentos de saúde.',
-        'O difícil não é achar o dado, é fazer a pergunta certa. Comece por algo que '
-        'incomoda você no dia a dia.',
-        'Publique o resultado, mesmo que pequeno. Dado aberto que ninguém lê continua '
-        'fechado na prática.',
+    ('renan', 'Testar antes de publicar: o que automatizar e o que olhar', (2026, 11, 15), [
+        'Um plano de testes pode nascer direto dos casos de uso: cada fluxo vira pelo '
+        'menos um caso, e cada regra de negócio ganha um teste que a exercita.',
+        'Boa parte do que se confere à mão pode rodar sozinha. O cliente de teste do '
+        'Django percorre as mesmas rotas e formulários do navegador.',
+        'O que depende de ver a página, como a largura em tela pequena e o contraste, '
+        'fica para um percurso curto antes de cada publicação.',
     ]),
-    ('helena', 'Rascunho: notas sobre revisão de código', None, [
-        'Ainda organizando as ideias. Revisão de código é conversa, não fiscalização.',
+    ('felipe', 'Rascunho: ideias para os próximos textos', None, [
+        'Ainda organizando as ideias.',
     ]),
 ]
 
 COMMENTS = [
-    (0, 'marcos', 'Material em português foi decisivo para mim também.'),
-    (0, 'julia', 'E a comunidade continua sendo o melhor argumento.'),
-    (1, 'julia', 'Nunca mais vou olhar para uma taxonomia do mesmo jeito.'),
-    (3, 'marcos', 'O teste que você esqueceu que escreveu é o melhor tipo de teste.'),
+    (1, 'gabriel', 'O admin pronto resolve boa parte da moderação.'),
+    (1, 'rafaela', 'Uma pasta por aplicação deixa claro onde fica cada coisa.'),
+    (5, 'pedro', 'Gostei da ideia de transformar cada frase do caso de uso em teste.'),
+    (8, 'felipe', 'Roteiro manual curto é roteiro manual que alguém de fato segue.'),
 ]
 
 
