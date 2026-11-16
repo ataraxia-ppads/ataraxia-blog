@@ -186,9 +186,21 @@ h1, h2, h3 { font-family: var(--titulo); line-height: 1.2; letter-spacing: -0.02
 .menu-lista a:hover, .menu-lista button:hover { background: var(--campo); color: var(--texto); }
 .menu-lista button { color: var(--suave); }
 
-/* Em tela estreita a busca aberta ocupa uma linha própria, abaixo do topo. */
+/* Em tela estreita o topo tem duas linhas: marca e conta em cima; embaixo,
+   a busca sempre aberta, com o tema e o repositório ao lado. Os itens da
+   navegação passam a ser arrumados direto pelo topo. */
 @media (max-width: 640px) {
-  .busca:focus-within, .busca:has(input:not(:placeholder-shown)) { order: 3; flex: 1 1 100%; width: auto; }
+  .topo-interno { gap: 10px 8px; }
+  .navegacao { display: contents; }
+  .marca { order: 1; }
+  .navegacao > * { order: 2; }
+  .busca, .busca:focus-within, .busca:has(input:not(:placeholder-shown)) {
+    order: 3; flex: 1 1 calc(100% - 104px); width: auto; background: var(--campo);
+  }
+  .busca input[type=search] { padding-right: 16px; opacity: 1; }
+  .busca-lupa:hover { background: none; }
+  .navegacao > .icone-botao { order: 4; }
+  .topo .botao { padding: 0 14px; }
 }
 
 /* Avatar ---------------------------------------------------------------- */
