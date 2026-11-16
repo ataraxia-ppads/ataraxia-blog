@@ -26,7 +26,8 @@ O recorte completo está em [`docs/visao-geral.md`](docs/visao-geral.md).
 
 ## Estado atual
 
-Entrega final (tag `v3`), com o sistema publicado e a nova interface. A
+Entrega final (tag `v3.1`), com o sistema publicado e a nova interface, em
+tema claro e escuro. A
 segunda iteração é a tag `v2`. A primeira iteração (tag `v1`)
 entregou as três aplicações, `accounts`, `posts` e `comments`: cadastro e
 autenticação, perfil, escrita, publicação, leitura, busca e comentários, com a
@@ -43,7 +44,7 @@ Os testes automatizados rodam a cada Pull Request, e a documentação de anális
 de desenho está em [`docs/`](docs/).
 
 O sistema está publicado em <https://blog.ataraxia.dev>. O plano de testes foi
-executado por inteiro sobre a tag `v3`, que traz a nova interface, e o resultado e as métricas estão nos
+executado por inteiro sobre a tag `v3.1`, que traz a nova interface, e o resultado e as métricas estão nos
 capítulos 6 e 7 de [`docs/plano-de-testes.md`](docs/plano-de-testes.md).
 
 A hospedagem é tratada fora deste repositório e não interfere no
@@ -53,7 +54,8 @@ desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 
 - Tag `v1`: código-fonte conforme a entrega da Iteração 1 da construção.
 - Tag `v2`: código-fonte conforme a entrega da Iteração 2 da construção.
-- Tag `v3`: código-fonte conforme a entrega final, com a nova interface.
+- Tag `v3`: nova interface e novo conteúdo de demonstração.
+- Tag `v3.1`: código-fonte conforme a entrega final, com tema escuro.
 - Branch `iteracao2`: modificação de exercício em dois arquivos, integrada ao
   `main` pelo Pull Request #18 (a branch é mantida para conferência).
 - Pull Request #19: código da Iteração 2, integrado ao `main`.
