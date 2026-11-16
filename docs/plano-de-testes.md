@@ -3,11 +3,11 @@
 Prática Profissional em Análise e Desenvolvimento de Sistemas  
 Universidade Presbiteriana Mackenzie
 
-Versão 3.0, da entrega final (tag `v3`). Esta é a versão em texto do plano entregue em PDF; os casos, o resultado da execução e as métricas são os mesmos.
+Versão 3.1, da entrega final (tag `v3.1`). Esta é a versão em texto do plano entregue em PDF; os casos, o resultado da execução e as métricas são os mesmos.
 
 ## 1 Introdução
 
-Este documento é o plano de testes do Ataraxia, plataforma de blog desenvolvida como projeto do componente Prática Profissional em Análise e Desenvolvimento de Sistemas da Universidade Presbiteriana Mackenzie. Esta é a versão da entrega final, com o resultado da execução sobre a tag v3 do repositório e as métricas calculadas a partir dele (capítulos 6 e 7).
+Este documento é o plano de testes do Ataraxia, plataforma de blog desenvolvida como projeto do componente Prática Profissional em Análise e Desenvolvimento de Sistemas da Universidade Presbiteriana Mackenzie. Esta é a versão da entrega final, com o resultado da execução sobre a tag v3.1 do repositório e as métricas calculadas a partir dele (capítulos 6 e 7).
 
 O plano parte dos onze casos de uso registrados na análise. Cada fluxo principal, alternativo e de exceção vira pelo menos um caso de teste, e cada regra de negócio tem um caso de teste que a exercita. Os casos de uso UC02, UC03, UC05, UC08 e UC10, descritos em detalhe na análise, têm testes derivados fluxo a fluxo; os demais têm testes derivados do comportamento descrito na lista de casos de uso, na arquitetura e no roteiro de testes manuais do repositório.
 
@@ -33,6 +33,7 @@ O plano parte dos onze casos de uso registrados na análise. Cada fluxo principa
 | 1.0 | Iteração 1 (tag v1) | Plano inicial: 74 casos funcionais (51 automatizados e 23 manuais) e 10 não funcionais. |
 | 2.0 | Iteração 2 (tag v2), 4 nov. 2026 | Os 23 casos manuais viraram testes automatizados com o cliente de teste do Django, todos mapeados a um teste existente (apêndice A). CT05.10 e CT11.04 tiveram o resultado esperado alinhado ao comportamento real (redirecionamento para a entrada do admin, e não uma página de acesso negado). CTN02 e CTN09 ganharam teste automatizado; o contraste e o uso só com teclado saíram de CTN09 para o novo CTN11. Novo capítulo 6 com o registro da execução. |
 | 3.0 | Entrega final (tag v3), 15 nov. 2026 | Sistema publicado, com nova interface e novo conteúdo de demonstração. Execução completa do plano: testes automatizados, casos manuais CTN01, CTN07 e CTN11 e percurso de fumaça no endereço publicado. CT06.01 passou a esperar o vínculo do perfil com as iniciais no topo, no lugar do nome por extenso. O capítulo 6 passa a registrar a execução final e o novo capítulo 7 traz as métricas. |
+| 3.1 | Entrega final (tag v3.1), 15 nov. 2026 | Tema escuro, busca que se expande ao receber o foco, vínculo para o repositório e ícone na aba do navegador. O CTN11 passa a medir o contraste nos dois temas. Execução repetida por inteiro sobre a tag v3.1. |
 
 ## 2 Estratégia de testes
 
@@ -81,7 +82,7 @@ Os testes manuais são feitos nas versões atuais do Chrome e do Firefox, em tel
 
 ### 2.5 Dados de teste
 
-A base de teste é o conteúdo de demonstração do repositório, carregado pelo comando `carregar_demo`: 10 textos, um deles em rascunho, com datas de publicação diferentes entre si, uma palavra incomum no título de um único texto e outra no corpo de um texto diferente. A esses dados somam-se quatro usuários fixos. No ambiente publicado os textos da carga são assinados por cinco autores de demonstração sem senha, os integrantes do grupo, e ana e bruno criam os próprios textos durante o percurso. Os testes automatizados criam os próprios dados em cada teste e não dependem da fixture, para que a ordem de execução não altere o resultado.
+A base de teste é o conteúdo de demonstração do repositório, carregado pelo comando `carregar_demo`: 10 textos, um deles em rascunho, com datas de publicação diferentes entre si, uma palavra incomum no título de um único texto e outra no corpo de um texto diferente. A esses dados somam-se quatro usuários fixos. No ambiente publicado os textos da carga são assinados por cinco autores de demonstração sem senha, os integrantes do grupo. Os papéis de ana e de bruno são exercidos ali pelas contas autor e leitor, que criam os próprios textos durante o percurso. Os testes automatizados criam os próprios dados em cada teste e não dependem da fixture, para que a ordem de execução não altere o resultado.
 
 | Usuário | Papel | Uso nos testes |
 | --- | --- | --- |
@@ -302,13 +303,13 @@ O plano tem 74 casos de teste funcionais (74 automatizados, 0 manuais) e 11 não
 | Item | Valor |
 | --- | --- |
 | Data | 15 de novembro de 2026 |
-| Versão testada | tag v3 do repositório github.com/ataraxia-ppads/ataraxia-blog, a mesma que está publicada |
-| Quem executou | Pedro Emmanuel Esteves, com apoio do Claude Code (assistente de IA) |
+| Versão testada | tag v3.1 do repositório github.com/ataraxia-ppads/ataraxia-blog, a mesma que está publicada |
+| Quem executou | Pedro Emmanuel Esteves |
 | Desenvolvimento | Arch Linux (kernel 7.2), Python 3.14.7, Django 6.1, SQLite |
 | Publicação | https://blog.ataraxia.dev, Azure App Service (Linux, Python 3.14) com PostgreSQL 17 |
 | Navegadores | Chromium e Firefox, nas versões atuais |
 
-A tag v3 acrescenta à v2 a nova interface, o tempo de leitura, as iniciais no avatar e o novo conteúdo de demonstração. A execução em Windows 11 é a da Iteração 2, feita por Renan Jordão em 4 de novembro de 2026 sobre a tag v2, e não foi repetida na v3.
+A tag v3.1 acrescenta à v2 a nova interface, com tema claro e escuro, o tempo de leitura, as iniciais no avatar e o novo conteúdo de demonstração. A execução em Windows 11 é a da Iteração 2, feita por Renan Jordão em 4 de novembro de 2026 sobre a tag v2, e não foi repetida na v3.1.
 
 ### 6.2 Resultado por grupo de casos
 
@@ -317,7 +318,7 @@ A tag v3 acrescenta à v2 a nova interface, o tempo de leitura, as iniciais no a
 | Funcionais, UC01 a UC13 (capítulo 3) | 74 | python manage.py test | 74 | 0 |
 | Não funcionais automatizados (CTN02 a CTN06, CTN08 a CTN10) | 8 | python manage.py test e pycodestyle | 8 | 0 |
 | CTN01, usabilidade em 360 px | 1 | Chromium com a tela emulada em 360 por 740 pixels | 1 | 0 |
-| CTN11, contraste e teclado | 1 | Chromium, medindo o contraste de todo texto visível e percorrendo cada página com a tecla Tab | 1 | 0 |
+| CTN11, contraste e teclado | 1 | Chromium, medindo o contraste de todo texto visível nos temas claro e escuro e percorrendo cada página com a tecla Tab | 1 | 0 |
 | CTN07, portabilidade | 1 | Testes em Linux; telas comparadas no Chromium e no Firefox | parcial | 0 |
 | Total | 85 | | 84 | 0 |
 
@@ -328,12 +329,12 @@ Os 85 testes automatizados passaram em 29 segundos (eram 83 na Iteração 2; os 
 | Caso | O que foi conferido | Resultado |
 | --- | --- | --- |
 | CTN01 | Nove telas em 360 pixels de largura: listagem, busca, leitura sem e com sessão, cadastro, entrada, editor, Meus textos e perfil | Nenhuma tela com rolagem horizontal (largura do conteúdo de 360 pixels em todas); todos os botões, campos e vínculos dentro da tela |
-| CTN11 | As mesmas nove telas, em 1280 pixels | Menor contraste encontrado de 6,78 para 1, acima do mínimo de 4,5 para 1 da WCAG 2.1 nível AA; a tecla Tab alcança todos os elementos interativos de cada tela, e todos mostram o foco |
-| CTN07 | Listagem, leitura e cadastro do endereço publicado, abertos no Chromium e no Firefox em 1280 por 900 pixels | Telas iguais nos dois navegadores. Testes aprovados em Linux. A v3 não foi executada em Windows, e não havia máquina com macOS |
+| CTN11 | As mesmas nove telas, em 1280 pixels | Menor contraste encontrado de 6,78 para 1 no tema claro e de 6,66 para 1 no escuro, acima do mínimo de 4,5 para 1 da WCAG 2.1 nível AA; a tecla Tab alcança todos os elementos interativos de cada tela, e todos mostram o foco |
+| CTN07 | Listagem, leitura e cadastro do endereço publicado, abertos no Chromium e no Firefox em 1280 por 900 pixels | Telas iguais nos dois navegadores. Testes aprovados em Linux. A v3.1 não foi executada em Windows, e não havia máquina com macOS |
 
 ### 6.4 Percurso de fumaça no endereço publicado
 
-O percurso foi feito sobre https://blog.ataraxia.dev, com os usuários ana, bruno e moderador e uma conta criada na hora. Foram 28 verificações, todas aprovadas.
+O percurso foi feito sobre https://blog.ataraxia.dev, com os usuários autor, leitor e moderador e uma conta criada na hora. Foram 28 verificações, todas aprovadas.
 
 | Caso de uso | O que foi percorrido | Resultado |
 | --- | --- | --- |
@@ -343,9 +344,9 @@ O percurso foi feito sobre https://blog.ataraxia.dev, com os usuários ana, brun
 | UC05 | Cadastro com dados válidos; recusa de usuário repetido e da senha 12345678 | OK |
 | UC06 | Entrada com senha errada e com senha certa; saída | OK |
 | UC07 | Edição do perfil, conferida no perfil público | OK |
-| UC08 | Texto nasce rascunho e fora da listagem; edição gravada; bruno recebe 403 ao editar e ao excluir texto de ana | OK |
-| UC09 | bruno recebe 403 ao publicar texto de ana; ana publica e o texto vai ao topo da listagem | OK |
-| UC10 | Comentário sem sessão não é gravado; comentário de bruno aparece, com a marcação exibida como texto | OK |
+| UC08 | Texto nasce rascunho e fora da listagem; edição gravada; leitor recebe 403 ao editar e ao excluir texto de autor | OK |
+| UC09 | leitor recebe 403 ao publicar texto de autor; autor publica e o texto vai ao topo da listagem | OK |
+| UC10 | Comentário sem sessão não é gravado; comentário de leitor aparece, com a marcação exibida como texto | OK |
 | UC11 | Autor não entra no admin; moderador reprova e reaprova um comentário | OK |
 | UC13 | Moderador não vê o papel de superusuário, desativa uma conta e recebe 403 ao alterar a conta do superusuário | OK |
 
@@ -365,7 +366,7 @@ O caso é aprovado pelo teste automatizado, com 500 textos. Como referência, ci
 - Nenhum defeito do sistema foi encontrado na execução final.
 - Três verificações do percurso de fumaça falharam na primeira tentativa por erro do roteiro, e não do sistema: o formulário errado da página foi enviado, a opção de comentários ficou fora do envio e a regra RN18 foi lida como se o moderador não pudesse ver a conta do superusuário, quando o que ela esconde é o papel. O roteiro foi corrigido e o percurso repetido por inteiro, também depois da publicação da nova interface.
 - A nova interface pediu o ajuste de dois testes, sem defeito no sistema: CT06.01 conferia o nome da autora no topo, que deu lugar ao avatar com as iniciais, e o teste de consultas do CTN02 esperava duas consultas na listagem, que passaram a três com a faixa de autores, ainda sem crescer com a quantidade de textos.
-- Pendência: as partes de Windows e de macOS do CTN07 não foram executadas na v3. O critério de saída da seção 2.6 está atendido, porque o caso não é de autorização, de regra de negócio nem de fluxo principal.
+- Pendência: as partes de Windows e de macOS do CTN07 não foram executadas na v3.1. O critério de saída da seção 2.6 está atendido, porque o caso não é de autorização, de regra de negócio nem de fluxo principal.
 
 ## 7 Métricas
 
