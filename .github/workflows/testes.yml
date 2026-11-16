@@ -25,8 +25,9 @@ jobs:
         run: python manage.py test
 
   # Publica no Azure o que entrou na main, depois que os testes passam. O
-  # App Service instala as dependências; migração e collectstatic rodam no
-  # comando de inicialização do próprio serviço.
+  # pacote sai daqui pronto, com as dependências e os arquivos estáticos, e
+  # o App Service só precisa migrar o banco e subir. Montar tudo lá a cada
+  # deploy levava cerca de um minuto e meio a mais.
   publicar:
     needs: testes
     if: github.event_name == 'push'
@@ -35,24 +36,44 @@ jobs:
     concurrency:
       group: publicar
       cancel-in-progress: false
+    env:
+      PYTHONPATH: .python_packages/lib/site-packages
     steps:
       - uses: actions/checkout@v4
+      # A mesma versão do Python do App Service: os pacotes instalados aqui
+      # rodam lá.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+      - name: Dependências dentro do pacote
+        run: pip install --target "$PYTHONPATH" -r requirements.txt
+      - name: Arquivos estáticos dentro do pacote
+        env:
+          DJANGO_DEBUG: '0'
+          DJANGO_SECRET_KEY: so-para-o-collectstatic
+          DJANGO_ALLOWED_HOSTS: blog.ataraxia.dev
+        run: python manage.py collectstatic --noinput
       - name: Marca a versão
-        run: echo "$GITHUB_SHA" > static/versao.txt
+        run: echo "$GITHUB_SHA" > staticfiles/versao.txt
+      - name: Tira do pacote o que o site não usa
+        run: rm -rf .git .github docs
       - uses: azure/webapps-deploy@v3
         with:
           app-name: ataraxia-blog
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
+          type: zip
+          clean: true
       - name: Confere que a versão nova está no ar
         run: |
-          for tentativa in $(seq 1 30); do
+          for tentativa in $(seq 1 60); do
             no_ar=$(curl -fsS https://blog.ataraxia.dev/static/versao.txt || true)
             if [ "$no_ar" = "$GITHUB_SHA" ]; then
               echo "No ar: $GITHUB_SHA"
               exit 0
             fi
-            sleep 10
+            sleep 5
           done
           echo "O site não passou a servir $GITHUB_SHA em 5 minutos." >&2
           exit 1
