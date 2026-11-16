@@ -1,0 +1,23 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+{% block title %}Entrar na moderação · Ataraxia{% endblock %}
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+{% block usertools %}{% endblock %}
+{% block content_title %}{% endblock %}
+{% block nav-breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div class="bloco formulario-estreito">
+  <h1>Moderação</h1>
+  {% if user.is_authenticated %}
+  <div class="aviso erro" role="alert"><p>Você entrou como {{ username }}, mas essa conta não modera o Ataraxia. Entre com uma conta de moderação.</p></div>
+  {% endif %}
+  <form action="{{ app_path }}" method="post" class="formulario" id="login-form">
+    {% csrf_token %}
+    {% include 'includes/erros-gerais.html' %}
+    {% for field in form %}{% include 'includes/campo.html' %}{% endfor %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="botao">{% translate 'Log in' %}</button>
+  </form>
+</div>
+{% endblock %}

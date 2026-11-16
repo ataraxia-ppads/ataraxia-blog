@@ -13,6 +13,8 @@ from django.urls import include, path
 admin.site.site_header = 'Ataraxia'
 admin.site.site_title = 'Ataraxia'
 admin.site.index_title = 'Moderação'
+# A navegação entre as áreas fica na faixa abaixo do topo do site.
+admin.site.enable_nav_sidebar = False
 
 urlpatterns = [
     path('admin/', admin.site.urls),

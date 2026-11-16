@@ -1,0 +1,46 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n log admin_filters %}
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+{% block nav-breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div class="painel">
+  <section aria-labelledby="painel-areas">
+    <h2 class="rotulo" id="painel-areas">O que moderar</h2>
+    {% if app_list %}
+    <div class="linhas">
+      {% for app in app_list %}{% for model in app.models %}
+      <div class="linha simples painel-linha">
+        <h3>{% if model.admin_url %}<a href="{{ model.admin_url }}">{{ model.name }}</a>{% else %}{{ model.name }}{% endif %}</h3>
+        {% if model.add_url %}<a class="botao secundario" href="{{ model.add_url }}">{% translate 'Add' %}</a>{% endif %}
+      </div>
+      {% endfor %}{% endfor %}
+    </div>
+    {% else %}
+    <p class="vazio">{% translate 'You don’t have permission to view or edit anything.' %}</p>
+    {% endif %}
+  </section>
+
+  <section aria-labelledby="painel-acoes">
+    <h2 class="rotulo" id="painel-acoes">{% translate 'Recent actions' %}</h2>
+    {% get_admin_log 10 as admin_log for_user user %}
+    {% if not admin_log %}
+    <p class="vazio">{% translate 'None available' %}</p>
+    {% else %}
+    <ul class="painel-acoes">
+      {% for entry in admin_log %}
+      <li>
+        <span class="meta">{% if entry.is_addition %}{% translate 'Added:' %}{% elif entry.is_change %}{% translate 'Changed:' %}{% elif entry.is_deletion %}{% translate 'Deleted:' %}{% endif %}
+          {% if entry.content_type %}{{ entry.content_type.name }}{% endif %}</span>
+        {% if entry.is_deletion or not entry.get_admin_url %}
+          <span>{{ entry.object_repr|to_object_display_value }}</span>
+        {% else %}
+          <a href="{{ entry.get_admin_url }}">{{ entry.object_repr|to_object_display_value }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
