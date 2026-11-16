@@ -56,8 +56,15 @@ jobs:
         run: python manage.py collectstatic --noinput
       - name: Marca a versão
         run: echo "$GITHUB_SHA" > staticfiles/versao.txt
-      - name: Fecha o pacote, sem o que o site não usa
-        run: zip -qr "$RUNNER_TEMP/pacote.zip" . -x '.git/*' '.github/*' 'docs/*'
+      - name: Compila o Python de antemão
+        run: python -m compileall -q -j 0 . || true
+      # O disco do App Service é de rede e grava arquivo pequeno devagar:
+      # dez mil arquivos soltos levavam mais de dois minutos. Vai um arquivo
+      # só, que o comando de inicialização abre no disco local do contêiner.
+      - name: Fecha o pacote em um arquivo só
+        run: |
+          tar -czf "$RUNNER_TEMP/app.tar.gz" --exclude=./.git --exclude=./.github --exclude=./docs .
+          cd "$RUNNER_TEMP" && zip -q0 pacote.zip app.tar.gz
       - uses: azure/webapps-deploy@v3
         with:
           app-name: ataraxia-blog
