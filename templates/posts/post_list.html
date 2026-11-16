@@ -3,7 +3,7 @@
 {% block title %}{% if term %}Busca: {{ term }} · {% endif %}Ataraxia{% endblock %}
 {% block content %}
 {% if term %}
-  <div class="aviso busca-estado">
+  <div class="busca-estado">
     {% if paginator.count %}
       <p><strong>{{ paginator.count }}</strong> texto{{ paginator.count|pluralize }} encontrado{{ paginator.count|pluralize }} para <strong>{{ term }}</strong>, no título ou no corpo.</p>
       <a class="botao secundario" href="{% url 'posts:list' %}">Limpar busca</a>
@@ -12,19 +12,44 @@
       <a class="botao secundario" href="{% url 'posts:list' %}">Ver todos os textos</a>
     {% endif %}
   </div>
+  <div class="linhas">
+    {% for post in posts %}{% include 'includes/linha-texto.html' %}{% endfor %}
+  </div>
+{% elif page_obj.number == 1 %}
+  <h1 class="visualmente-oculto">Textos</h1>
+  {% for post in posts %}
+    {% if forloop.first %}
+      <article class="destaque">
+        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        <p class="resumo">{{ post.body|excerpt:30 }}</p>
+        <div class="assinatura">
+          <span class="avatar" aria-hidden="true">{{ post.author.profile|initials }}</span>
+          <p class="meta"><a href="{{ post.author.profile.get_absolute_url }}">{{ post.author.profile }}</a> · <time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:'j \d\e F \d\e Y'|lower }}</time> · {{ post.body|reading_time }} min de leitura</p>
+        </div>
+      </article>
+      {% if authors %}
+        <section class="autores" aria-labelledby="titulo-autores">
+          <h2 id="titulo-autores" class="rotulo">Quem escreve</h2>
+          <div class="autores-lista">
+            {% for author in authors %}<a class="avatar" href="{{ author.profile.get_absolute_url }}" aria-label="{{ author.profile }}" title="{{ author.profile }}">{{ author.profile|initials }}</a>{% endfor %}
+            <span class="meta">{{ authors|length }} autor{{ authors|length|pluralize:"es" }}, {{ paginator.count }} texto{{ paginator.count|pluralize }}</span>
+          </div>
+        </section>
+      {% endif %}
+      {% if posts|length > 1 %}<div class="linhas"><h2 class="rotulo">Mais textos</h2>{% endif %}
+    {% else %}
+      {% include 'includes/linha-texto.html' %}
+    {% endif %}
+    {% if forloop.last and posts|length > 1 %}</div>{% endif %}
+  {% empty %}
+    <p class="vazio">Ainda não há textos publicados.</p>
+  {% endfor %}
 {% else %}
-  <h1 class="titulo-pagina">Textos publicados</h1>
+  <h1 class="titulo-pagina">Textos</h1>
+  <div class="linhas">
+    {% for post in posts %}{% include 'includes/linha-texto.html' %}{% endfor %}
+  </div>
 {% endif %}
-
-{% for post in posts %}
-  <article class="cartao">
-    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-    <p class="meta">por <a href="{{ post.author.profile.get_absolute_url }}">{{ post.author.profile }}</a>, <time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:'j \d\e F \d\e Y'|lower }}</time></p>
-    <p>{{ post.body|excerpt }}</p>
-  </article>
-{% empty %}
-  {% if not term %}<p class="vazio">Ainda não há textos publicados.</p>{% endif %}
-{% endfor %}
 
 {% include 'includes/paginacao.html' %}
 {% endblock %}

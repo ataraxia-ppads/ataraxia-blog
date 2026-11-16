@@ -1,0 +1,8 @@
+{% load blog %}<article class="linha">
+  <span class="avatar contorno" aria-hidden="true">{{ post.author.profile|initials }}</span>
+  <div class="linha-corpo">
+    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+    <p class="resumo">{{ post.body|excerpt:30 }}</p>
+    <p class="meta"><a href="{{ post.author.profile.get_absolute_url }}">{{ post.author.profile }}</a> · <time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:'j \d\e F \d\e Y'|lower }}</time> · {{ post.body|reading_time }} min</p>
+  </div>
+</article>

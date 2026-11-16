@@ -26,7 +26,8 @@ O recorte completo está em [`docs/visao-geral.md`](docs/visao-geral.md).
 
 ## Estado atual
 
-Segunda iteração da construção (tag `v2`). A primeira iteração (tag `v1`)
+Entrega final (tag `v3`), com o sistema publicado e a nova interface. A
+segunda iteração é a tag `v2`. A primeira iteração (tag `v1`)
 entregou as três aplicações, `accounts`, `posts` e `comments`: cadastro e
 autenticação, perfil, escrita, publicação, leitura, busca e comentários, com a
 moderação e a gestão de usuários pelo admin do Django.
@@ -41,6 +42,10 @@ A suíte foi de 57 para 83 testes. O resultado da execução está em
 Os testes automatizados rodam a cada Pull Request, e a documentação de análise e
 de desenho está em [`docs/`](docs/).
 
+O sistema está publicado em <https://blog.ataraxia.dev>. O plano de testes foi
+executado por inteiro sobre a tag `v3`, que traz a nova interface, e o resultado e as métricas estão nos
+capítulos 6 e 7 de [`docs/plano-de-testes.md`](docs/plano-de-testes.md).
+
 A hospedagem é tratada fora deste repositório e não interfere no
 desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 
@@ -48,6 +53,7 @@ desenvolvimento: para rodar na sua máquina, basta o passo a passo abaixo.
 
 - Tag `v1`: código-fonte conforme a entrega da Iteração 1 da construção.
 - Tag `v2`: código-fonte conforme a entrega da Iteração 2 da construção.
+- Tag `v3`: código-fonte conforme a entrega final, com a nova interface.
 - Branch `iteracao2`: modificação de exercício em dois arquivos, integrada ao
   `main` pelo Pull Request #18 (a branch é mantida para conferência).
 - Pull Request #19: código da Iteração 2, integrado ao `main`.
@@ -131,13 +137,14 @@ tecle `Ctrl+C`.
   entre em `http://127.0.0.1:8000/admin/`. Para dar a alguém o papel de
   moderador, marque nele o acesso ao admin e inclua-o no grupo `Moderadores`.
 
-Os autores de demonstração (`helena`, `marcos`, `julia`) não têm senha: servem
-só para assinar os textos.
+Os autores de demonstração são os integrantes do grupo (`pedro`, `renan`,
+`rafaela`, `felipe`, `gabriel`) e não têm senha: servem só para assinar os
+textos.
 
 ### 7. Rodar os testes e as verificações
 
 ```bash
-python manage.py test                              # 83 testes automatizados
+python manage.py test                              # 85 testes automatizados
 pip install pycodestyle
 python -m pycodestyle accounts posts comments config   # estilo PEP 8
 python manage.py makemigrations --check --dry-run      # migrações em dia

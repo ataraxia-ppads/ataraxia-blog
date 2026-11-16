@@ -5,8 +5,9 @@ listagem sem posts e busca sem resultado, e não há como demonstrar o sistema n
 executar o [roteiro de testes](roteiro-de-testes.md).
 
 Os textos estão no comando `python manage.py carregar_demo`, que pode ser rodado
-mais de uma vez sem duplicar nada. Os autores de demonstração não têm senha
-utilizável: servem para assinar os textos e ninguém entra com eles.
+mais de uma vez sem duplicar nada. Os autores de demonstração são os integrantes do
+grupo, e os textos tratam, de forma geral, de como se constrói um blog como este. Essas contas não têm senha
+utilizável: servem para assinar os textos e ninguém entra com elas.
 
 ## O que é preciso
 
@@ -31,16 +32,16 @@ Não são detalhe de estilo. Sem elas, alguns testes não têm como rodar:
 
 | Título | Autor | Situação | Publicado em |
 | ------ | ----- | -------- | ------------ |
-| Por que aprendi Python antes de qualquer outra linguagem | Helena Prado | publicado | 14/03/2026 |
-| O que o ornitorrinco ensina sobre classificar as coisas | Marcos Tavares | publicado | 02/04/2026 |
-| Três livros que mudaram meu jeito de ler dados | Júlia Nogueira | publicado | 20/04/2026 |
-| Testes automatizados não são burocracia | Helena Prado | publicado | 09/05/2026 |
-| Aprender a programar depois dos quarenta | Marcos Tavares | publicado | 27/05/2026 |
-| Gráfico de pizza quase nunca é a melhor escolha | Júlia Nogueira | publicado | 15/06/2026 |
-| Como escrevo mensagens de commit | Helena Prado | publicado | 03/07/2026 |
-| Matemática para quem programa | Marcos Tavares | publicado | 12/08/2026 |
-| Dados abertos e o que fazer com eles | Júlia Nogueira | publicado | 01/09/2026 |
-| Rascunho: notas sobre revisão de código | Helena Prado | rascunho | |
+| O que é o Ataraxia e por que um blog | Pedro Emmanuel Esteves | publicado | 24/08/2026 |
+| Por que Django para um blog pequeno | Renan Jordão | publicado | 02/09/2026 |
+| O ornitorrinco dos casos de uso | Rafaela Rarume | publicado | 12/09/2026 |
+| Protótipos em HTML antes de qualquer linha de Python | Rafaela Rarume | publicado | 21/09/2026 |
+| O que a revisão por Pull Request ensina | Pedro Emmanuel Esteves | publicado | 01/10/2026 |
+| Do caso de uso ao teste: como a busca foi construída | Felipe Amorim | publicado | 14/10/2026 |
+| Comentário é texto puro, e isso é uma decisão de segurança | Gabriel Vieira Ferreira | publicado | 23/10/2026 |
+| Esconder o botão não é autorização | Pedro Emmanuel Esteves | publicado | 04/11/2026 |
+| Testar antes de publicar: o que automatizar e o que olhar | Renan Jordão | publicado | 15/11/2026 |
+| Rascunho: ideias para os próximos textos | Felipe Amorim | rascunho | |
 
 O termo incomum do título é **ornitorrinco**, e o do corpo é **quimera**, no
-texto "Matemática para quem programa".
+texto "Esconder o botão não é autorização".
