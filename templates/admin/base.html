@@ -1,0 +1,86 @@
+{% load i18n static tz %}<!doctype html>
+{# A moderação usa a mesma casca do site: topo, largura, tipografia e rodapé. #}
+{# Os blocos têm os nomes que as telas do admin do Django esperam encontrar. #}
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+  <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
+  {% block extrahead %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'css/ataraxia.css' %}">
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+  <script src="{% static 'js/tema.js' %}"></script>
+  {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
+</head>
+<body class="moderacao {% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}"
+  data-admin-server-timezone="{% get_current_timezone as time_zone %}{{ time_zone }}">
+  <a class="pular" href="#content-start">Pular para o conteúdo</a>
+  {% if not is_popup %}{% block header %}{% include 'includes/topo.html' %}{% endblock %}{% endif %}
+
+  <div id="container" class="pagina larga">
+    {% if not is_popup %}
+      {% block usertools %}
+        {% if has_permission %}
+        {% url 'admin:index' as inicio %}
+        <nav class="moderacao-nav" aria-label="Moderação">
+          <a class="moderacao-inicio" href="{{ inicio }}"{% if request.path == inicio %} aria-current="page"{% endif %}>Moderação</a>
+          {% for app in available_apps %}{% for model in app.models %}{% if model.admin_url %}
+            <a href="{{ model.admin_url }}"{% if model.admin_url in request.path %} aria-current="page"{% endif %}>{{ model.name }}</a>
+          {% endif %}{% endfor %}{% endfor %}
+          {% if user.has_usable_password %}<a class="moderacao-senha" href="{% url 'admin:password_change' %}">Alterar senha</a>{% endif %}
+        </nav>
+        {% endif %}
+      {% endblock %}
+      {% block nav-breadcrumbs %}
+        <nav aria-label="{% translate 'Breadcrumbs' %}">
+          {% block breadcrumbs %}
+            <ol class="breadcrumbs">
+              <li><a href="{% url 'admin:index' %}">{% translate 'Home' %}</a></li>
+              {% if title %}<li aria-current="page">{{ title }}</li>{% endif %}
+            </ol>
+          {% endblock %}
+        </nav>
+      {% endblock %}
+    {% endif %}
+
+    <div class="main" id="main">
+      <main id="content-start" class="content" tabindex="-1">
+        {% block messages %}
+          {% if messages %}
+            <ul class="messagelist">{% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %} role="status">{{ message|capfirst }}</li>
+            {% endfor %}</ul>
+          {% endif %}
+        {% endblock messages %}
+        <div id="content" class="{% block coltype %}colM{% endblock %}">
+          <div class="titles-and-tools">
+            <div class="titles">
+              {% block pretitle %}{% endblock %}
+              {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+              {% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %}
+            </div>
+            {% block object-tools %}{% endblock %}
+          </div>
+          {% block content %}{{ content }}{% endblock %}
+          {% block sidebar %}{% endblock %}
+        </div>
+      </main>
+    </div>
+  </div>
+
+  {% if not is_popup %}
+  <footer class="rodape" id="footer">
+    <div class="rodape-interno">
+      {% block footer %}{% endblock %}
+      <p class="rodape-nota">{% include 'includes/marca.html' %}<span>Ataraxia. Projeto de Prática Profissional em ADS, Universidade Presbiteriana Mackenzie.</span></p>
+    </div>
+  </footer>
+  {% endif %}
+  {% block extrabody %}{% endblock extrabody %}
+</body>
+</html>

@@ -1,0 +1,406 @@
+/* Moderação (admin do Django) com a cara do site.
+
+   As folhas do Django entram numa camada: qualquer regra do Ataraxia, daqui
+   ou de ataraxia.css, vence as delas sem disputar especificidade. O Django
+   continua cuidando do que é mecânico (seletores duplos, calendário, linhas
+   de formulário); aqui fica só o que muda a aparência. */
+
+@import url("../admin/css/base.css") layer(django);
+@import url("../admin/css/changelists.css") layer(django);
+@import url("../admin/css/forms.css") layer(django);
+@import url("../admin/css/widgets.css") layer(django);
+@import url("../admin/css/responsive.css") layer(django);
+
+/* As cores do admin passam a ser as do site. Como apontam para as variáveis
+   de ataraxia.css, o tema escuro vem junto, sem regra própria. */
+:root {
+  --primary: var(--texto);
+  --secondary: var(--texto);
+  --accent: var(--texto);
+  --primary-fg: var(--fundo);
+  --body-fg: var(--texto);
+  --body-bg: var(--fundo);
+  --body-quiet-color: var(--suave);
+  --body-medium-color: var(--resumo);
+  --body-loud-color: var(--texto);
+  --header-color: var(--texto);
+  --header-branding-color: var(--texto);
+  --header-bg: var(--fundo);
+  --header-link-color: var(--texto);
+  --breadcrumbs-fg: var(--suave);
+  --breadcrumbs-link-fg: var(--suave);
+  --breadcrumbs-bg: transparent;
+  --link-fg: var(--texto);
+  --link-hover-color: var(--suave);
+  --link-selected-fg: var(--texto);
+  --hairline-color: var(--borda);
+  --border-color: var(--borda-forte);
+  --error-fg: var(--perigo);
+  --message-debug-bg: var(--campo);
+  --message-info-bg: var(--campo);
+  --message-success-bg: var(--campo);
+  --message-warning-bg: var(--campo);
+  --message-error-bg: var(--erro-fundo);
+  --darkened-bg: var(--campo);
+  --selected-bg: var(--campo);
+  --selected-row: var(--campo);
+  --button-fg: var(--fundo);
+  --button-bg: var(--texto);
+  --button-hover-bg: var(--texto-ativo);
+  --default-button-bg: var(--texto);
+  --default-button-hover-bg: var(--texto-ativo);
+  --close-button-bg: var(--suave);
+  --close-button-hover-bg: var(--texto);
+  --delete-button-bg: var(--perigo-fundo);
+  --delete-button-hover-bg: var(--perigo-fundo);
+  --object-tools-fg: var(--fundo);
+  --object-tools-bg: var(--texto);
+  --object-tools-hover-bg: var(--texto-ativo);
+  --font-family-primary: var(--sem-serifa);
+}
+
+/* Casca ----------------------------------------------------------------- */
+
+html, body.moderacao { height: auto; }
+body.moderacao { min-height: 100vh; display: flex; flex-direction: column; font-size: 16px; }
+body.moderacao > .rodape { margin-top: auto; }
+body.moderacao .rodape-interno { max-width: var(--largura-larga); padding-top: 20px; padding-bottom: 28px; }
+body.moderacao .rodape-nota { border-top: 0; padding-top: 0; }
+
+.moderacao #container {
+  display: block; position: static; width: 100%; min-width: 0; height: auto; min-height: 0;
+  padding-top: 8px;
+}
+.moderacao .main { display: block; }
+.moderacao .content, .moderacao #content { display: block; float: none; width: auto; max-width: none; margin: 0; padding: 0; }
+.moderacao #content-main { float: none; width: auto; }
+.moderacao.popup #container { padding-top: 32px; }
+
+/* Faixa das áreas: mesma linha fina que separa as seções do site. */
+.moderacao-nav {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0 4px;
+  border-bottom: 1px solid var(--borda); margin-bottom: 28px;
+}
+.moderacao-nav a {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 12px;
+  margin-bottom: -1px; border-bottom: 2px solid transparent;
+  font-size: .95rem; font-weight: 500; color: var(--suave); text-decoration: none;
+}
+.moderacao-nav a:first-child { padding-left: 0; }
+.moderacao-nav a:hover { color: var(--texto); }
+.moderacao-nav a[aria-current] { color: var(--texto); border-bottom-color: var(--texto); }
+.moderacao-nav .moderacao-inicio { font-family: var(--titulo); font-weight: 600; color: var(--texto); margin-right: 8px; }
+.moderacao-nav .moderacao-senha { margin-left: auto; padding-right: 0; }
+
+.moderacao .breadcrumbs {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 0 6px; margin: 0 0 12px; padding: 0;
+  background: none; border: 0; color: var(--suave); font-size: .875rem;
+}
+.moderacao .breadcrumbs li { list-style: none; }
+.moderacao .breadcrumbs a { color: var(--suave); text-decoration: none; }
+.moderacao .breadcrumbs a:hover { color: var(--texto); text-decoration: underline; }
+
+/* Títulos --------------------------------------------------------------- */
+
+.moderacao .titles-and-tools {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 24px;
+}
+.moderacao #content h1 {
+  margin: 0; font: 700 2rem/1.2 var(--titulo); letter-spacing: -0.03em; color: var(--texto);
+}
+.moderacao #content .titles h2 { margin: 6px 0 0; font: 500 1.1rem var(--sem-serifa); letter-spacing: 0; color: var(--suave); }
+
+/* Cabeçalhos de bloco do admin viram o rótulo em caixa alta do site. */
+.moderacao .module { background: none; margin-bottom: 32px; }
+.moderacao .module h2, .moderacao .module caption, .moderacao .inline-group h2,
+.moderacao fieldset.module h2, .moderacao .fieldset-heading, .moderacao #changelist-filter h2 {
+  margin: 0 0 4px; padding: 0 0 10px; background: none; border: 0;
+  font: 600 .8rem var(--sem-serifa); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--suave); text-align: left;
+}
+.moderacao .module h2 a, .moderacao .module caption a { color: inherit; }
+
+/* Mensagens ------------------------------------------------------------- */
+
+.moderacao ul.messagelist { list-style: none; margin: 0 0 24px; padding: 0; }
+.moderacao ul.messagelist li {
+  list-style: none; display: block; margin: 0 0 8px; padding: 12px 16px;
+  background: var(--campo); background-image: none; border-radius: var(--raio);
+  color: var(--texto); font-size: 1rem;
+}
+.moderacao ul.messagelist li.error, .moderacao ul.messagelist li.warning { background: var(--erro-fundo); }
+.moderacao .errornote {
+  margin: 0 0 16px; padding: 14px 18px; border: 0; border-radius: var(--raio);
+  background: var(--erro-fundo); color: var(--texto); font-size: 1rem; font-weight: 400;
+}
+.moderacao ul.errorlist { list-style: none; margin: 0 0 6px; padding: 0; }
+.moderacao ul.errorlist li { list-style: none; padding: 0; background: none; color: var(--perigo); font-size: .9rem; }
+
+/* Botões ---------------------------------------------------------------- */
+
+.moderacao .button, .moderacao a.button,
+.moderacao input[type=submit], .moderacao input[type=button], .moderacao .submit-row a.closelink,
+.moderacao .object-tools a {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 42px; height: auto; margin: 0; padding: 0 18px;
+  border: 1px solid var(--borda-forte); border-radius: var(--raio);
+  background: var(--fundo); background-image: none; color: var(--texto);
+  font: 500 .95rem var(--sem-serifa); letter-spacing: 0; text-transform: none; text-decoration: none;
+  cursor: pointer;
+}
+.moderacao .button:hover, .moderacao a.button:hover,
+.moderacao input[type=submit]:hover, .moderacao input[type=button]:hover,
+.moderacao .submit-row a.closelink:hover { background: var(--campo); color: var(--texto); }
+.moderacao input[type=submit].default, .moderacao .button.default, .moderacao .object-tools a {
+  background: var(--texto); border-color: var(--texto); color: var(--fundo);
+}
+.moderacao input[type=submit].default:hover, .moderacao .button.default:hover, .moderacao .object-tools a:hover {
+  background: var(--texto-ativo); border-color: var(--texto-ativo); color: var(--fundo);
+}
+.moderacao .object-tools { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; float: none; margin: 0; padding: 0; }
+.moderacao .object-tools li { list-style: none; float: none; margin: 0; height: auto; }
+.moderacao .object-tools a.historylink, .moderacao .object-tools a.viewsitelink {
+  background: var(--fundo); border-color: var(--borda-forte); color: var(--texto);
+}
+.moderacao .object-tools a.historylink:hover, .moderacao .object-tools a.viewsitelink:hover { background: var(--campo); color: var(--texto); }
+
+.moderacao .submit-row a.deletelink, .moderacao .delete-confirmation input[type=submit] {
+  display: inline-flex; align-items: center; min-height: 42px; height: auto; padding: 0 18px;
+  border: 1px solid var(--perigo-fundo); border-radius: var(--raio);
+  background: var(--perigo-fundo); color: #fff;
+  font: 500 .95rem var(--sem-serifa); text-decoration: none;
+}
+.moderacao .submit-row a.deletelink { margin-left: auto; }
+.moderacao .delete-confirmation .cancel-link, .moderacao a.cancel-link {
+  display: inline-flex; align-items: center; min-height: 42px; height: auto; margin: 0 0 0 12px; padding: 0 18px;
+  border: 1px solid var(--borda-forte); border-radius: var(--raio);
+  background: var(--fundo); color: var(--texto); font: 500 .95rem var(--sem-serifa); text-decoration: none;
+}
+.moderacao .delete-confirmation form { display: flex; flex-wrap: wrap; align-items: center; margin-top: 24px; }
+
+/* Os ícones coloridos do admin (mais, lápis, xis) saem: fica só o texto. */
+.moderacao .addlink, .moderacao .changelink, .moderacao .deletelink, .moderacao .viewlink,
+.moderacao .hidelink, .moderacao .historylink, .moderacao .viewsitelink {
+  background-image: none; padding-left: 0;
+}
+.moderacao .submit-row a.deletelink, .moderacao .object-tools a { padding: 0 18px; }
+
+/* Campos ---------------------------------------------------------------- */
+
+.moderacao #container input[type=text], .moderacao #container input[type=email], .moderacao #container input[type=password],
+.moderacao #container input[type=url], .moderacao #container input[type=number], .moderacao #container input[type=tel],
+.moderacao #container input[type=date], .moderacao #container input[type=time], .moderacao #container input[type=search],
+.moderacao #container textarea, .moderacao #container select {
+  width: auto; max-width: 100%; height: auto; margin: 0; padding: 10px 14px;
+  border: 1px solid var(--borda-forte); border-radius: var(--raio);
+  background-color: var(--fundo); color: var(--texto); font: inherit; font-size: 1rem;
+}
+.moderacao #container select { min-height: 42px; padding: 0 12px; }
+.moderacao #container select[multiple] { padding: 6px; min-height: 180px; }
+.moderacao #container input:focus, .moderacao #container textarea:focus, .moderacao #container select:focus { border-color: var(--texto); }
+.moderacao #container input.vTextField, .moderacao #container input.vURLField, .moderacao #container input.vEmailField,
+.moderacao #container .form-row input[type=password] { width: min(100%, 560px); }
+.moderacao #container .vLargeTextField, .moderacao #container .form-row textarea { width: min(100%, 720px); min-height: 280px; }
+.moderacao input[type=checkbox], .moderacao input[type=radio] { width: 18px; height: 18px; margin: 0; accent-color: var(--texto); }
+
+.moderacao fieldset.module { border: 0; padding: 0; margin: 0 0 32px; }
+.moderacao .form-row { padding: 18px 0; border-bottom: 1px solid var(--borda); overflow: visible; font-size: 1rem; }
+.moderacao .form-row > div { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 16px; }
+.moderacao .form-row .flex-container { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 16px; width: 100%; }
+.moderacao .aligned label, .moderacao .form-row label, .moderacao .form-row legend {
+  float: none; display: block; width: 100%; min-width: 0; padding: 0;
+  font-size: .95rem; font-weight: 500; color: var(--texto); line-height: 1.4;
+}
+.moderacao label.required::after { content: ' *'; color: var(--suave); }
+.moderacao .aligned .checkbox-row label, .moderacao .aligned label.vCheckboxLabel, .moderacao .aligned label + ul label,
+.moderacao .checkbox-row label {
+  display: inline; width: auto; min-width: 0; padding: 0;
+}
+.moderacao .checkbox-row .checkbox { display: flex; align-items: center; gap: 10px; }
+.moderacao .form-row .readonly { margin: 0; padding: 0; font-size: 1rem; color: var(--corpo); max-width: 720px; white-space: pre-line; }
+.moderacao .form-row .help, .moderacao .form-row div.help, .moderacao .help {
+  flex-basis: 100%; margin: 0; padding: 0; font-size: .875rem; color: var(--suave);
+}
+.moderacao .form-row.errors { border-bottom-color: var(--borda); }
+.moderacao .errors input, .moderacao .errors select, .moderacao .errors textarea { border-color: var(--perigo); }
+
+.moderacao .submit-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  margin: 28px 0 0; padding: 0; background: none; border: 0; border-radius: 0;
+}
+
+.moderacao .inline-group { margin: 0 0 32px; padding: 0; border: 0; }
+.moderacao .inline-related h3 {
+  margin: 0; padding: 12px 0; background: none; border: 0; border-top: 1px solid var(--borda);
+  font: 600 1rem var(--titulo); color: var(--texto);
+}
+.moderacao .inline-related fieldset.module { margin-bottom: 0; }
+
+/* Seletor duplo (grupos e permissões) e auxiliares. */
+.moderacao .selector { gap: 12px; }
+.moderacao .selector-available-title, .moderacao .selector-chosen-title {
+  background: var(--campo); color: var(--texto); border-radius: var(--raio) var(--raio) 0 0;
+}
+.moderacao .selector-available-title label, .moderacao .selector-chosen-title label,
+.moderacao .selector .selector-filter label { width: auto; min-width: 0; padding: 0; }
+.moderacao .selector select { border-radius: 0 0 var(--raio) var(--raio); }
+.moderacao .selector .selector-filter { border-color: var(--borda-forte); }
+.moderacao .related-widget-wrapper { gap: 8px; align-items: center; }
+.moderacao .related-widget-wrapper-link img, .moderacao .selector img { filter: grayscale(1); }
+.moderacao .selector .selector-chooseall, .moderacao .selector .selector-clearall {
+  min-height: 36px; margin: 8px 0 0; padding: 0 14px; border: 1px solid var(--borda-forte); border-radius: var(--raio);
+  background: var(--fundo); color: var(--texto); font: 500 .85rem var(--sem-serifa); opacity: 1;
+}
+.moderacao .selector .selector-chooseall:hover, .moderacao .selector .selector-clearall:hover { background: var(--campo); }
+.moderacao .selector .selector-chooseall:disabled, .moderacao .selector .selector-clearall:disabled { color: var(--suave); cursor: default; }
+
+/* Listagem -------------------------------------------------------------- */
+
+.moderacao #changelist { display: block; margin-bottom: 0; }
+.moderacao #changelist .changelist-form-container { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px; width: 100%; }
+.moderacao #changelist .changelist-form-container > div { flex: 1 1 100%; min-width: 0; max-width: none; }
+
+.moderacao #toolbar {
+  margin: 0 0 16px; padding: 0; background: none; border: 0; color: var(--suave);
+}
+.moderacao #changelist-search > div { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.moderacao #changelist-search label { position: absolute; width: 1px; height: 1px; min-width: 0; padding: 0; overflow: hidden; clip: rect(0 0 0 0); }
+.moderacao #container #searchbar {
+  flex: 0 1 320px; width: auto; min-height: 44px; padding: 0 18px;
+  border: 0; border-radius: 999px; background: var(--campo);
+}
+.moderacao #changelist-search .quiet { margin: 0; font-size: .875rem; color: var(--suave); }
+
+.moderacao #changelist .actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin: 0; padding: 12px 0; background: none; border: 0; border-top: 1px solid var(--borda);
+  color: var(--suave); font-size: .9rem; line-height: 1.4;
+}
+.moderacao #changelist .actions label { display: inline-flex; align-items: center; gap: 10px; width: auto; min-width: 0; padding: 0; margin: 0; font-size: .9rem; color: var(--suave); }
+.moderacao #changelist .actions select { height: auto; min-height: 42px; margin: 0; }
+.moderacao #changelist .actions .button { min-height: 42px; }
+.moderacao #changelist .actions span { color: var(--suave); }
+
+.moderacao #changelist .results { overflow-x: auto; }
+.moderacao #changelist table { width: 100%; border-collapse: collapse; border: 0; }
+.moderacao #changelist table tr { background: none; }
+.moderacao #changelist table tbody th { min-width: 240px; }
+.moderacao #changelist table thead th {
+  padding: 0; background: none; border: 0; border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda);
+  font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--suave);
+  text-align: left; vertical-align: middle;
+}
+.moderacao #changelist table thead th .text a, .moderacao #changelist table thead th .text span {
+  display: block; padding: 14px 12px 14px 0; color: var(--suave); text-decoration: none;
+}
+.moderacao #changelist table thead th .text a:hover, .moderacao #changelist table thead th .text a:focus { background: none; color: var(--texto); }
+.moderacao #changelist table thead th.sorted { background: none; }
+.moderacao #changelist table thead th.sorted .text a { color: var(--texto); }
+.moderacao #changelist table thead th.sorted .text { padding-right: 34px; }
+.moderacao #changelist table tbody td, .moderacao #changelist table tbody th {
+  padding: 14px 12px 14px 0; background: none; border: 0; border-bottom: 1px solid var(--borda);
+  font-size: 1rem; font-weight: 400; line-height: 1.45; color: var(--corpo); vertical-align: middle; text-align: left;
+}
+.moderacao #changelist table tbody th a { font-weight: 500; color: var(--texto); text-underline-offset: 3px; }
+.moderacao #changelist table tbody tr:hover td, .moderacao #changelist table tbody tr:hover th,
+.moderacao #changelist table tbody tr.selected td, .moderacao #changelist table tbody tr.selected th { background: var(--campo); }
+.moderacao #changelist table .action-checkbox, .moderacao #changelist table .action-checkbox-column { width: 34px; padding-left: 8px; }
+.moderacao #changelist table thead th.action-checkbox-column .text span { padding: 14px 0 14px 8px; }
+.moderacao #changelist table tbody td.nowrap { white-space: nowrap; }
+
+.moderacao #changelist .changelist-footer {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+  margin: 0; padding: 20px 0 0; background: none; border: 0; color: var(--suave); font-size: .95rem;
+}
+.moderacao #changelist .paginator {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin: 0; padding: 0; background: none; border: 0; color: var(--suave); font-size: .95rem; line-height: 1.4;
+}
+.moderacao .paginator ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+.moderacao .paginator li { list-style: none; }
+.moderacao .paginator a, .moderacao .paginator a:link, .moderacao .paginator a:visited, .moderacao .paginator .this-page, .moderacao .paginator [aria-current] {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 36px; height: 36px; padding: 0 8px;
+  border: 0; border-radius: var(--raio); background: none; color: var(--texto); font-weight: 500; text-decoration: none;
+}
+.moderacao .paginator a:hover { background: var(--campo); color: var(--texto); }
+.moderacao .paginator .this-page, .moderacao .paginator [aria-current] { background: var(--texto); color: var(--fundo); }
+
+/* Filtros: uma faixa acima da tabela, com as opções em pílulas. */
+.moderacao #changelist-filter {
+  flex: 1 1 100%; order: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px 32px;
+  margin: 0; padding: 0; background: none; border: 0; border-radius: 0;
+}
+.moderacao #changelist-filter h2 { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); }
+.moderacao #changelist-filter details { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; padding: 0; border: 0; }
+.moderacao #changelist-filter summary, .moderacao #changelist-filter h3 {
+  list-style: none; margin: 0; padding: 0; pointer-events: none;
+  font: 500 .9rem var(--sem-serifa); color: var(--suave);
+}
+.moderacao #changelist-filter summary::before, .moderacao #changelist-filter summary::-webkit-details-marker { display: none; content: none; }
+.moderacao #changelist-filter details::details-content { display: contents; content-visibility: visible; }
+.moderacao #changelist-filter ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; border: 0; }
+.moderacao #changelist-filter li { list-style: none; margin: 0; padding: 0; border: 0; }
+.moderacao #changelist-filter li a {
+  display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 999px;
+  background: var(--campo); color: var(--texto); font-size: .85rem; font-weight: 500; text-decoration: none;
+}
+.moderacao #changelist-filter li a:hover { background: var(--borda-forte); color: var(--texto); }
+.moderacao #changelist-filter li.selected a { background: var(--texto); color: var(--fundo); }
+.moderacao #changelist-filter-extra-actions { order: 9; padding: 6px 0 0; border: 0; font-size: .85rem; }
+.moderacao #changelist-filter-extra-actions a { color: var(--suave); }
+
+/* Histórico, exclusão e demais telas de leitura. */
+.moderacao #content-main > p, .moderacao #content > p { font-size: 1rem; color: var(--corpo); }
+.moderacao #content-main ul, .moderacao #content > ul { font-size: 1rem; }
+.moderacao #content h2 { font-size: 1.1rem; }
+.moderacao #change-history { width: 100%; border-collapse: collapse; }
+.moderacao #change-history th, .moderacao #change-history td {
+  padding: 14px 12px 14px 0; background: none; border: 0; border-bottom: 1px solid var(--borda);
+  font-size: 1rem; text-align: left; font-weight: 400;
+}
+.moderacao #change-history thead th { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--suave); }
+
+/* Painel inicial -------------------------------------------------------- */
+
+.painel { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 56px; align-items: start; }
+.painel-linha { align-items: center; justify-content: space-between; }
+.moderacao #content .painel-linha h3 { margin: 0; font: 600 1.25rem var(--titulo); }
+.painel-linha h3 a { color: var(--texto); text-decoration: none; }
+.painel-linha h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.painel .linhas { border-bottom: 1px solid var(--borda); }
+.painel-acoes { list-style: none; margin: 0; padding: 0; }
+.moderacao #content .painel-acoes li {
+  list-style: none; display: flex; flex-direction: column; gap: 2px;
+  padding: 12px 0; border-top: 1px solid var(--borda); font-size: .95rem; overflow-wrap: anywhere;
+}
+.painel-acoes .meta { font-size: .8rem; }
+
+/* Telas estreitas ------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .painel { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .moderacao .moderacao-nav .moderacao-senha { margin-left: 0; }
+  .moderacao .submit-row a.deletelink { margin-left: 0; }
+  .moderacao .selector { flex-direction: column; }
+}
+
+/* Ajustes finos ---------------------------------------------------------- */
+
+.moderacao input[type=submit], .moderacao .button { box-shadow: none; }
+.moderacao #changelist table tbody td.nowrap { white-space: normal; }
+.moderacao #changelist .actions select { flex: 0 1 280px; min-width: 0; }
+.moderacao #content-main li, .moderacao #content li { font-size: 1rem; }
+
+/* Exclusão: o botão que confirma é o vermelho do site. */
+.moderacao.delete-confirmation #content form { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
+.moderacao.delete-confirmation #content form > div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.moderacao.delete-confirmation #content form input[type=submit] {
+  background: var(--perigo-fundo); border-color: var(--perigo-fundo); color: #fff;
+}
+.moderacao.delete-confirmation #content form .cancel-link { margin: 0; }
+
+/* Entrada da moderação: o mesmo formulário estreito do site. */
+.moderacao #content .bloco h1 { margin: 0 0 16px; }
+.moderacao #container .formulario input[type=text], .moderacao #container .formulario input[type=password] { width: 100%; }
+.moderacao #container .formulario label { display: block; margin-bottom: 6px; font-size: 1rem; font-weight: 500; color: var(--texto); }
