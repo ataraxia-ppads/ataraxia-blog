@@ -2,8 +2,10 @@
   <div class="topo-interno">
     <a class="marca" href="{% url 'posts:list' %}">{% include 'includes/marca.html' %}<span>Ataraxia</span></a>
     <form class="busca" action="{% url 'posts:list' %}" method="get" role="search">
-      <svg class="icone" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <label for="busca-termo" class="visualmente-oculto">Buscar textos</label>
+      <label for="busca-termo" class="busca-lupa" title="Buscar textos">
+        <svg class="icone" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="visualmente-oculto">Buscar textos</span>
+      </label>
       <input id="busca-termo" type="search" name="q" value="{{ term|default:'' }}" placeholder="Buscar">
     </form>
     <nav class="navegacao" aria-label="Conta">
