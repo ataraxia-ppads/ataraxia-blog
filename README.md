@@ -203,7 +203,7 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 | Banco (produção) | PostgreSQL |
 | Front-end | Templates do Django |
 | Versionamento | Git e GitHub |
-| Publicação | `blog.ataraxia.dev` |
+| Publicação | `blog.ataraxia.dev`, no Azure App Service; todo merge na `main` é publicado pelo GitHub Actions depois dos testes |
 
 ## Divisão do trabalho
 
