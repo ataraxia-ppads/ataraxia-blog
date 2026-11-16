@@ -56,13 +56,13 @@ jobs:
         run: python manage.py collectstatic --noinput
       - name: Marca a versão
         run: echo "$GITHUB_SHA" > staticfiles/versao.txt
-      - name: Tira do pacote o que o site não usa
-        run: rm -rf .git .github docs
+      - name: Fecha o pacote, sem o que o site não usa
+        run: zip -qr "$RUNNER_TEMP/pacote.zip" . -x '.git/*' '.github/*' 'docs/*'
       - uses: azure/webapps-deploy@v3
         with:
           app-name: ataraxia-blog
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+          package: ${{ runner.temp }}/pacote.zip
           type: zip
           clean: true
       - name: Confere que a versão nova está no ar
