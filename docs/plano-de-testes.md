@@ -7,7 +7,7 @@ Versão 3.2, da entrega final (tag `v3.2`). Esta é a versão em texto do plano 
 
 ## 1 Introdução
 
-Este documento é o plano de testes do Ataraxia, plataforma de blog desenvolvida como projeto do componente Prática Profissional em Análise e Desenvolvimento de Sistemas da Universidade Presbiteriana Mackenzie. Esta é a versão da entrega final, com o resultado da execução sobre a tag v3.1 do repositório e as métricas calculadas a partir dele (capítulos 6 e 7).
+Este documento é o plano de testes do Ataraxia, plataforma de blog desenvolvida como projeto do componente Prática Profissional em Análise e Desenvolvimento de Sistemas da Universidade Presbiteriana Mackenzie. Esta é a versão da entrega final, com o resultado da execução sobre a tag v3.2 do repositório e as métricas calculadas a partir dele (capítulos 6 e 7).
 
 O plano parte dos onze casos de uso registrados na análise. Cada fluxo principal, alternativo e de exceção vira pelo menos um caso de teste, e cada regra de negócio tem um caso de teste que a exercita. Os casos de uso UC02, UC03, UC05, UC08 e UC10, descritos em detalhe na análise, têm testes derivados fluxo a fluxo; os demais têm testes derivados do comportamento descrito na lista de casos de uso, na arquitetura e no roteiro de testes manuais do repositório.
 
