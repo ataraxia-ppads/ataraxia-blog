@@ -3,11 +3,11 @@
 Prática Profissional em Análise e Desenvolvimento de Sistemas  
 Universidade Presbiteriana Mackenzie
 
-Versão 3.2, da entrega final (tag `v3.2`). Esta é a versão em texto do plano entregue em PDF; os casos, o resultado da execução e as métricas são os mesmos.
+Versão 3.3, da entrega final (tag `v3.3`). Esta é a versão em texto do plano entregue em PDF; os casos, o resultado da execução e as métricas são os mesmos.
 
 ## 1 Introdução
 
-Este documento é o plano de testes do Ataraxia, plataforma de blog desenvolvida como projeto do componente Prática Profissional em Análise e Desenvolvimento de Sistemas da Universidade Presbiteriana Mackenzie. Esta é a versão da entrega final, com o resultado da execução sobre a tag v3.2 do repositório e as métricas calculadas a partir dele (capítulos 6 e 7).
+Este documento é o plano de testes do Ataraxia, plataforma de blog desenvolvida como projeto do componente Prática Profissional em Análise e Desenvolvimento de Sistemas da Universidade Presbiteriana Mackenzie. Esta é a versão da entrega final, com o resultado da execução sobre a tag v3.3 do repositório e as métricas calculadas a partir dele (capítulos 6 e 7).
 
 O plano parte dos onze casos de uso registrados na análise. Cada fluxo principal, alternativo e de exceção vira pelo menos um caso de teste, e cada regra de negócio tem um caso de teste que a exercita. Os casos de uso UC02, UC03, UC05, UC08 e UC10, descritos em detalhe na análise, têm testes derivados fluxo a fluxo; os demais têm testes derivados do comportamento descrito na lista de casos de uso, na arquitetura e no roteiro de testes manuais do repositório.
 
@@ -35,6 +35,7 @@ O plano parte dos onze casos de uso registrados na análise. Cada fluxo principa
 | 3.0 | Entrega final (tag v3), 15 nov. 2026 | Sistema publicado, com nova interface e novo conteúdo de demonstração. Execução completa do plano: testes automatizados, casos manuais CTN01, CTN07 e CTN11 e percurso de fumaça no endereço publicado. CT06.01 passou a esperar o vínculo do perfil com as iniciais no topo, no lugar do nome por extenso. O capítulo 6 passa a registrar a execução final e o novo capítulo 7 traz as métricas. |
 | 3.1 | Entrega final (tag v3.1), 15 nov. 2026 | Tema escuro, busca que se expande ao receber o foco, vínculo para o repositório e ícone na aba do navegador. O CTN11 passa a medir o contraste nos dois temas. Execução repetida por inteiro sobre a tag v3.1. |
 | 3.2 | Entrega final (tag v3.2), 16 nov. 2026 | A área de moderação passa a usar o topo, a tipografia e as cores do site. A busca do topo começa como o ícone da lupa e se estende ao clicar, e em tela estreita o topo se organiza em duas linhas. Todo merge na branch principal passa a ser publicado automaticamente depois dos testes. Execução repetida por inteiro sobre a tag v3.2, com os mesmos resultados. |
+| 3.3 | Entrega final (tag v3.3), 17 nov. 2026 | Ajustes na área de moderação: a página de acesso negado ganha mensagem própria e a tela de um comentário fica com um botão só. Execução repetida por inteiro sobre a tag v3.3, com os mesmos resultados. |
 
 ## 2 Estratégia de testes
 
@@ -303,14 +304,14 @@ O plano tem 74 casos de teste funcionais (74 automatizados, 0 manuais) e 11 não
 
 | Item | Valor |
 | --- | --- |
-| Data | 16 de novembro de 2026 |
-| Versão testada | tag v3.2 do repositório github.com/ataraxia-ppads/ataraxia-blog, a mesma que está publicada |
+| Data | 17 de novembro de 2026 |
+| Versão testada | tag v3.3 do repositório github.com/ataraxia-ppads/ataraxia-blog, a mesma que está publicada |
 | Quem executou | Pedro Emmanuel Esteves |
 | Desenvolvimento | Arch Linux (kernel 7.2), Python 3.14.7, Django 6.1, SQLite |
 | Publicação | https://blog.ataraxia.dev, Azure App Service (Linux, Python 3.14) com PostgreSQL 17 |
 | Navegadores | Chromium e Firefox, nas versões atuais |
 
-A tag v3.1 acrescenta à v2 a nova interface, com tema claro e escuro, o tempo de leitura, as iniciais no avatar e o novo conteúdo de demonstração. A tag v3.2 leva o mesmo visual à área de moderação, troca o campo de busca do topo pelo ícone da lupa, que se estende ao clicar, e arruma o topo em duas linhas nas telas estreitas; nenhuma regra de negócio mudou. A execução em Windows 11 é a da Iteração 2, feita por Renan Jordão em 4 de novembro de 2026 sobre a tag v2, e não foi repetida na v3.2.
+A tag v3.1 acrescenta à v2 a nova interface, com tema claro e escuro, o tempo de leitura, as iniciais no avatar e o novo conteúdo de demonstração. A tag v3.2 leva o mesmo visual à área de moderação, troca o campo de busca do topo pelo ícone da lupa, que se estende ao clicar, e arruma o topo em duas linhas nas telas estreitas; nenhuma regra de negócio mudou. A tag v3.3 só ajusta duas telas da moderação. A execução em Windows 11 é a da Iteração 2, feita por Renan Jordão em 4 de novembro de 2026 sobre a tag v2, e não foi repetida na v3.3.
 
 ### 6.2 Resultado por grupo de casos
 
@@ -331,7 +332,7 @@ Os 85 testes automatizados passaram em 30 segundos (eram 83 na Iteração 2; os 
 | --- | --- | --- |
 | CTN01 | Nove telas em 360 pixels de largura: listagem, busca, leitura sem e com sessão, cadastro, entrada, editor, Meus textos e perfil | Nenhuma tela com rolagem horizontal (largura do conteúdo de 360 pixels em todas); todos os botões, campos e vínculos dentro da tela |
 | CTN11 | As mesmas nove telas, em 1280 pixels | Menor contraste encontrado de 6,78 para 1 no tema claro e de 6,66 para 1 no escuro, acima do mínimo de 4,5 para 1 da WCAG 2.1 nível AA; a tecla Tab alcança todos os elementos interativos de cada tela, e todos mostram o foco |
-| CTN07 | Listagem, leitura e cadastro do endereço publicado, abertos no Chromium e no Firefox em 1280 por 900 pixels | Telas iguais nos dois navegadores. Testes aprovados em Linux. A v3.2 não foi executada em Windows, e não havia máquina com macOS |
+| CTN07 | Listagem, leitura e cadastro do endereço publicado, abertos no Chromium e no Firefox em 1280 por 900 pixels | Telas iguais nos dois navegadores. Testes aprovados em Linux. A v3.3 não foi executada em Windows, e não havia máquina com macOS |
 
 ### 6.4 Percurso de fumaça no endereço publicado
 
@@ -359,15 +360,15 @@ O caso é aprovado pelo teste automatizado, com 500 textos. Como referência, ci
 
 | Rota | Mínimo | Máximo |
 | --- | --- | --- |
-| Listagem | 0,48 s | 0,54 s |
-| Busca por termo | 0,43 s | 0,46 s |
+| Listagem | 0,47 s | 0,53 s |
+| Busca por termo | 0,42 s | 0,52 s |
 
 ### 6.6 Defeitos e pendências
 
 - Nenhum defeito do sistema foi encontrado na execução final.
-- Na primeira execução do percurso de fumaça, três verificações falharam por erro do roteiro, e não do sistema: o formulário errado da página foi enviado, a opção de comentários ficou fora do envio e a regra RN18 foi lida como se o moderador não pudesse ver a conta do superusuário, quando o que ela esconde é o papel. O roteiro foi corrigido e o percurso repetido por inteiro, também depois da publicação da nova interface. Na execução sobre a v3.2 as 28 verificações passaram na primeira tentativa.
+- Na primeira execução do percurso de fumaça, três verificações falharam por erro do roteiro, e não do sistema: o formulário errado da página foi enviado, a opção de comentários ficou fora do envio e a regra RN18 foi lida como se o moderador não pudesse ver a conta do superusuário, quando o que ela esconde é o papel. O roteiro foi corrigido e o percurso repetido por inteiro, também depois da publicação da nova interface. Nas execuções sobre a v3.2 e a v3.3 as 28 verificações passaram na primeira tentativa.
 - A nova interface pediu o ajuste de dois testes, sem defeito no sistema: CT06.01 conferia o nome da autora no topo, que deu lugar ao avatar com as iniciais, e o teste de consultas do CTN02 esperava duas consultas na listagem, que passaram a três com a faixa de autores, ainda sem crescer com a quantidade de textos.
-- Pendência: as partes de Windows e de macOS do CTN07 não foram executadas na v3.2. O critério de saída da seção 2.6 está atendido, porque o caso não é de autorização, de regra de negócio nem de fluxo principal.
+- Pendência: as partes de Windows e de macOS do CTN07 não foram executadas na v3.3. O critério de saída da seção 2.6 está atendido, porque o caso não é de autorização, de regra de negócio nem de fluxo principal.
 
 ## 7 Métricas
 
@@ -393,9 +394,9 @@ As métricas foram calculadas sobre a execução final, descrita no capítulo 6.
 | Casos de uso com caso de teste executado | 11 de 11 | 100% |
 | Regras de negócio com caso de teste aprovado | 18 de 18 | 100% |
 | Objetivos não funcionais verificados | 8 de 8, com o ONF05 em parte | 100% |
-| Cobertura de código pelos testes automatizados | 474 de 531 instruções (coverage.py) | 89% |
-| Cobertura de código sem o comando de carga de demonstração | 474 de 492 instruções | 96% |
-| Linhas de teste por linha de código | 692 de teste para 839 de código | 0,82 |
+| Cobertura de código pelos testes automatizados | 475 de 534 instruções (coverage.py) | 89% |
+| Cobertura de código sem o comando de carga de demonstração | 475 de 495 instruções | 96% |
+| Linhas de teste por linha de código | 692 de teste para 844 de código | 0,82 |
 
 O comando carregar_demo não tem teste automatizado. Ele foi exercitado na publicação, e o resultado ("9 textos publicados, 1 rascunho(s)") é o que o plano espera.
 
