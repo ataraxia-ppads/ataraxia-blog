@@ -20,7 +20,9 @@ from posts.models import Post
 TZ = ZoneInfo('America/Sao_Paulo')
 
 AUTHORS = {
-    'pedro': ('Pedro Emmanuel Esteves', 'Cuida de posts, da configuração e da publicação.'),
+    'pedro': ('Pedro Emmanuel Esteves',
+              'Do primeiro commit à publicação: posts, infraestrutura e a '
+              'revisão do que entra no Ataraxia.'),
     'renan': ('Renan Jordão', 'Cuida de contas e da arquitetura do Ataraxia.'),
     'rafaela': ('Rafaela Rarume', 'Cuida dos diagramas, do quadro e do roteiro de testes.'),
     'felipe': ('Felipe Amorim', 'Cuida da busca do Ataraxia.'),

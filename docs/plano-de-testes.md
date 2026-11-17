@@ -351,7 +351,7 @@ O percurso foi feito sobre https://blog.ataraxia.dev, com os usuários autor, le
 | UC11 | Autor não entra no admin; moderador reprova e reaprova um comentário | OK |
 | UC13 | Moderador não vê o papel de superusuário, desativa uma conta e recebe 403 ao alterar a conta do superusuário | OK |
 
-O texto e o comentário criados pelo percurso foram removidos ao final, e a listagem publicada voltou aos 9 textos da carga de demonstração. A conta criada no cadastro foi desativada pelo moderador, como parte do UC13, e não aparece no site.
+Os textos, comentários e contas criados pelo percurso foram removidos ao final, e a base publicada voltou à carga de demonstração.
 
 ### 6.5 Desempenho (CTN02)
 
