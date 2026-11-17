@@ -3,7 +3,12 @@
 {% block content %}
 <div class="bloco erro-pagina">
   <h1>Acesso negado</h1>
+  {% if '/admin/' in request.path %}
+  <p>Sua conta não tem permissão para esta parte da moderação.</p>
+  <a class="botao" href="{% url 'admin:index' %}">Voltar à moderação</a>
+  {% else %}
   <p>Você não tem permissão para fazer isso. Só quem escreveu o texto pode alterá-lo.</p>
   <a class="botao" href="{% url 'posts:list' %}">Ir para a página inicial</a>
+  {% endif %}
 </div>
 {% endblock %}
