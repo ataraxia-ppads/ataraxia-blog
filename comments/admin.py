@@ -28,6 +28,11 @@ class CommentAdmin(admin.ModelAdmin):
         n = queryset.update(approved=False)
         self.message_user(request, f'{n} comentário(s) reprovado(s).')
 
+    def render_change_form(self, request, context, **kwargs):
+        # A única coisa a decidir aqui é aprovar ou não: um botão basta.
+        context['show_save_and_continue'] = False
+        return super().render_change_form(request, context, **kwargs)
+
     def has_add_permission(self, request):
         # Comentário nasce pelo site, com autor da sessão; o admin só modera.
         return False
