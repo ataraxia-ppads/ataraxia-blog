@@ -35,7 +35,7 @@ O plano parte dos onze casos de uso registrados na análise. Cada fluxo principa
 | 3.0 | Entrega final (tag v3), 15 nov. 2026 | Sistema publicado, com nova interface e novo conteúdo de demonstração. Execução completa do plano: testes automatizados, casos manuais CTN01, CTN07 e CTN11 e percurso de fumaça no endereço publicado. CT06.01 passou a esperar o vínculo do perfil com as iniciais no topo, no lugar do nome por extenso. O capítulo 6 passa a registrar a execução final e o novo capítulo 7 traz as métricas. |
 | 3.1 | Entrega final (tag v3.1), 15 nov. 2026 | Tema escuro, busca que se expande ao receber o foco, vínculo para o repositório e ícone na aba do navegador. O CTN11 passa a medir o contraste nos dois temas. Execução repetida por inteiro sobre a tag v3.1. |
 | 3.2 | Entrega final (tag v3.2), 16 nov. 2026 | A área de moderação passa a usar o topo, a tipografia e as cores do site. A busca do topo começa como o ícone da lupa e se estende ao clicar, e em tela estreita o topo se organiza em duas linhas. Todo merge na branch principal passa a ser publicado automaticamente depois dos testes. Execução repetida por inteiro sobre a tag v3.2, com os mesmos resultados. |
-| 3.3 | Entrega final (tag v3.3), 17 nov. 2026 | Ajustes na área de moderação: a página de acesso negado ganha mensagem própria e a tela de um comentário fica com um botão só. Execução repetida por inteiro sobre a tag v3.3, com os mesmos resultados. |
+| 3.3 | Entrega final (tag v3.3), 17 nov. 2026 | Ajustes na área de moderação: a página de acesso negado ganha mensagem própria e a tela de um comentário fica com um botão só. Execução repetida por inteiro sobre a tag v3.3, com os mesmos resultados. Em 18 nov. 2026 a suíte da v3.3 rodou também em Windows 11, e o CTN07 passa a ter pendente só o macOS. |
 
 ## 2 Estratégia de testes
 
@@ -308,10 +308,11 @@ O plano tem 74 casos de teste funcionais (74 automatizados, 0 manuais) e 11 não
 | Versão testada | tag v3.3 do repositório github.com/ataraxia-ppads/ataraxia-blog, a mesma que está publicada |
 | Quem executou | Pedro Emmanuel Esteves |
 | Desenvolvimento | Arch Linux (kernel 7.2), Python 3.14.7, Django 6.1, SQLite |
+| Desenvolvimento, Windows | Windows 11 Pro (10.0.26200), Python 3.14.6, Django 6.1, SQLite; executado por Renan Jordão em 18 de novembro de 2026 |
 | Publicação | https://blog.ataraxia.dev, Azure App Service (Linux, Python 3.14) com PostgreSQL 17 |
 | Navegadores | Chromium e Firefox, nas versões atuais |
 
-A tag v3.1 acrescenta à v2 a nova interface, com tema claro e escuro, o tempo de leitura, as iniciais no avatar e o novo conteúdo de demonstração. A tag v3.2 leva o mesmo visual à área de moderação, troca o campo de busca do topo pelo ícone da lupa, que se estende ao clicar, e arruma o topo em duas linhas nas telas estreitas; nenhuma regra de negócio mudou. A tag v3.3 só ajusta duas telas da moderação. A execução em Windows 11 é a da Iteração 2, feita por Renan Jordão em 4 de novembro de 2026 sobre a tag v2, e não foi repetida na v3.3.
+A tag v3.1 acrescenta à v2 a nova interface, com tema claro e escuro, o tempo de leitura, as iniciais no avatar e o novo conteúdo de demonstração. A tag v3.2 leva o mesmo visual à área de moderação, troca o campo de busca do topo pelo ícone da lupa, que se estende ao clicar, e arruma o topo em duas linhas nas telas estreitas; nenhuma regra de negócio mudou. A tag v3.3 só ajusta duas telas da moderação. Em Windows 11, a suíte rodou na Iteração 2, sobre a tag v2 (Renan Jordão, 4 de novembro de 2026), e de novo sobre a tag v3.3 (Renan Jordão, 18 de novembro de 2026): os 85 testes passaram em 15 segundos, a verificação de estilo não apontou violação, o python manage.py check não encontrou problema e não havia migração pendente.
 
 ### 6.2 Resultado por grupo de casos
 
@@ -321,7 +322,7 @@ A tag v3.1 acrescenta à v2 a nova interface, com tema claro e escuro, o tempo d
 | Não funcionais automatizados (CTN02 a CTN06, CTN08 a CTN10) | 8 | python manage.py test e pycodestyle | 8 | 0 |
 | CTN01, usabilidade em 360 px | 1 | Chromium com a tela emulada em 360 por 740 pixels | 1 | 0 |
 | CTN11, contraste e teclado | 1 | Chromium, medindo o contraste de todo texto visível nos temas claro e escuro e percorrendo cada página com a tecla Tab | 1 | 0 |
-| CTN07, portabilidade | 1 | Testes em Linux; telas comparadas no Chromium e no Firefox | parcial | 0 |
+| CTN07, portabilidade | 1 | Testes em Linux e em Windows; telas comparadas no Chromium e no Firefox | parcial | 0 |
 | Total | 85 | | 84 | 0 |
 
 Os 85 testes automatizados passaram em 30 segundos (eram 83 na Iteração 2; os dois novos cobrem o tempo de leitura e as iniciais do avatar). A verificação de estilo (CTN08) não apontou violação, as migrações estão em dia e o python manage.py check não encontrou problema.
@@ -332,7 +333,7 @@ Os 85 testes automatizados passaram em 30 segundos (eram 83 na Iteração 2; os 
 | --- | --- | --- |
 | CTN01 | Nove telas em 360 pixels de largura: listagem, busca, leitura sem e com sessão, cadastro, entrada, editor, Meus textos e perfil | Nenhuma tela com rolagem horizontal (largura do conteúdo de 360 pixels em todas); todos os botões, campos e vínculos dentro da tela |
 | CTN11 | As mesmas nove telas, em 1280 pixels | Menor contraste encontrado de 6,78 para 1 no tema claro e de 6,66 para 1 no escuro, acima do mínimo de 4,5 para 1 da WCAG 2.1 nível AA; a tecla Tab alcança todos os elementos interativos de cada tela, e todos mostram o foco |
-| CTN07 | Listagem, leitura e cadastro do endereço publicado, abertos no Chromium e no Firefox em 1280 por 900 pixels | Telas iguais nos dois navegadores. Testes aprovados em Linux. A v3.3 não foi executada em Windows, e não havia máquina com macOS |
+| CTN07 | Listagem, leitura e cadastro do endereço publicado, abertos no Chromium e no Firefox em 1280 por 900 pixels | Telas iguais nos dois navegadores. Testes aprovados em Linux e em Windows. Não havia máquina com macOS |
 
 ### 6.4 Percurso de fumaça no endereço publicado
 
@@ -368,7 +369,7 @@ O caso é aprovado pelo teste automatizado, com 500 textos. Como referência, ci
 - Nenhum defeito do sistema foi encontrado na execução final.
 - Na primeira execução do percurso de fumaça, três verificações falharam por erro do roteiro, e não do sistema: o formulário errado da página foi enviado, a opção de comentários ficou fora do envio e a regra RN18 foi lida como se o moderador não pudesse ver a conta do superusuário, quando o que ela esconde é o papel. O roteiro foi corrigido e o percurso repetido por inteiro, também depois da publicação da nova interface. Nas execuções sobre a v3.2 e a v3.3 as 28 verificações passaram na primeira tentativa.
 - A nova interface pediu o ajuste de dois testes, sem defeito no sistema: CT06.01 conferia o nome da autora no topo, que deu lugar ao avatar com as iniciais, e o teste de consultas do CTN02 esperava duas consultas na listagem, que passaram a três com a faixa de autores, ainda sem crescer com a quantidade de textos.
-- Pendência: as partes de Windows e de macOS do CTN07 não foram executadas na v3.3. O critério de saída da seção 2.6 está atendido, porque o caso não é de autorização, de regra de negócio nem de fluxo principal.
+- Pendência: a parte de macOS do CTN07 não foi executada na v3.3, por falta de máquina com o sistema. O critério de saída da seção 2.6 está atendido, porque o caso não é de autorização, de regra de negócio nem de fluxo principal.
 
 ## 7 Métricas
 
