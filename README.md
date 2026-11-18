@@ -3,7 +3,7 @@
 Prática Profissional em Análise e Desenvolvimento de Sistemas
 Universidade Presbiteriana Mackenzie
 
-O projeto será publicado em **blog.ataraxia.dev**.
+O projeto está publicado em **[blog.ataraxia.dev](https://blog.ataraxia.dev)**.
 
 As tarefas são acompanhadas no [quadro do projeto](https://github.com/orgs/ataraxia-ppads/projects/1).
 
@@ -17,7 +17,7 @@ As tarefas são acompanhadas no [quadro do projeto](https://github.com/orgs/atar
 | Rafaela Rarume Alves Perpetuo |
 | Renan Urtado Challó de Oliveira Jordão |
 
-## O que vamos construir
+## O que é
 
 Uma plataforma de blog onde qualquer pessoa lê os textos publicados, usuários
 cadastrados escrevem e publicam os seus, e moderadores cuidam do que sai do ar.
@@ -37,7 +37,7 @@ A segunda iteração verifica o sistema contra o
 [plano de testes](docs/plano-de-testes.md): os casos que eram só manuais e dá
 para provar sem navegador viraram testes automatizados, e os objetivos não
 funcionais de desempenho, acessibilidade e portabilidade passaram a ter teste.
-A suíte foi de 57 para 83 testes. O resultado da execução está em
+A suíte foi de 57 para 83 testes, e hoje tem 85. O resultado da execução está em
 [`docs/plano-de-testes.md`](docs/plano-de-testes.md).
 
 Os testes automatizados rodam a cada Pull Request, e a documentação de análise e
@@ -221,6 +221,11 @@ Para contribuir sem instalar nada, editando texto pelo navegador, veja o
 
 ## Próximos passos
 
-1. Percurso de fumaça no navegador e testes de usabilidade e portabilidade (CTN01, CTN07 e CTN11), pendentes no plano de testes.
-2. Publicar em `blog.ataraxia.dev`.
-3. Revisar o código por Pull Request e propor correções.
+A análise, o desenho, as duas iterações da construção e a execução do plano de
+testes estão concluídos. O que ficou em aberto, registrado em
+[`docs/proximos-passos.md`](docs/proximos-passos.md):
+
+1. Executar os testes automatizados da tag `v3.3` em macOS, a parte do caso de
+   portabilidade CTN07 que não foi feita.
+2. Dar teste automatizado ao comando `carregar_demo`, hoje a maior parte do
+   código sem cobertura.
